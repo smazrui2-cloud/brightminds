@@ -550,24 +550,31 @@ document.querySelectorAll('.subject').forEach(el => {
   if (el.classList.contains('coming-soon')) return;
   el.addEventListener('click', () => {
     Sound.init(); Sound.tap();
-    if (el.classList.contains('premium')) {
-      // Owner mode bypasses the paywall
-      if (state.profile.devMode) {
-        // If the game isn't implemented yet, show coming-soon toast
-        if (UNIMPLEMENTED_GAMES.has(el.dataset.subject)) {
-          showToast(t('dev.coming_soon'));
-          return;
-        }
-        // Otherwise just select it like a free subject
-      } else {
-        showPaywall(el);
-        return;
-      }
+    const subject = el.dataset.subject;
+
+    // NEW Premium gate (Stripe-based, replaces old .premium class flow).
+    // Free subjects pass through; locked ones show the kid-friendly paywall.
+    if (typeof Premium !== 'undefined' && Premium.isLocked(subject) && !state.profile.devMode) {
+      if (window.track) window.track('locked_subject_clicked', { subject });
+      Paywall.showKid();
+      return;
+    }
+
+    // Legacy .premium class (kept for back-compat, unused by current cards)
+    if (el.classList.contains('premium') && !state.profile.devMode) {
+      Paywall.showKid();
+      return;
     }
     document.querySelectorAll('.subject').forEach(s => s.classList.remove('selected'));
     el.classList.add('selected');
-    state.subject = el.dataset.subject;
+    state.subject = subject;
   });
+});
+
+// Apply 🔒 badges to locked subjects on load + after premium changes
+if (typeof applyPremiumLocks === 'function') applyPremiumLocks();
+window.addEventListener('storage', (e) => {
+  if (e.key === 'brightminds.premium.v1') applyPremiumLocks();
 });
 
 // ════════════════════════════════════════════════════════════
@@ -740,6 +747,30 @@ document.getElementById('settings-reset')?.addEventListener('click', () => {
     setTimeout(() => window.location.reload(), 1500);
   }
 });
+
+// "Upgrade to Premium" button in settings → opens the parent paywall
+document.getElementById('settings-upgrade')?.addEventListener('click', () => {
+  Sound.tap();
+  // If already Premium, open the management portal instead
+  if (typeof Premium !== 'undefined' && Premium.isActive()) {
+    Premium.openPortal();
+  } else {
+    Paywall.showParent('settings');
+  }
+});
+
+// Reflect Premium status on the Upgrade button label
+function updateUpgradeBtn() {
+  const btn = document.getElementById('settings-upgrade');
+  if (!btn) return;
+  if (typeof Premium !== 'undefined' && Premium.isActive()) {
+    btn.innerHTML = '⚙️ إدارة اشتراك Premium';
+    btn.style.background = 'linear-gradient(135deg, #059669, #06B6D4)';
+  } else {
+    btn.innerHTML = '🌟 ترقية لـPremium';
+  }
+}
+updateUpgradeBtn();
 
 // ════════════════════════════════════════════════════════════
 // PARENT DASHBOARD

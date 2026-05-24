@@ -693,6 +693,10 @@
         </div>
 
         <div class="settings-section">
+          <button class="settings-upgrade" id="settings-upgrade">🌟 ترقية لـPremium</button>
+        </div>
+
+        <div class="settings-section">
           <div class="settings-section-title" data-t="settings.about">ℹ️ حول</div>
           <div class="settings-about">
             <div>BrightMinds v1.0</div>
@@ -726,6 +730,62 @@
       </button>
       <button class="btn-secondary" id="paywall-close" data-t="paywall.close">إغلاق</button>
     </div>
+  </div>
+
+  <!-- ═══════════ PREMIUM PAYWALL (kid + parent screens) ═══════════ -->
+  <!-- 1. Kid screen: no pricing, redirects them to ask parents -->
+  <div class="pwall" id="paywall-kid">
+    <div class="pwall-card">
+      <div class="pwall-emoji-big">🔒</div>
+      <div class="pwall-title">هذه اللعبة محميّة بكنز سحري!</div>
+      <div class="pwall-sub">🦉 اطلب من ماما أو بابا فتح كل الكنوز</div>
+      <button class="pwall-btn pwall-btn-primary" id="paywall-to-parent">
+        👨‍👩‍👧 اضغط هنا للأهل
+      </button>
+      <button class="pwall-btn pwall-btn-ghost" data-paywall-close>إغلاق</button>
+    </div>
+  </div>
+
+  <!-- 2. Parent screen: real pricing + Stripe Checkout -->
+  <div class="pwall" id="paywall-parent">
+    <div class="pwall-card pwall-card-parent">
+      <button class="pwall-close-x" data-paywall-close aria-label="Close">✕</button>
+      <div class="pwall-emoji-big">🌟</div>
+      <div class="pwall-title">BrightMinds Premium</div>
+      <div class="pwall-sub">فعّل التعلّم الكامل لطفلك</div>
+
+      <ul class="pwall-features">
+        <li>✅ كل 12 لعبة تعليمية</li>
+        <li>✅ تقارير تقدّم تفصيلية</li>
+        <li>✅ بدون إعلانات إطلاقاً</li>
+        <li>✅ يعمل أوفلاين</li>
+      </ul>
+
+      <button class="pwall-plan pwall-plan-yearly" id="paywall-yearly">
+        <div class="pwall-plan-badge">⭐ الأكثر شعبية — وفّر 51%</div>
+        <div class="pwall-plan-name">سنوي</div>
+        <div class="pwall-plan-price">$29<small>/سنة</small></div>
+        <div class="pwall-plan-permonth">فقط $2.42/شهرياً</div>
+      </button>
+
+      <button class="pwall-plan pwall-plan-monthly" id="paywall-monthly">
+        <div class="pwall-plan-name">شهري</div>
+        <div class="pwall-plan-price">$4.99<small>/شهر</small></div>
+      </button>
+
+      <div class="pwall-trial">🎁 تجربة 7 أيام مجاناً • إلغاء أيّ وقت</div>
+
+      <button class="pwall-btn pwall-btn-ghost" data-paywall-close>ربّما لاحقاً</button>
+
+      <button class="pwall-manage" id="paywall-manage" style="display:none">
+        إدارة اشتراكي
+      </button>
+    </div>
+  </div>
+
+  <!-- Welcome toast after successful subscription -->
+  <div class="premium-welcome" id="premium-welcome">
+    <span>🎉</span> تم تفعيل Premium! استمتع بكل الألعاب
   </div>
 
   <!-- ═══════════ PARENT PIN MODAL ═══════════ -->
@@ -764,6 +824,8 @@
   <script src="story.js"></script>
   <script src="parentpin.js"></script>
   <script src="analytics.js"></script>
+  <script src="premium.js"></script>
+  <script src="paywall.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

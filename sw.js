@@ -3,7 +3,7 @@
 // Cache-first for static assets, network-first for the HTML shell.
 // Bumping CACHE_VERSION clears all old caches on next load.
 // ════════════════════════════════════════════════════════════
-const CACHE_VERSION = 'brightminds-v24';
+const CACHE_VERSION = 'brightminds-v25';
 
 // Core files that must be available offline (the app shell)
 const CORE_ASSETS = [
@@ -28,6 +28,8 @@ const CORE_ASSETS = [
   './story.js',
   './parentpin.js',
   './analytics.js',
+  './premium.js',
+  './paywall.js',
   './shop.js',
   './manifest.json',
   './icons/icon-192.svg',
@@ -54,12 +56,15 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const req = event.request;
-  // Skip non-GET (we never POST)
+  // Skip non-GET (POST goes to /api/*, must reach network)
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
 
   // Don't intercept the Web Speech API or external resources
   if (url.origin !== self.location.origin) return;
+
+  // Never cache API responses (subscription state must be fresh)
+  if (url.pathname.startsWith('/api/')) return;
 
   // For audio MP3s — cache the first time, serve from cache thereafter.
   if (url.pathname.includes('/audio/') && url.pathname.endsWith('.mp3')) {
