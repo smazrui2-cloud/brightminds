@@ -3,7 +3,7 @@
 // Cache-first for static assets, network-first for the HTML shell.
 // Bumping CACHE_VERSION clears all old caches on next load.
 // ════════════════════════════════════════════════════════════
-const CACHE_VERSION = 'brightminds-v27';
+const CACHE_VERSION = 'brightminds-v28';
 
 // Core files that must be available offline (the app shell)
 const CORE_ASSETS = [
@@ -30,6 +30,7 @@ const CORE_ASSETS = [
   './analytics.js',
   './premium.js',
   './paywall.js',
+  './teacher.js',
   './shop.js',
   './manifest.json',
   './icons/icon-192.svg',

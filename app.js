@@ -991,6 +991,8 @@ function initLesson() {
     index: state.session.current,
     total: state.session.total
   });
+  // Allow teacher feedback to fire immediately on this new exercise
+  if (typeof TeacherFeedback !== 'undefined') TeacherFeedback.reset();
   // Branch by subject
   if (state.subject === 'add') return initAddLesson();
   if (state.subject === 'letters') return initLettersLesson();
@@ -1313,9 +1315,9 @@ function onFindLetterClick(idx) {
       setTimeout(finishLesson, 600);
     }
   } else {
-    Sound.wrongTap();
     el?.classList.add('wrong-flash');
     setTimeout(() => el?.classList.remove('wrong-flash'), 500);
+    TeacherFeedback.wrong();
   }
 }
 function updateFindLetterCounter() {
@@ -1393,9 +1395,9 @@ function onColorHuntClick(idx) {
       setTimeout(finishLesson, 600);
     }
   } else {
-    Sound.wrongTap();
     el?.classList.add('wrong-flash');
     setTimeout(() => el?.classList.remove('wrong-flash'), 500);
+    TeacherFeedback.wrong();
   }
 }
 function updateColorHuntCounter() {
@@ -1839,8 +1841,8 @@ function onPuzzleSlotClick(slotIdx) {
       setTimeout(finishLesson, 1100);
     } else {
       // Almost there — gently highlight the mis-placed pieces so the kid can swap them
-      Sound.wrongTap();
       if (Mascot.el) { Mascot.setMood('thinking'); Mascot.say('🤔', 1500); }
+      TeacherFeedback.wrong();
       Object.entries(p.placed).forEach(([idx, pieceId]) => {
         const i = parseInt(idx, 10);
         const pc = p.pieces[pieceId];
@@ -1930,11 +1932,10 @@ function onShopCoinClick(value) {
 
   if (result === 'over') {
     // Don't accept the coin — flash the wallet red
-    Sound.wrongTap();
     const wallet = document.querySelector('.shop-wallet');
     wallet?.classList.add('over');
     if (Mascot.el) { Mascot.setMood('worried'); Mascot.say(t('shop.over_price'), 1400); }
-    speakI18n('speak.shop_over');
+    TeacherFeedback.wrong();
     setTimeout(() => wallet?.classList.remove('over'), 500);
     return;
   }
@@ -2008,17 +2009,14 @@ function onScienceChoice(btn, choice) {
   const p = state.scienceProblem;
   if (choice.id === p.target.id) {
     btn.classList.add('correct');
-    Sound.tap(); Sound.phaseComplete();
+    Sound.tap();
     if (Mascot.el) { Mascot.setMood('cheering'); Mascot.say('✓ ' + t('mascot.correct'), 1800); }
-    speakI18n('speak.science_correct', {
-      place: state.language === 'ar' ? p.target.name_ar : p.target.name_en
-    });
+    TeacherFeedback.correct();
     setTimeout(finishLesson, 1500);
   } else {
     btn.classList.add('wrong');
-    Sound.wrongTap();
     if (Mascot.el) { Mascot.setMood('worried'); Mascot.say('✗', 1000); }
-    speakI18n('speak.science_wrong');
+    TeacherFeedback.wrong();
     setTimeout(() => btn.classList.remove('wrong'), 600);
   }
 }
@@ -2162,14 +2160,13 @@ function checkWordAnswer() {
     document.querySelectorAll('.wb-slot').forEach(el => el.classList.add('correct'));
     Sound.celebrate();
     if (Mascot.el) { Mascot.setMood('cheering'); Mascot.say('🎉 ' + t('mascot.correct'), 2000); }
-    speakI18n('speak.wb_correct', { word: targetWord });
+    TeacherFeedback.correct();
     setTimeout(finishLesson, 1600);
   } else {
     // Wrong — shake and reset
     document.querySelectorAll('.wb-slot').forEach(el => el.classList.add('wrong'));
-    Sound.wrongTap();
     if (Mascot.el) { Mascot.setMood('worried'); Mascot.say('✗', 900); }
-    speakI18n('speak.wb_wrong');
+    TeacherFeedback.wrong();
     setTimeout(() => {
       // Clear slots, return tiles to pool
       state.wordSlots = new Array(state.wordProblem.letters.length).fill(null);
@@ -2331,9 +2328,8 @@ function handleLetterChoice(btnEl, choice) {
     }, 1400);
   } else {
     btnEl.classList.add('wrong');
-    Sound.wrongTap();
     if (Mascot.el) { Mascot.setMood('worried'); Mascot.say('✗', 1000); }
-    speakI18n('speak.letters_wrong');
+    TeacherFeedback.wrong();
     setTimeout(() => btnEl.classList.remove('wrong'), 600);
   }
 }
