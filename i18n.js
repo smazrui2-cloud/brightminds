@@ -70,8 +70,8 @@ const I18N = {
     'subj.science.desc': 'أين يعيش الحيوان؟',
     'subj.story': 'قصة تعليمية',
     'subj.story.desc': 'قصص فيها درس',
-    'lesson.title.story': '📖 قصة تعليمية',
-    'lesson.problem.story': '📖 وقت القصة',
+    'lesson.title.story': 'قصة تعليمية',
+    'lesson.problem.story': 'القصة',
     'story.prev': '› السابقة',
     'story.next': 'التالية ‹',
     'story.moral': '🌟 الدرس المستفاد',
@@ -80,23 +80,23 @@ const I18N = {
     'speak.story_read_intro_named': 'يلا يا {name}! حان وقت القصة',
     'speak.story_read_done': 'أحسنت! قرأت القصة كاملة',
     'mascot.story_start': '📖 استمع جيداً',
-    'hero.story_quest': 'صفحة <strong>{n}/{t}</strong>',
-    'lesson.title.science': '🦁 العلوم — موطن الحيوانات',
-    'lesson.problem.science': '⚡ تمرين العلوم',
+    'hero.story_quest': 'الصفحة <strong>{n}</strong> من <strong>{t}</strong>',
+    'lesson.title.science': 'العلوم — موطن الحيوانات',
+    'lesson.problem.science': 'العلوم',
     'science.prompt': 'أين يعيش هذا الحيوان؟',
     'speak.science_intro': 'هيا نتعلم أين يعيش الحيوان',
     'speak.science_intro_named': 'يلا يا {name}! اختر موطن الحيوان',
     'speak.science_correct': 'أحسنت! يعيش في {place}',
     'speak.science_wrong': 'لا، حاول مرة أخرى',
     'mascot.science_start': '🦁 اختر الموطن',
-    'hero.science_quest': 'تعلمت <strong>{n}/{t}</strong> حيوانات',
+    'hero.science_quest': 'التمرين <strong>{n}</strong> من <strong>{t}</strong>',
     'subj.soon': 'قريباً',
     'subj.premium': '💎',
 
     // Letter-match game
-    'lesson.title.letters': '🔤 لعبة الحروف',
+    'lesson.title.letters': 'الحروف',
     'lesson.sub.letters': 'طابق الحرف بالصورة',
-    'lesson.problem.letters': '⚡ تمرين الحروف',
+    'lesson.problem.letters': 'الحروف',
     'letter.match_prompt': 'اختر الصورة التي تبدأ بحرف',
     'phase.letter_match': 'اختر الصورة الصحيحة',
     'mascot.letters.start': 'يلا نطابق الحروف!',
@@ -105,18 +105,18 @@ const I18N = {
     'speak.letters_prompt': 'حرف {letter}',
     'speak.letters_correct': 'أحسنت! {word} يبدأ بحرف {letter}',
     'speak.letters_wrong': 'لا، حاول مرة أخرى',
-    'hero.letters_quest': 'تعلمت <strong>{n}/{t}</strong> حروف',
-    'hero.memory_quest': 'طابقت <strong>{n}/{t}</strong> لوحات',
-    'hero.findletter_quest': 'وجدت <strong>{n}/{t}</strong> حروف',
-    'hero.color_quest': 'صدت <strong>{n}/{t}</strong> ألوان',
-    'hero.wb_quest': 'كوّنت <strong>{n}/{t}</strong> كلمات',
-    'hero.maze_quest': 'حللت <strong>{n}/{t}</strong> متاهات',
-    'hero.puzzle_quest': 'ركّبت <strong>{n}/{t}</strong> صور',
-    'hero.shop_quest': 'اشتريت <strong>{n}/{t}</strong> منتجات',
+    'hero.letters_quest': 'التمرين <strong>{n}</strong> من <strong>{t}</strong>',
+    'hero.memory_quest': 'التمرين <strong>{n}</strong> من <strong>{t}</strong>',
+    'hero.findletter_quest': 'التمرين <strong>{n}</strong> من <strong>{t}</strong>',
+    'hero.color_quest': 'التمرين <strong>{n}</strong> من <strong>{t}</strong>',
+    'hero.wb_quest': 'التمرين <strong>{n}</strong> من <strong>{t}</strong>',
+    'hero.maze_quest': 'التمرين <strong>{n}</strong> من <strong>{t}</strong>',
+    'hero.puzzle_quest': 'التمرين <strong>{n}</strong> من <strong>{t}</strong>',
+    'hero.shop_quest': 'التمرين <strong>{n}</strong> من <strong>{t}</strong>',
 
     // Money Shop
-    'lesson.title.shop': '🏪 متجر حكيم',
-    'lesson.problem.shop': '⚡ تمرين المتجر',
+    'lesson.title.shop': 'متجر حكيم',
+    'lesson.problem.shop': 'المتجر',
     'shop.prompt': 'ادفع السعر بالضبط!',
     'shop.price': 'السعر',
     'shop.your_money': 'نقودك',
@@ -129,8 +129,8 @@ const I18N = {
     'mascot.shop_start': '🏪 ادفع السعر',
 
     // Puzzle game
-    'lesson.title.puzzle': '🧩 البازل',
-    'lesson.problem.puzzle': '⚡ صورة جديدة',
+    'lesson.title.puzzle': 'البازل',
+    'lesson.problem.puzzle': 'صورة جديدة',
     'puzzle.prompt': 'اضغط قطعة ثم خانة. ضع كل قطعة في مكانها الصحيح!',
     'speak.puzzle_intro': 'ركّب الصورة بترتيب القطع في مكانها',
     'speak.puzzle_intro_named': 'يلا يا {name}! ركّب الصورة',
@@ -138,8 +138,8 @@ const I18N = {
     'mascot.puzzle_start': '🧩 رتّب القطع',
 
     // Maze game
-    'lesson.title.maze': '🌀 المتاهات',
-    'lesson.problem.maze': '⚡ متاهة جديدة',
+    'lesson.title.maze': 'المتاهات',
+    'lesson.problem.maze': 'متاهة جديدة',
     'maze.hint': 'اسحب بإصبعك في المسار حتى تصل للهدف',
     'speak.maze_intro': 'ساعد الحيوان يصل للهدف عبر المتاهة',
     'speak.maze_intro_named': 'يلا يا {name}! ساعد الحيوان يصل للهدف',
@@ -147,8 +147,8 @@ const I18N = {
     'mascot.maze_start': '🌀 اتبع المسار',
 
     // Word builder game
-    'lesson.title.wb': '🧱 تركيب الكلمات',
-    'lesson.problem.wb': '⚡ تمرين الكلمات',
+    'lesson.title.wb': 'تكوين الكلمات',
+    'lesson.problem.wb': 'كلمة جديدة',
     'wb.prompt': 'رتّب الحروف لتكوين الكلمة',
     'speak.wb_intro': 'هيا نكوّن الكلمات!',
     'speak.wb_intro_named': 'يلا يا {name}! رتّب الحروف',
@@ -157,8 +157,8 @@ const I18N = {
     'mascot.wb_start': '🧱 رتّب الحروف!',
 
     // Memory game
-    'lesson.title.memory': '🧠 لعبة الذاكرة',
-    'lesson.problem.memory': '⚡ تمرين الذاكرة',
+    'lesson.title.memory': 'لعبة الذاكرة',
+    'lesson.problem.memory': 'الذاكرة',
     'memory.prompt': 'طابق البطاقات!',
     'speak.memory_intro': 'اقلب البطاقات وطابق الزوجين',
     'speak.memory_intro_named': 'يلا يا {name}! طابق الزوجين',
@@ -166,8 +166,8 @@ const I18N = {
     'mascot.memory_start': '🧠 ابحث عن الزوجين',
 
     // Find-letter game
-    'lesson.title.findletter': '🔍 ابحث عن الحرف',
-    'lesson.problem.findletter': '⚡ تمرين البحث',
+    'lesson.title.findletter': 'ابحث عن الحرف',
+    'lesson.problem.findletter': 'ابحث عن الحرف',
     'findletter.prompt': 'ابحث عن حرف',
     'speak.findletter_intro': 'ابحث عن كل أمثلة هذا الحرف',
     'speak.findletter_intro_named': 'يلا يا {name}! ابحث عن الحرف',
@@ -175,8 +175,8 @@ const I18N = {
     'mascot.findletter_start': '🔍 اضغط على الحرف',
 
     // Color-hunt game
-    'lesson.title.colorhunt': '🎨 صيد الألوان',
-    'lesson.problem.colorhunt': '⚡ تمرين الألوان',
+    'lesson.title.colorhunt': 'صيد الألوان',
+    'lesson.problem.colorhunt': 'الألوان',
     'colorhunt.prompt': 'صيد اللون',
     'speak.colorhunt_intro': 'اضغط على كل أشياء بنفس اللون',
     'speak.colorhunt_intro_named': 'يلا يا {name}! اصطد اللون',
@@ -241,9 +241,9 @@ const I18N = {
     'level.master': '💎 ماستر',
     'level.genius': '🚀 عبقري',
 
-    'lesson.title': '🧠 الضرب الذكي',
+    'lesson.title': 'الضرب الذكي',
     'lesson.sub': 'ارسم الخطوط بإصبعك',
-    'lesson.problem': '⚡ تمرين الضرب',
+    'lesson.problem': 'الضرب',
 
     'phase.vertical': 'ارسم {n} خطوط رأسية ↓',
     'phase.horizontal': 'ممتاز! الآن ارسم {n} خطوط أفقية ←',
@@ -300,9 +300,9 @@ const I18N = {
     'speak.test_phrase': 'أهلاً! أنا حكيم البومة الحكيمة. سأساعدك في مغامرتك!',
 
     // Story-mode (hero quest)
-    'hero.title': '⚔️ البطل {name}',
-    'hero.title_noname': '⚔️ أيها البطل',
-    'hero.quest': 'هزمت <strong>{n}/{t}</strong> تنانين',
+    'hero.title': '{name}',
+    'hero.title_noname': 'مرحباً بك',
+    'hero.quest': 'التمرين <strong>{n}</strong> من <strong>{t}</strong>',
     'speak.story_intro': 'أهلاً يا {name} البطل! تنانين الأرقام أخفت الكنز. هل أنت مستعد لهزيمتهم؟',
     'speak.story_intro_noname': 'أهلاً أيها البطل! تنانين الأرقام أخفت الكنز. هل أنت مستعد لهزيمتهم؟',
     'speak.story_dragon': 'هذا تنين {a} × {b}! اهزمه برسم الخطوط',
@@ -356,9 +356,9 @@ const I18N = {
     'badge.dragon_slayer.desc': '25 جلسة مكتملة',
 
     // Addition subject
-    'lesson.title.add': '➕ الجمع الذكي',
+    'lesson.title.add': 'الجمع',
     'lesson.sub.add': 'اعد التفاحات بالضغط عليها',
-    'lesson.problem.add': '⚡ تمرين الجمع',
+    'lesson.problem.add': 'الجمع',
     'phase.add_count': 'اضغط على كل تفاحة وعدّها معي!',
     'phase.add_write': 'رائع! الآن اكتب المجموع بتوصيل النقاط',
     'btn.add.count_more': 'اعد {n} تفاحات',

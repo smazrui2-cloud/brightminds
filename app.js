@@ -1110,7 +1110,8 @@ function updateHeroBadge() {
       'story': 'hero.story_quest',
     };
     const key = subjMap[state.subject] || 'hero.quest';
-    questEl.innerHTML = t(key, { n: state.session.current, t: state.session.total });
+    // Display as 1-indexed for humans ("التمرين 1 من 5" feels right; "0 من 5" is confusing)
+    questEl.innerHTML = t(key, { n: state.session.current + 1, t: state.session.total });
   }
 }
 

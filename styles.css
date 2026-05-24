@@ -717,6 +717,237 @@ html[lang="en"] .parent-btn::after { content: 'Parents'; }
   color: transparent;
 }
 /* ════════════════════════════════════════════════════════════
+   LESSON SCREEN — calm, focused, "real educational app"
+   ────────────────────────────────────────────────────────────
+   The kid sees ONE thing: the question.  Chrome is minimal,
+   colors are neutral, no rainbow tiles or neon glows.
+   Game overlays (canvas, memory grid, etc.) keep their own
+   internal styling — we only retouch the wrapper.
+   ════════════════════════════════════════════════════════════ */
+#screen-lesson {
+  background: var(--p-bg);
+  font-family: var(--p-font);
+  color: var(--p-text);
+}
+
+/* ── Top bar: close + title + score (calm) ── */
+#screen-lesson .top-bar {
+  background: var(--p-surface);
+  border-bottom: 1px solid var(--p-border);
+  padding: var(--p-space-3) var(--p-space-5);
+  box-shadow: none;
+}
+#screen-lesson .top-bar .icon-btn {
+  background: var(--p-surface-2);
+  border: 1px solid var(--p-border);
+  color: var(--p-text);
+  width: 44px; height: 44px;
+  min-width: 44px; min-height: 44px;
+}
+#screen-lesson .top-bar .h1 {
+  font-size: var(--p-fs-lg);
+  font-weight: var(--p-fw-bold);
+  color: var(--p-text);
+}
+#screen-lesson .top-bar .sub {
+  font-size: var(--p-fs-sm);
+  color: var(--p-text-muted);
+  font-weight: var(--p-fw-normal);
+}
+#screen-lesson .badge.score {
+  background: var(--p-primary-soft);
+  color: var(--p-primary);
+  font-weight: var(--p-fw-bold);
+  font-size: var(--p-fs-sm);
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: none;
+  box-shadow: none;
+}
+
+/* ── Hero badge (drama removed: shorter, calmer copy) ── */
+#screen-lesson .mascot-area {
+  padding: var(--p-space-3) var(--p-space-5) 0;
+  min-height: auto;
+}
+#screen-lesson .hero-badge {
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+#screen-lesson .hero-badge .hero-title {
+  font-size: var(--p-fs-md);
+  font-weight: var(--p-fw-bold);
+  color: var(--p-text);
+  text-shadow: none;
+}
+#screen-lesson .hero-badge .hero-quest {
+  font-size: var(--p-fs-sm);
+  color: var(--p-text-muted);
+  font-weight: var(--p-fw-normal);
+  text-shadow: none;
+}
+#screen-lesson .hero-badge .hero-quest strong {
+  color: var(--p-primary);
+  font-weight: var(--p-fw-bold);
+}
+
+/* ── Progress dots (subtle horizontal bar) ── */
+#screen-lesson .session-progress {
+  padding: var(--p-space-2) var(--p-space-5);
+}
+#screen-lesson .session-dots {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+#screen-lesson .session-dots .session-dot {
+  width: 100%;
+  max-width: 40px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--p-border);
+  transition: background 0.2s ease;
+}
+#screen-lesson .session-dots .session-dot.done    { background: var(--p-primary); }
+#screen-lesson .session-dots .session-dot.current { background: var(--p-primary); opacity: 0.6; }
+
+/* ── Problem card (the one big thing) ── */
+#screen-lesson .lesson-header {
+  padding: var(--p-space-4) var(--p-space-5) 0;
+  margin-top: 0;
+}
+#screen-lesson .problem-card {
+  background: var(--p-surface);
+  border: 1px solid var(--p-border);
+  border-radius: var(--p-radius-lg);
+  padding: var(--p-space-5) var(--p-space-6);
+  box-shadow: var(--p-shadow-sm);
+}
+#screen-lesson .problem-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--p-primary-soft);
+  border: none;
+  border-radius: 999px;
+  color: var(--p-primary);
+  font-size: var(--p-fs-xs);
+  font-weight: var(--p-fw-bold);
+  letter-spacing: 0.2px;
+  margin-bottom: var(--p-space-3);
+}
+#screen-lesson .problem-text {
+  margin-top: 0;
+  font-size: 44px;
+  font-weight: var(--p-fw-bold);
+  text-align: center;
+  direction: ltr;
+  letter-spacing: 1px;
+  line-height: 1.1;
+  color: var(--p-text);
+}
+#screen-lesson .problem-text .num1,
+#screen-lesson .problem-text .num2 {
+  color: var(--p-primary);
+  text-shadow: none;
+}
+#screen-lesson .problem-text .op {
+  color: var(--p-text-muted);
+  margin: 0 10px;
+}
+#screen-lesson #answer-slot {
+  color: var(--p-text-soft) !important;
+}
+#screen-lesson #answer-slot.revealed {
+  color: var(--p-success) !important;
+  text-shadow: none;
+}
+
+/* ── Instruction banner (soft, single accent) ── */
+#screen-lesson .instruction-banner {
+  margin: var(--p-space-3) var(--p-space-5) 0;
+  padding: var(--p-space-3) var(--p-space-4);
+  background: var(--p-primary-soft);
+  border: none;
+  border-inline-start: 3px solid var(--p-primary);
+  border-radius: var(--p-radius-md);
+  font-size: var(--p-fs-md);
+  font-weight: var(--p-fw-medium);
+  color: var(--p-text);
+  box-shadow: none;
+  min-height: 48px;
+}
+#screen-lesson .instruction-banner .step-pill {
+  background: var(--p-primary);
+  color: #FFFFFF;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: var(--p-fs-xs);
+  font-weight: var(--p-fw-bold);
+  flex-shrink: 0;
+}
+
+/* ── Canvas wrap (cleaner, no grid pattern) ── */
+#screen-lesson .canvas-wrap {
+  margin: var(--p-space-3) var(--p-space-5);
+  background: var(--p-surface);
+  border: 1px solid var(--p-border);
+  border-radius: var(--p-radius-lg);
+  box-shadow: var(--p-shadow-sm);
+}
+
+/* ── Counter pills (subtle) ── */
+#screen-lesson .counter-pill {
+  background: var(--p-surface);
+  color: var(--p-text);
+  border: 1px solid var(--p-border);
+  font-weight: var(--p-fw-bold);
+  box-shadow: var(--p-shadow-sm);
+  padding: 4px 10px;
+  font-size: var(--p-fs-xs);
+}
+#screen-lesson .counter-pill.cyan { color: var(--p-primary); }
+#screen-lesson .counter-pill.gold { color: var(--p-warning); }
+
+/* ── Action buttons (kid-sized, calm) ── */
+#screen-lesson .actions-row {
+  padding: var(--p-space-4) var(--p-space-5) var(--p-space-5);
+  gap: var(--p-space-3);
+}
+#screen-lesson .actions-row .btn-primary,
+#screen-lesson .actions-row .btn-secondary {
+  min-height: 56px;
+  font-size: var(--p-fs-md);
+  font-weight: var(--p-fw-medium);
+  border-radius: var(--p-radius-md);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+#screen-lesson .actions-row .btn-primary {
+  background: var(--p-primary);
+  color: #FFFFFF;
+  border: none;
+  box-shadow: var(--p-shadow-md);
+}
+#screen-lesson .actions-row .btn-primary:active { transform: scale(0.98); }
+#screen-lesson .actions-row .btn-secondary {
+  background: var(--p-surface);
+  color: var(--p-text-muted);
+  border: 1px solid var(--p-border);
+  box-shadow: none;
+}
+
+/* ── Result modal (calmer celebration) ── */
+#result-overlay.show .result-card {
+  /* keep existing card but soften — overrides on specific elements only */
+}
+#screen-lesson + #result-overlay .result-card,
+#result-overlay .result-card {
+  /* Stars stay colorful (kid reward) but background calms */
+  border: 1px solid var(--p-border);
+}
+
+/* ════════════════════════════════════════════════════════════
    ONBOARDING — calm, one-question-per-screen first-launch flow
    Same calm tokens as parent dashboard, big tap targets for parents.
    ════════════════════════════════════════════════════════════ */
