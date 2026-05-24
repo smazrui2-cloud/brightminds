@@ -339,6 +339,7 @@ if (btnInstallVoice) {
 document.querySelectorAll('.lang-card').forEach(btn => {
   btn.addEventListener('click', () => {
     Sound.init(); Sound.resume(); Sound.tap();
+    if (window.track) window.track('language_selected', { lang: btn.dataset.lang });
     state.language = btn.dataset.lang;
     document.querySelectorAll('.lang-card').forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
@@ -617,7 +618,9 @@ function applyOwnerModeUI() {
 // Parent button → gate with 4-digit PIN, then open dashboard
 document.getElementById('parent-btn')?.addEventListener('click', async () => {
   Sound.init(); Sound.tap();
+  if (window.track) window.track('parent_btn_clicked');
   const ok = await ParentPIN.prompt();
+  if (window.track) window.track(ok ? 'parent_unlocked' : 'parent_pin_cancelled');
   if (ok) showScreen('parent');
 });
 
@@ -626,6 +629,7 @@ document.getElementById('parent-btn')?.addEventListener('click', async () => {
 // ════════════════════════════════════════════════════════════
 function openSettings() {
   Sound.init(); Sound.tap();
+  if (window.track) window.track('settings_opened');
   renderSettings();
   document.getElementById('settings-panel').classList.add('show');
   document.getElementById('settings-backdrop').classList.add('show');
@@ -917,6 +921,12 @@ document.getElementById('paywall-cta')?.addEventListener('click', () => {
 // LESSON INITIALIZATION
 // ════════════════════════════════════════════════════════════
 function initLesson() {
+  // Track exercise start (subject only — no personal data)
+  if (window.track) window.track('exercise_started', {
+    subject: state.subject,
+    index: state.session.current,
+    total: state.session.total
+  });
   // Branch by subject
   if (state.subject === 'add') return initAddLesson();
   if (state.subject === 'letters') return initLettersLesson();
@@ -2877,6 +2887,15 @@ function finishLesson() {
   // 🎉 Applause + encouragement at every lesson win
   Sound.applause();
   setTimeout(() => Sound.encouragement(), 300);
+
+  // Track exercise completion
+  const durationSec = Math.round((Date.now() - (state._exerciseStartMs || Date.now())) / 1000);
+  if (window.track) window.track('exercise_completed', {
+    subject: state.subject,
+    duration_sec: durationSec,
+    index: state.session.current,
+    is_last: state.session.current === state.session.total - 1
+  });
 
   // Track learning content (for the parent dashboard)
   if (state.subject === 'word-builder' && state.wordProblem) {
