@@ -604,8 +604,9 @@ function applyOwnerModeUI() {
   document.documentElement.classList.toggle('dev-mode', state.profile.devMode);
   const badge = document.getElementById('dev-badge');
   if (badge) badge.classList.toggle('hidden', !state.profile.devMode);
+  // Parent button is now ALWAYS visible (protected by PIN gate instead of devMode).
   const pBtn = document.getElementById('parent-btn');
-  if (pBtn) pBtn.classList.toggle('hidden', !state.profile.devMode);
+  if (pBtn) pBtn.classList.remove('hidden');
   // Mark unimplemented premium games visually
   document.querySelectorAll('.subject.premium').forEach(el => {
     el.classList.toggle('dev-coming-soon',
