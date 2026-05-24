@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /audio/
+Disallow: /icons/
+
+Sitemap: https://brightminds.kids/sitemap.xml

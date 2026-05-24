@@ -1,0 +1,36 @@
+{
+  "name": "BrightMinds — تعليم ذكي للأطفال",
+  "short_name": "BrightMinds",
+  "description": "تطبيق تعليمي تفاعلي للأطفال 5-13 سنة — رياضيات، حروف، ذاكرة، ألوان، ألغاز وأكثر",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#DBEAFE",
+  "background_color": "#DBEAFE",
+  "categories": ["education", "kids", "games"],
+  "icons": [
+    {
+      "src": "icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}
