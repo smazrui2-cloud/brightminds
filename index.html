@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#FFB3DE" />
   <title>BrightMinds — تطبيق تعليمي ذكي للأطفال 5-13 سنة</title>
 
@@ -43,7 +43,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Cairo:wght@400;600;700;800;900&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 
   <!-- Schema.org structured data for search engines -->
@@ -693,7 +693,7 @@
         </div>
 
         <div class="settings-section">
-          <button class="settings-upgrade" id="settings-upgrade">🌟 ترقية لـPremium</button>
+          <button class="settings-upgrade" id="settings-upgrade">🌟 الترقية للنسخة المميّزة</button>
         </div>
 
         <div class="settings-section">
@@ -722,11 +722,11 @@
     <div class="paywall-backdrop" id="paywall-backdrop"></div>
     <div class="paywall-toast" id="paywall-toast">
       <div class="paywall-icon">💎</div>
-      <div class="paywall-title" data-t="paywall.title">ميزة Premium</div>
+      <div class="paywall-title" data-t="paywall.title">الميزة المميّزة</div>
       <div class="paywall-body" data-t="paywall.body">اشترك للوصول إلى كل الألعاب التعليمية</div>
       <div class="paywall-game-name" id="paywall-game-name">—</div>
       <button class="btn-primary paywall-cta" id="paywall-cta">
-        <span data-t="paywall.cta">🚀 اشترك في Premium</span>
+        <span data-t="paywall.cta">🚀 اشترك في النسخة المميّزة</span>
       </button>
       <button class="btn-secondary" id="paywall-close" data-t="paywall.close">إغلاق</button>
     </div>
@@ -751,7 +751,8 @@
     <div class="pwall-card pwall-card-parent">
       <button class="pwall-close-x" data-paywall-close aria-label="Close">✕</button>
       <div class="pwall-emoji-big">🌟</div>
-      <div class="pwall-title">BrightMinds Premium</div>
+      <div class="pwall-title text-ar">النسخة المميّزة</div>
+      <div class="pwall-brand text-en">BrightMinds Premium</div>
       <div class="pwall-sub">فعّل التعلّم الكامل لطفلك</div>
 
       <ul class="pwall-features">
@@ -785,14 +786,14 @@
 
   <!-- Welcome toast after successful subscription -->
   <div class="premium-welcome" id="premium-welcome">
-    <span>🎉</span> تم تفعيل Premium! استمتع بكل الألعاب
+    <span>🎉</span> تم تفعيل النسخة المميّزة! استمتع بكل الألعاب
   </div>
 
   <!-- ═══════════ PARENT PIN MODAL ═══════════ -->
   <div class="parentpin-overlay" id="parentpin-modal">
     <div class="parentpin-card">
       <div class="parentpin-emoji">🔒</div>
-      <div class="parentpin-title">أدخل PIN الأهل</div>
+      <div class="parentpin-title">أدخل الرمز السرّي للأهل</div>
       <div class="parentpin-subtitle">…</div>
       <input type="tel" inputmode="numeric" maxlength="4"
              pattern="[0-9]*" autocomplete="off"

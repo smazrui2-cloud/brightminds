@@ -184,9 +184,9 @@ const I18N = {
     'mascot.colorhunt_start': '🎨 اصطد اللون!',
 
     // Paywall
-    'paywall.title': '💎 ميزة Premium',
+    'paywall.title': '💎 الميزة المميّزة',
     'paywall.body': 'اشترك للوصول إلى كل الألعاب التعليمية الحصرية',
-    'paywall.cta': '🚀 اشترك في Premium',
+    'paywall.cta': '🚀 اشترك في النسخة المميّزة',
     'paywall.close': 'لاحقاً',
     'paywall.unlock': 'افتح كل الألعاب',
     'dev.enabled': '🔓 وضع المالك مفعّل',

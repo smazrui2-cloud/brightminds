@@ -20,10 +20,23 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+/* ── RTL/LTR direction control (driven by html[lang]) ──────── */
+html[lang="ar"] { direction: rtl; text-align: right; }
+html[lang="en"] { direction: ltr; text-align: left; }
+
+/* Inline language-locked text helpers — use for proper names, numbers, etc. */
+.text-en { direction: ltr; unicode-bidi: embed; }
+.text-ar { direction: rtl; unicode-bidi: embed; }
+
+/* Form controls + interactive containers must inherit document direction */
+button, .card, .modal, input, select, textarea { direction: inherit; }
+
 html, body {
   height: 100%;
   overflow: hidden;
-  font-family: 'Tajawal', 'Nunito', system-ui, -apple-system, sans-serif;
+  font-family: 'Tajawal', 'Cairo', system-ui, -apple-system, sans-serif;
+  line-height: 1.7;
   /* Bright PinkFong / Super Jojo–style kids palette: hot pink → cyan → yellow */
   background:
     radial-gradient(circle  at 15% 10%,  #FFE066 0%, transparent 40%),  /* sunny yellow corner */
@@ -36,7 +49,7 @@ html, body {
   -webkit-user-select: none;
   touch-action: none;
 }
-html[dir="ltr"] body { font-family: 'Nunito', 'Tajawal', system-ui, -apple-system, sans-serif; }
+html[lang="en"] body { font-family: 'Nunito', system-ui, -apple-system, sans-serif; }
 
 #app {
   height: 100dvh;

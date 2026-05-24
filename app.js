@@ -764,10 +764,10 @@ function updateUpgradeBtn() {
   const btn = document.getElementById('settings-upgrade');
   if (!btn) return;
   if (typeof Premium !== 'undefined' && Premium.isActive()) {
-    btn.innerHTML = '⚙️ إدارة اشتراك Premium';
+    btn.innerHTML = '⚙️ إدارة الاشتراك المميّز';
     btn.style.background = 'linear-gradient(135deg, #059669, #06B6D4)';
   } else {
-    btn.innerHTML = '🌟 ترقية لـPremium';
+    btn.innerHTML = '🌟 الترقية للنسخة المميّزة';
   }
 }
 updateUpgradeBtn();

@@ -44,12 +44,15 @@ const ParentPIN = {
       const submitBtn = modal.querySelector('.parentpin-submit');
       const cancelBtn = modal.querySelector('.parentpin-cancel');
 
+      const isAr = (document.documentElement.lang || 'ar') === 'ar';
       titleEl.textContent = firstTime
-        ? '🔒 أنشئ PIN جديد للأهل'
-        : '🔒 أدخل PIN الأهل';
+        ? (isAr ? '🔒 أنشئ رمزاً سرّياً جديداً للأهل' : '🔒 Create a parent passcode')
+        : (isAr ? '🔒 أدخل الرمز السرّي للأهل'        : '🔒 Enter parent passcode');
       subEl.textContent = firstTime
-        ? 'اختر 4 أرقام تتذكّرها — ستحتاجها للدخول مرّة أخرى'
-        : 'أدخل الأرقام الأربعة لفتح لوحة الأهل';
+        ? (isAr ? 'اختر 4 أرقام تتذكّرها — ستحتاجها للدخول مرّة أخرى'
+                 : 'Pick 4 digits you’ll remember — you’ll need them next time')
+        : (isAr ? 'أدخل الأرقام الأربعة لفتح لوحة الأهل'
+                 : 'Enter the 4 digits to open the parent dashboard');
       inputEl.value = '';
       errorEl.textContent = '';
       modal.classList.add('show');
@@ -70,8 +73,8 @@ const ParentPIN = {
           resolve(true);
         } else {
           errorEl.textContent = firstTime
-            ? 'PIN يجب أن يكون 4 أرقام'
-            : 'PIN غير صحيح، حاول مرّة أخرى';
+            ? (isAr ? 'الرمز يجب أن يكون 4 أرقام' : 'Code must be 4 digits')
+            : (isAr ? 'الرمز غير صحيح، حاول مرّة أخرى' : 'Wrong code, try again');
           inputEl.value = '';
           inputEl.focus();
         }
