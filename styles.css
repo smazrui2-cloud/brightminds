@@ -3232,3 +3232,121 @@ html[dir="ltr"] .settings-panel.show { transform: translateX(0); }
 
 /* ── Helpers ─────────────────────────────────────────────── */
 .hidden { display: none !important; }
+
+/* ── Parent PIN modal ────────────────────────────────────── */
+.parentpin-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.parentpin-overlay.show {
+  display: flex;
+  animation: pinFade 0.2s ease;
+}
+@keyframes pinFade { from { opacity: 0; } to { opacity: 1; } }
+
+.parentpin-card {
+  background: #FFFFFF;
+  border-radius: 24px;
+  padding: 28px 22px;
+  width: 100%;
+  max-width: 340px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  animation: pinPop 0.3s ease;
+  font-family: inherit;
+}
+@keyframes pinPop {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+.parentpin-emoji {
+  font-size: 56px;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.parentpin-title {
+  font-size: 20px;
+  font-weight: 900;
+  color: #1E3A8A;
+  margin-bottom: 6px;
+}
+.parentpin-subtitle {
+  font-size: 14px;
+  color: #64748B;
+  margin-bottom: 18px;
+  line-height: 1.45;
+}
+
+.parentpin-input {
+  width: 100%;
+  padding: 16px;
+  font-size: 28px;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 12px;
+  border: 3px solid #E0E7FF;
+  border-radius: 16px;
+  outline: none;
+  font-family: inherit;
+  color: #1E3A8A;
+  background: #F8FAFC;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  -moz-appearance: textfield;
+}
+.parentpin-input::-webkit-outer-spin-button,
+.parentpin-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.parentpin-input:focus {
+  border-color: #8B5CF6;
+  background: #FFFFFF;
+}
+
+.parentpin-error {
+  min-height: 22px;
+  margin: 10px 0 6px;
+  color: #DC2626;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.parentpin-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+.parentpin-cancel,
+.parentpin-submit {
+  flex: 1;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 800;
+  border-radius: 14px;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.parentpin-cancel {
+  background: #F1F5F9;
+  color: #64748B;
+}
+.parentpin-submit {
+  background: linear-gradient(135deg, #FB923C, #EC4899);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.35);
+}
+.parentpin-cancel:active,
+.parentpin-submit:active {
+  transform: scale(0.96);
+}

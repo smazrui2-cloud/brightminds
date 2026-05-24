@@ -718,6 +718,23 @@
     </div>
   </div>
 
+  <!-- ═══════════ PARENT PIN MODAL ═══════════ -->
+  <div class="parentpin-overlay" id="parentpin-modal">
+    <div class="parentpin-card">
+      <div class="parentpin-emoji">🔒</div>
+      <div class="parentpin-title">أدخل PIN الأهل</div>
+      <div class="parentpin-subtitle">…</div>
+      <input type="tel" inputmode="numeric" maxlength="4"
+             pattern="[0-9]*" autocomplete="off"
+             class="parentpin-input" placeholder="• • • •" />
+      <div class="parentpin-error"></div>
+      <div class="parentpin-actions">
+        <button type="button" class="parentpin-cancel">إلغاء</button>
+        <button type="button" class="parentpin-submit">تأكيد</button>
+      </div>
+    </div>
+  </div>
+
   <script src="i18n.js"></script>
   <script src="digits.js"></script>
   <script src="sounds.js"></script>
@@ -735,6 +752,7 @@
   <script src="shop.js"></script>
   <script src="science.js"></script>
   <script src="story.js"></script>
+  <script src="parentpin.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

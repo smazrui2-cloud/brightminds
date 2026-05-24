@@ -613,10 +613,11 @@ function applyOwnerModeUI() {
   });
 }
 
-// Parent button → open dashboard
-document.getElementById('parent-btn')?.addEventListener('click', () => {
+// Parent button → gate with 4-digit PIN, then open dashboard
+document.getElementById('parent-btn')?.addEventListener('click', async () => {
   Sound.init(); Sound.tap();
-  showScreen('parent');
+  const ok = await ParentPIN.prompt();
+  if (ok) showScreen('parent');
 });
 
 // ════════════════════════════════════════════════════════════
