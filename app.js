@@ -764,10 +764,11 @@ function updateUpgradeBtn() {
   const btn = document.getElementById('settings-upgrade');
   if (!btn) return;
   if (typeof Premium !== 'undefined' && Premium.isActive()) {
-    btn.innerHTML = '⚙️ إدارة الاشتراك المميّز';
-    btn.style.background = 'linear-gradient(135deg, #059669, #06B6D4)';
+    btn.innerHTML = 'إدارة الاشتراك المميّز';
+    btn.style.background = 'var(--p-success)';
   } else {
-    btn.innerHTML = '🌟 الترقية للنسخة المميّزة';
+    btn.innerHTML = 'الترقية للنسخة المميّزة';
+    btn.style.background = '';
   }
 }
 updateUpgradeBtn();
@@ -808,105 +809,137 @@ function renderParentDashboard() {
   const body = document.getElementById('parent-body');
   const sub  = document.getElementById('parent-sub');
   if (!body) return;
-  // Header subtitle
+
   sub.textContent = t(state.childName ? 'parent.subtitle_named' : 'parent.subtitle', { name: state.childName });
 
-  const wordsList = Object.entries(p.wordsLearned || {}).sort((a,b) => b[1] - a[1]);
+  const wordsList   = Object.entries(p.wordsLearned   || {}).sort((a,b) => b[1] - a[1]);
   const lettersList = Object.entries(p.lettersLearned || {}).sort((a,b) => b[1] - a[1]);
-  const levelKey = computeChildLevel(p.totalStars || 0);
-
-  // Per-subject correct counts
-  const perSubject = Object.entries(p.perSubject || {})
+  const perSubject  = Object.entries(p.perSubject     || {})
     .map(([id, s]) => ({ id, ...s }))
     .sort((a,b) => b.correctTotal - a.correctTotal);
 
-  // Weak pairs (mastery rate < 50%)
-  const weakPairs = Object.entries(p.mastery || {})
-    .filter(([_, m]) => m.tries >= 2 && m.wins / m.tries < 0.5)
-    .map(([k]) => k.replace(/^[^:]+:/, '').replace('x', ' × '))
-    .slice(0, 6);
+  const isPremium = typeof Premium !== 'undefined' && Premium.isActive();
+  const levelLabel = t(computeChildLevel(p.totalStars || 0));
+  const totalMin   = Math.round((p.totalPlaySeconds || 0) / 60);
+  const safeChild  = escapeHtml(state.childName || t('parent.no_name'));
+
+  // ── Helper to translate subject id → display name (handles dashed keys) ──
+  const subjName = (id) => t('subj.' + (
+    id === 'find-letter'  ? 'find_letter' :
+    id === 'color-hunt'   ? 'colors'      :
+    id === 'word-builder' ? 'word_builder':
+    id === 'money-shop'   ? 'shop'        : id
+  ));
 
   body.innerHTML = `
     <div class="parent-hero">
-      <div class="ph-avatar">${state.childName ? '👦' : '🧒'}</div>
+      <div class="ph-avatar">${state.childGender === 'girl' ? '👧' : '👦'}</div>
       <div class="ph-info">
-        <div class="ph-name">${state.childName || '—'}</div>
-        <div class="ph-level">${t(levelKey)}</div>
+        <div class="ph-name">${safeChild}</div>
+        <div class="ph-level">${levelLabel}</div>
       </div>
     </div>
 
-    <div class="parent-grid">
-      <div class="parent-tile cyan">
-        <div class="pt-emoji">⏱️</div>
-        <div class="pt-value">${formatPlayTime(p.totalPlaySeconds)}</div>
-        <div class="pt-label">${t('parent.play_time')}</div>
+    <div class="parent-row">
+      <div class="parent-stat">
+        <div class="ps-value">${p.streak || 0}</div>
+        <div class="ps-label">${t('parent.stat.streak_days')}</div>
       </div>
-      <div class="parent-tile">
-        <div class="pt-emoji">📚</div>
-        <div class="pt-value">${wordsList.length}</div>
-        <div class="pt-label">${t('parent.words_learned')}</div>
+      <div class="parent-stat">
+        <div class="ps-value">${p.sessionsPlayed || 0}</div>
+        <div class="ps-label">${t('parent.stat.sessions')}</div>
       </div>
-      <div class="parent-tile pink">
-        <div class="pt-emoji">🔤</div>
-        <div class="pt-value">${lettersList.length}</div>
-        <div class="pt-label">${t('parent.letters_learned')}</div>
-      </div>
-      <div class="parent-tile success">
-        <div class="pt-emoji">⭐</div>
-        <div class="pt-value">${p.totalStars || 0}</div>
-        <div class="pt-label">${t('parent.total_stars')}</div>
-      </div>
-      <div class="parent-tile streak">
-        <div class="pt-emoji">🔥</div>
-        <div class="pt-value">${p.streak || 0} ${t('parent.day_unit')}</div>
-        <div class="pt-label">${t('parent.streak')}</div>
-      </div>
-      <div class="parent-tile">
-        <div class="pt-emoji">🎮</div>
-        <div class="pt-value">${p.sessionsPlayed || 0}</div>
-        <div class="pt-label">${t('parent.sessions')}</div>
-      </div>
-      <div class="parent-tile wide">
-        <div class="pt-emoji">🏅</div>
-        <div class="pt-value">${(p.badges || []).length} / 12</div>
-        <div class="pt-label">${t('parent.badges')}</div>
+      <div class="parent-stat">
+        <div class="ps-value">${totalMin}</div>
+        <div class="ps-label">${t('parent.stat.minutes')}</div>
       </div>
     </div>
 
-    <div class="parent-section-title">${t('parent.subjects')}</div>
-    <div class="parent-list">
-      ${perSubject.length === 0
-        ? `<div class="parent-empty">${t('parent.no_data')}</div>`
-        : perSubject.map(s => `
-            <div class="pl-row">
-              <span class="pl-name">${SUBJECT_EMOJI[s.id] || '🎯'} ${t('subj.' + (s.id === 'find-letter' ? 'find_letter' : s.id === 'color-hunt' ? 'colors' : s.id === 'word-builder' ? 'word_builder' : s.id === 'money-shop' ? 'shop' : s.id))}</span>
-              <span class="pl-value">${t('parent.exercises_correct', { n: s.correctTotal || 0 })}</span>
-            </div>
-          `).join('')
-      }
+    <div class="parent-section-title">${t('parent.section.learning')}</div>
+    <div class="parent-card">
+      <div class="pc-row">
+        <span class="pc-name">${t('parent.row.words')}</span>
+        <span class="pc-value">${wordsList.length}</span>
+      </div>
+      <div class="pc-row">
+        <span class="pc-name">${t('parent.row.letters')}</span>
+        <span class="pc-value">${lettersList.length}</span>
+      </div>
+      <div class="pc-row">
+        <span class="pc-name">${t('parent.row.stars')}</span>
+        <span class="pc-value">${p.totalStars || 0}</span>
+      </div>
+    </div>
+
+    ${perSubject.length > 0 ? `
+      <div class="parent-section-title">${t('parent.section.subjects')}</div>
+      <div class="parent-card">
+        ${perSubject.map(s => `
+          <div class="pc-row">
+            <span class="pc-name">${subjName(s.id)}</span>
+            <span class="pc-value">${t('parent.exercises_correct', { n: s.correctTotal || 0 })}</span>
+          </div>
+        `).join('')}
+      </div>
+    ` : ''}
+
+    <div class="parent-section-title">${t('parent.section.badges')}</div>
+    <div class="parent-card">
+      <div class="pc-row">
+        <span class="pc-name">${t('parent.row.unlocked_badges')}</span>
+        <span class="pc-value">${(p.badges || []).length} / 12</span>
+      </div>
     </div>
 
     ${wordsList.length > 0 ? `
-      <div class="parent-section-title">📚 ${t('parent.words_learned')}</div>
+      <div class="parent-section-title">${t('parent.section.recent_words')}</div>
       <div class="parent-chips">
-        ${wordsList.slice(0, 30).map(([w, n]) => `<span class="parent-chip">${w}<span class="count">×${n}</span></span>`).join('')}
+        ${wordsList.slice(0, 20).map(([w, n]) => `<span class="parent-chip">${escapeHtml(w)}<span class="count">×${n}</span></span>`).join('')}
       </div>
     ` : ''}
 
-    ${lettersList.length > 0 ? `
-      <div class="parent-section-title">🔤 ${t('parent.letters_learned')}</div>
-      <div class="parent-chips">
-        ${lettersList.slice(0, 30).map(([l, n]) => `<span class="parent-chip letter">${l}<span class="count">×${n}</span></span>`).join('')}
+    ${!isPremium ? `
+      <button class="parent-upgrade" id="parent-upgrade-btn" type="button">
+        <span class="pu-icon">🌟</span>
+        <span class="pu-info">
+          <span class="pu-title">${t('parent.upgrade.title')}</span>
+          <span class="pu-sub">${t('parent.upgrade.sub')}</span>
+        </span>
+        <span class="pu-arrow">‹</span>
+      </button>
+    ` : `
+      <div class="parent-card" style="border-color:var(--p-success);background:var(--p-surface)">
+        <div class="pc-row" style="border-bottom:none">
+          <span class="pc-name">✓ ${t('parent.premium_active')}</span>
+          <button class="pc-value" id="parent-manage-btn" type="button" style="background:none;border:none;cursor:pointer;color:var(--p-primary);font-family:inherit">${t('parent.manage')}</button>
+        </div>
       </div>
-    ` : ''}
+    `}
 
-    ${weakPairs.length > 0 ? `
-      <div class="parent-section-title">⚠️ ${t('parent.weak_areas')}</div>
-      <div class="parent-chips">
-        ${weakPairs.map(p => `<span class="parent-chip" style="background:rgba(248,113,113,0.12);border-color:rgba(248,113,113,0.4);color:var(--error)">${p}</span>`).join('')}
-      </div>
-    ` : ''}
+    <button class="parent-action" id="parent-open-settings" type="button">
+      <span class="pa-icon">⚙️</span>
+      <span>${t('parent.open_settings')}</span>
+      <span class="pa-arrow">‹</span>
+    </button>
   `;
+
+  // Wire up dynamic buttons
+  document.getElementById('parent-upgrade-btn')?.addEventListener('click', () => {
+    if (typeof Paywall !== 'undefined') Paywall.showParent('parent_dashboard');
+  });
+  document.getElementById('parent-manage-btn')?.addEventListener('click', () => {
+    if (typeof Premium !== 'undefined') Premium.openPortal();
+  });
+  document.getElementById('parent-open-settings')?.addEventListener('click', () => {
+    openSettings();
+  });
+}
+
+// HTML escape helper (XSS safety for childName + learned words)
+function escapeHtml(s) {
+  return String(s).replace(/[<>&"']/g, c => ({
+    '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&#39;'
+  }[c]));
 }
 
 // ════════════════════════════════════════════════════════════
