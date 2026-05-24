@@ -51,6 +51,8 @@ const state = {
     wordsLearned: {},    // word -> times completed
     lettersLearned: {},  // letter -> times found correctly
     perSubject: {},      // subject -> { sessionsCompleted, correctTotal }
+    onboarded: false,    // true once the first-launch flow completed
+    level: null,         // 'beginner' | 'intermediate' | 'advanced'
   },
   // ephemeral: badges unlocked during current session (for gallery animation)
   newlyUnlockedThisSession: [],
@@ -224,6 +226,17 @@ function showScreen(name) {
     initLesson();
   }
   if (name === 'parent') renderParentDashboard();
+  if (name === 'setup') {
+    // Sync visible inputs with stored profile values (in case the user lands
+    // here from onboarding or from the parent dashboard after editing settings)
+    const nameInput = document.getElementById('child-name-input');
+    if (nameInput) nameInput.value = state.childName || '';
+    const slider = document.getElementById('age-slider');
+    if (slider) slider.value = state.childAge || 7;
+    const ageValue = document.getElementById('age-value');
+    if (ageValue) ageValue.textContent = state.childAge || 7;
+    if (typeof syncGenderUI === 'function') syncGenderUI();
+  }
 }
 
 function updateVoiceStatus() {
@@ -3293,8 +3306,118 @@ function finishSplash() {
   _splashFinished = true;
   // Re-mount the mascot back into the lesson container (it was moved to splash)
   if (typeof Mascot !== 'undefined') Mascot.mount('mascot-container');
-  showScreen('language');
+  // Route based on whether the user has completed onboarding
+  if (state.profile.onboarded) {
+    showScreen('setup');
+  } else {
+    showScreen('onb-welcome');
+  }
 }
+
+// ════════════════════════════════════════════════════════════
+// ONBOARDING — calm first-launch flow
+//   welcome → name → age → level → parent intro → setup
+// Saves state.profile.onboarded = true at the end so it never replays.
+// ════════════════════════════════════════════════════════════
+const ONB_STEPS = ['welcome', 'name', 'age', 'level', 'parent'];
+
+function gotoOnbStep(step) {
+  showScreen('onb-' + step);
+  // Sync UI values into the current step
+  if (step === 'name') {
+    const input = document.getElementById('onb-name-input');
+    if (input) {
+      input.value = state.childName || '';
+      setTimeout(() => input.focus(), 200);
+    }
+  } else if (step === 'age') {
+    const slider = document.getElementById('onb-age-slider');
+    const value = document.getElementById('onb-age-value');
+    if (slider) slider.value = state.childAge || 7;
+    if (value) value.textContent = state.childAge || 7;
+  } else if (step === 'level') {
+    // Auto-suggest a level based on age (calmer than forcing a choice)
+    const suggested = state.childAge <= 7 ? 'beginner'
+                    : state.childAge <= 10 ? 'intermediate'
+                    : 'advanced';
+    document.querySelectorAll('.onb-level-card').forEach(c => {
+      c.classList.toggle('selected', c.dataset.level === (state.profile.level || suggested));
+    });
+  }
+}
+
+function finishOnboarding() {
+  state.profile.onboarded = true;
+  // Default the gender (used by parent avatar) — not asked during onb on purpose
+  if (!state.childGender) state.childGender = 'boy';
+  saveProfile();
+  if (window.track) window.track('onboarding_completed');
+  showScreen('setup');
+}
+
+// ── Welcome → Name ──────────────────────────────────────────
+document.getElementById('onb-welcome-next')?.addEventListener('click', () => {
+  Sound.init(); Sound.tap();
+  gotoOnbStep('name');
+});
+
+// ── Name step ───────────────────────────────────────────────
+document.getElementById('onb-name-skip')?.addEventListener('click', () => {
+  Sound.tap();
+  state.childName = '';
+  saveProfile();
+  gotoOnbStep('age');
+});
+document.getElementById('onb-name-next')?.addEventListener('click', () => {
+  Sound.tap();
+  const v = (document.getElementById('onb-name-input').value || '').trim();
+  state.childName = v;
+  saveProfile();
+  gotoOnbStep('age');
+});
+// Enter key on name input = "next"
+document.getElementById('onb-name-input')?.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') { e.preventDefault(); document.getElementById('onb-name-next')?.click(); }
+});
+
+// ── Age step (slider) ───────────────────────────────────────
+document.getElementById('onb-age-slider')?.addEventListener('input', (e) => {
+  const v = parseInt(e.target.value, 10);
+  state.childAge = v;
+  document.getElementById('onb-age-value').textContent = v;
+});
+document.getElementById('onb-age-next')?.addEventListener('click', () => {
+  Sound.tap();
+  saveProfile();
+  gotoOnbStep('level');
+});
+
+// ── Level step ──────────────────────────────────────────────
+document.querySelectorAll('.onb-level-card').forEach(card => {
+  card.addEventListener('click', () => {
+    Sound.tap();
+    state.profile.level = card.dataset.level;
+    document.querySelectorAll('.onb-level-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+    saveProfile();
+    // Auto-advance after a short feel-good pause
+    setTimeout(() => gotoOnbStep('parent'), 350);
+  });
+});
+
+// ── Parent intro → finish ───────────────────────────────────
+document.getElementById('onb-parent-next')?.addEventListener('click', () => {
+  Sound.init(); Sound.tap();
+  finishOnboarding();
+});
+
+// ── Back buttons on every step ──────────────────────────────
+document.querySelectorAll('[data-onb-back]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    Sound.tap();
+    gotoOnbStep(btn.dataset.onbBack);
+  });
+});
 // Owner-mode trigger + restore prior owner state
 setupOwnerTrigger();
 applyOwnerModeUI();

@@ -717,6 +717,285 @@ html[lang="en"] .parent-btn::after { content: 'Parents'; }
   color: transparent;
 }
 /* ════════════════════════════════════════════════════════════
+   ONBOARDING — calm, one-question-per-screen first-launch flow
+   Same calm tokens as parent dashboard, big tap targets for parents.
+   ════════════════════════════════════════════════════════════ */
+.onb-screen {
+  background: var(--p-bg);
+  font-family: var(--p-font);
+  color: var(--p-text);
+  align-items: center;
+  justify-content: center;
+  padding: var(--p-space-6);
+}
+.onb-container {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-space-5);
+  position: relative;
+}
+
+.onb-back {
+  position: absolute;
+  top: -8px;
+  inset-inline-start: -4px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--p-surface);
+  border: 1px solid var(--p-border);
+  color: var(--p-text);
+  font-size: 22px;
+  font-weight: var(--p-fw-bold);
+  cursor: pointer;
+  display: grid; place-items: center;
+  box-shadow: var(--p-shadow-sm);
+}
+html[dir="rtl"] .onb-back { transform: scaleX(-1); }
+.onb-back:active { background: var(--p-surface-2); }
+
+.onb-step-num {
+  text-align: center;
+  font-size: var(--p-fs-sm);
+  font-weight: var(--p-fw-medium);
+  color: var(--p-text-soft);
+  direction: rtl;
+}
+.onb-question {
+  font-size: var(--p-fs-2xl);
+  font-weight: var(--p-fw-bold);
+  color: var(--p-text);
+  text-align: center;
+  line-height: 1.4;
+}
+.onb-hint {
+  font-size: var(--p-fs-md);
+  color: var(--p-text-muted);
+  text-align: center;
+  font-weight: var(--p-fw-normal);
+  margin-top: calc(var(--p-space-3) * -1);
+}
+
+/* ── Welcome screen ── */
+.onb-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--p-space-3);
+  padding: var(--p-space-8) 0;
+}
+.onb-logo {
+  font-size: 80px;
+  line-height: 1;
+}
+.onb-brand {
+  font-size: 36px;
+  font-weight: var(--p-fw-bold);
+  color: var(--p-primary);
+  letter-spacing: -0.5px;
+}
+.onb-tag {
+  font-size: var(--p-fs-lg);
+  color: var(--p-text-muted);
+  text-align: center;
+}
+
+/* ── Primary / secondary buttons ── */
+.onb-primary,
+.onb-secondary {
+  padding: 18px var(--p-space-5);
+  border-radius: var(--p-radius-md);
+  font-family: inherit;
+  font-size: var(--p-fs-lg);
+  font-weight: var(--p-fw-medium);
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  min-height: 56px;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.onb-primary {
+  background: var(--p-primary);
+  color: #FFFFFF;
+  box-shadow: var(--p-shadow-md);
+}
+.onb-primary:hover { background: #7C3AED; }
+.onb-primary:active { transform: scale(0.98); }
+.onb-primary:disabled {
+  background: var(--p-text-soft);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.onb-secondary {
+  background: var(--p-surface);
+  color: var(--p-text-muted);
+  border: 1px solid var(--p-border);
+}
+.onb-secondary:active { background: var(--p-surface-2); }
+
+.onb-actions {
+  display: flex;
+  gap: var(--p-space-3);
+  margin-top: var(--p-space-3);
+}
+
+/* ── Name input ── */
+.onb-input {
+  width: 100%;
+  padding: 18px var(--p-space-5);
+  font-size: var(--p-fs-xl);
+  font-weight: var(--p-fw-medium);
+  text-align: center;
+  font-family: inherit;
+  color: var(--p-text);
+  background: var(--p-surface);
+  border: 2px solid var(--p-border);
+  border-radius: var(--p-radius-md);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.onb-input:focus {
+  border-color: var(--p-primary);
+  box-shadow: 0 0 0 4px var(--p-primary-soft);
+}
+
+/* ── Age slider ── */
+.onb-age-display {
+  text-align: center;
+  font-size: 56px;
+  font-weight: var(--p-fw-bold);
+  color: var(--p-primary);
+  direction: ltr;
+  line-height: 1;
+  margin: var(--p-space-4) 0;
+}
+.onb-age-unit {
+  font-size: var(--p-fs-md);
+  color: var(--p-text-muted);
+  font-weight: var(--p-fw-normal);
+  margin-inline-start: var(--p-space-2);
+  display: inline-block;
+  vertical-align: middle;
+}
+.onb-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--p-border);
+  outline: none;
+  direction: ltr;
+}
+.onb-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--p-primary);
+  border: 3px solid var(--p-surface);
+  cursor: pointer;
+  box-shadow: var(--p-shadow-md);
+}
+.onb-slider::-moz-range-thumb {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--p-primary);
+  border: 3px solid var(--p-surface);
+  cursor: pointer;
+  box-shadow: var(--p-shadow-md);
+}
+.onb-age-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--p-fs-sm);
+  color: var(--p-text-soft);
+  font-weight: var(--p-fw-medium);
+  direction: ltr;
+  padding: 0 var(--p-space-2);
+  margin-top: calc(var(--p-space-3) * -1);
+}
+
+/* ── Level cards ── */
+.onb-level-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-space-3);
+}
+.onb-level-card {
+  padding: var(--p-space-5);
+  background: var(--p-surface);
+  border: 2px solid var(--p-border);
+  border-radius: var(--p-radius-md);
+  font-family: inherit;
+  cursor: pointer;
+  text-align: start;
+  min-height: 76px;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+  box-shadow: var(--p-shadow-sm);
+}
+.onb-level-card:hover { border-color: var(--p-primary); }
+.onb-level-card:active { transform: scale(0.98); }
+.onb-level-card.selected {
+  border-color: var(--p-primary);
+  background: var(--p-primary-soft);
+}
+.onb-level-name {
+  font-size: var(--p-fs-lg);
+  font-weight: var(--p-fw-bold);
+  color: var(--p-text);
+  margin-bottom: 2px;
+}
+.onb-level-desc {
+  font-size: var(--p-fs-sm);
+  color: var(--p-text-muted);
+  font-weight: var(--p-fw-normal);
+}
+
+/* ── Parent tips ── */
+.onb-tips {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-space-3);
+}
+.onb-tips li {
+  display: flex;
+  gap: var(--p-space-3);
+  align-items: flex-start;
+  padding: var(--p-space-4);
+  background: var(--p-surface);
+  border: 1px solid var(--p-border);
+  border-radius: var(--p-radius-md);
+  box-shadow: var(--p-shadow-sm);
+}
+.onb-tip-num {
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--p-primary);
+  color: #FFFFFF;
+  display: grid; place-items: center;
+  font-weight: var(--p-fw-bold);
+  font-size: var(--p-fs-md);
+}
+.onb-tip-title {
+  font-size: var(--p-fs-md);
+  font-weight: var(--p-fw-bold);
+  color: var(--p-text);
+  margin-bottom: 2px;
+  line-height: 1.4;
+}
+.onb-tip-body {
+  font-size: var(--p-fs-sm);
+  color: var(--p-text-muted);
+  font-weight: var(--p-fw-normal);
+  line-height: 1.5;
+}
+
+/* ════════════════════════════════════════════════════════════
    PARENT DASHBOARD — calm, professional, single-accent
    Whole screen overrides the kid palette via the calm tokens.
    ════════════════════════════════════════════════════════════ */
