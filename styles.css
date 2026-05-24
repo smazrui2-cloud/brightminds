@@ -717,6 +717,185 @@ html[lang="en"] .parent-btn::after { content: 'Parents'; }
   color: transparent;
 }
 /* ════════════════════════════════════════════════════════════
+   SETUP / SUBJECTS — calm card grid (matches lesson + parent)
+   ════════════════════════════════════════════════════════════ */
+#screen-setup {
+  background: var(--p-bg);
+  font-family: var(--p-font);
+  color: var(--p-text);
+}
+#screen-setup .top-bar {
+  background: var(--p-surface);
+  border-bottom: 1px solid var(--p-border);
+  box-shadow: none;
+}
+#screen-setup .top-bar .h1 {
+  font-size: var(--p-fs-lg);
+  font-weight: var(--p-fw-bold);
+  color: var(--p-text);
+}
+#screen-setup .top-bar .sub {
+  font-size: var(--p-fs-sm);
+  color: var(--p-text-muted);
+  font-weight: var(--p-fw-normal);
+}
+#screen-setup .icon-btn {
+  background: var(--p-surface-2);
+  border: 1px solid var(--p-border);
+  color: var(--p-text);
+}
+#screen-setup .label {
+  font-size: var(--p-fs-sm);
+  color: var(--p-text-muted);
+  font-weight: var(--p-fw-medium);
+  margin-bottom: var(--p-space-2);
+}
+#screen-setup .subject {
+  padding: var(--p-space-5) var(--p-space-3);
+  background: var(--p-surface);
+  border: 1px solid var(--p-border);
+  border-radius: var(--p-radius-md);
+  box-shadow: var(--p-shadow-sm);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--p-space-2);
+}
+#screen-setup .subject .emoji {
+  font-size: 32px;
+  filter: grayscale(0.05);
+}
+#screen-setup .subject .name {
+  font-size: var(--p-fs-md);
+  font-weight: var(--p-fw-bold);
+  color: var(--p-text);
+  margin: 0;
+}
+#screen-setup .subject .desc {
+  font-size: var(--p-fs-xs);
+  color: var(--p-text-muted);
+  font-weight: var(--p-fw-normal);
+  margin: 0;
+}
+#screen-setup .subject.selected {
+  border-color: var(--p-primary);
+  background: var(--p-primary-soft);
+  box-shadow: var(--p-shadow-sm);
+}
+#screen-setup .subject:active { transform: scale(0.98); }
+#screen-setup .subject.premium-locked { opacity: 0.7; }
+#screen-setup .premium-lock-badge {
+  background: var(--p-primary);
+  box-shadow: var(--p-shadow-sm);
+}
+#screen-setup .subjects-scroll::-webkit-scrollbar-thumb {
+  background: var(--p-border);
+}
+#screen-setup .bottom-bar {
+  background: var(--p-surface);
+  border-top: 1px solid var(--p-border);
+}
+#screen-setup .bottom-bar .btn-primary {
+  background: var(--p-primary);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--p-radius-md);
+  min-height: 56px;
+  font-weight: var(--p-fw-medium);
+  font-size: var(--p-fs-md);
+  box-shadow: var(--p-shadow-md);
+}
+#screen-setup .bottom-bar .btn-primary:active { transform: scale(0.98); }
+
+/* ════════════════════════════════════════════════════════════
+   RESULT MODAL — calm celebration (subtle, not loud)
+   ════════════════════════════════════════════════════════════ */
+.result-overlay {
+  background: rgba(15, 23, 42, 0.55);
+}
+.result-overlay .result-card {
+  background: var(--p-surface);
+  border: 1px solid var(--p-border);
+  border-radius: var(--p-radius-xl);
+  box-shadow: var(--p-shadow-lg);
+  font-family: var(--p-font);
+  color: var(--p-text);
+}
+.result-overlay .result-card .celebration {
+  font-size: 56px;
+  animation: none;          /* no bounce — calm reveal */
+}
+.result-overlay .result-card h2 {
+  font-size: var(--p-fs-xl);
+  font-weight: var(--p-fw-bold);
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: var(--p-text);
+}
+.result-overlay .result-card .equation {
+  font-size: 32px;
+  color: var(--p-text);
+  font-weight: var(--p-fw-bold);
+  letter-spacing: 1px;
+}
+.result-overlay .result-card .equation .answer {
+  color: var(--p-primary);
+  text-shadow: none;
+}
+.result-overlay .result-card .feedback {
+  font-size: var(--p-fs-sm);
+  color: var(--p-text-muted);
+}
+.result-overlay .star { font-size: 28px; }
+.result-overlay .result-card .btn-primary,
+.result-overlay .result-card .btn-secondary {
+  min-height: 52px;
+  border-radius: var(--p-radius-md);
+  font-weight: var(--p-fw-medium);
+  font-size: var(--p-fs-md);
+}
+.result-overlay .result-card .btn-primary {
+  background: var(--p-primary);
+  color: #FFFFFF;
+  border: none;
+  box-shadow: var(--p-shadow-md);
+}
+.result-overlay .result-card .btn-secondary {
+  background: var(--p-surface);
+  color: var(--p-text-muted);
+  border: 1px solid var(--p-border);
+}
+
+/* ════════════════════════════════════════════════════════════
+   SPLASH — quieter, less mascot/stars
+   ════════════════════════════════════════════════════════════ */
+#screen-splash {
+  background:
+    radial-gradient(circle at 50% 40%, #FFFFFF 0%, transparent 65%),
+    linear-gradient(180deg, #FFFFFF 0%, var(--p-bg) 100%);
+}
+#screen-splash .splash-star { display: none; }  /* remove drifting stars */
+#screen-splash .splash-brand {
+  color: var(--p-primary);
+}
+#screen-splash .splash-tagline {
+  color: var(--p-text-muted);
+  font-weight: var(--p-fw-normal);
+}
+#screen-splash .splash-skip {
+  background: var(--p-surface);
+  color: var(--p-text-muted);
+  border: 1px solid var(--p-border);
+  border-radius: var(--p-radius-md);
+  padding: 8px 14px;
+  font-weight: var(--p-fw-medium);
+}
+
+/* ════════════════════════════════════════════════════════════
    LESSON SCREEN — calm, focused, "real educational app"
    ────────────────────────────────────────────────────────────
    The kid sees ONE thing: the question.  Chrome is minimal,

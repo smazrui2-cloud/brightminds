@@ -3292,8 +3292,8 @@ function runSplashScreen() {
     Sound.splashMelody();
   }, 300);
 
-  // Auto-transition after the animation finishes
-  setTimeout(finishSplash, 3800);
+  // Auto-transition after a short reveal (calm + quick start)
+  setTimeout(finishSplash, 1500);
 
   document.getElementById('splash-skip')?.addEventListener('click', finishSplash, { once: true });
   document.getElementById('screen-splash')?.addEventListener('click', (e) => {
