@@ -1,0 +1,16 @@
+# Dependencies (audio generation tool — not needed at runtime)
+node_modules/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+*.log
+.vscode/
+.idea/
+
+# Vercel local
+.vercel/
+
+.vercel

@@ -1,0 +1,2277 @@
+{
+  "voices": {
+    "ar": [
+      {
+        "id": "salma",
+        "voice": "ar-EG-SalmaNeural",
+        "gender": "female",
+        "avatar": "👩‍🏫",
+        "name_ar": "سلمى",
+        "name_en": "Salma",
+        "region": "EG"
+      },
+      {
+        "id": "hamed",
+        "voice": "ar-EG-ShakirNeural",
+        "gender": "male",
+        "avatar": "👨‍🏫",
+        "name_ar": "شاكر",
+        "name_en": "Shakir",
+        "region": "EG"
+      },
+      {
+        "id": "zariyah",
+        "voice": "ar-SA-ZariyahNeural",
+        "gender": "female",
+        "avatar": "🧕",
+        "name_ar": "زارية",
+        "name_en": "Zariyah",
+        "region": "SA"
+      }
+    ],
+    "en": [
+      {
+        "id": "aria",
+        "voice": "en-US-AriaNeural",
+        "gender": "female",
+        "avatar": "👩‍🏫",
+        "name_ar": "آريا",
+        "name_en": "Aria",
+        "region": "US"
+      },
+      {
+        "id": "jenny",
+        "voice": "en-US-JennyNeural",
+        "gender": "female",
+        "avatar": "🦰",
+        "name_ar": "جيني",
+        "name_en": "Jenny",
+        "region": "US"
+      },
+      {
+        "id": "guy",
+        "voice": "en-US-GuyNeural",
+        "gender": "male",
+        "avatar": "👨‍🏫",
+        "name_ar": "جاي",
+        "name_en": "Guy",
+        "region": "US"
+      }
+    ]
+  },
+  "phrases": {
+    "welcome": {
+      "ar": "أهلاً بك في برايت مايندز! أنا حكيم البومة الحكيمة",
+      "en": "Welcome to BrightMinds! I am Hakim the Wise Owl"
+    },
+    "test_phrase": {
+      "ar": "أهلاً! أنا حكيم البومة الحكيمة. سأساعدك في مغامرتك",
+      "en": "Hello! I am Hakim the Wise Owl. I will help you on your quest"
+    },
+    "great": {
+      "ar": "أحسنت",
+      "en": "Great job"
+    },
+    "excellent": {
+      "ar": "ممتاز",
+      "en": "Excellent"
+    },
+    "awesome": {
+      "ar": "رائع",
+      "en": "Awesome"
+    },
+    "try_again": {
+      "ar": "حاول مرة أخرى",
+      "en": "Try again"
+    },
+    "correct": {
+      "ar": "إجابة صحيحة",
+      "en": "Correct answer"
+    },
+    "champion": {
+      "ar": "أنت بطل",
+      "en": "You are a champion"
+    },
+    "draw_vert": {
+      "ar": "ارسم الخطوط الرأسية من أعلى إلى أسفل",
+      "en": "Draw vertical lines from top to bottom"
+    },
+    "draw_horiz": {
+      "ar": "الآن ارسم الخطوط الأفقية",
+      "en": "Now draw horizontal lines"
+    },
+    "count_dots": {
+      "ar": "اضغط على كل نقطة وعدها معي",
+      "en": "Tap each dot and count with me"
+    },
+    "write_answer": {
+      "ar": "الآن اكتب الإجابة بتوصيل النقاط بالترتيب",
+      "en": "Now write the answer by connecting the dots in order"
+    },
+    "add_intro": {
+      "ar": "حكيم يصنع فطيرة. ساعده في عد التفاحات",
+      "en": "Hakim is making pie. Help him count the apples"
+    },
+    "count_apples": {
+      "ar": "اضغط على كل تفاحة وعدها",
+      "en": "Tap each apple to count"
+    },
+    "letters_intro": {
+      "ar": "هيا نتعلم الحروف. اختر الصورة الصحيحة",
+      "en": "Let us learn letters. Pick the correct image"
+    },
+    "letters_wrong": {
+      "ar": "لا، حاول مرة أخرى",
+      "en": "No, try again"
+    },
+    "memory_intro": {
+      "ar": "اقلب البطاقات وطابق الزوجين",
+      "en": "Flip the cards and match the pairs"
+    },
+    "memory_match": {
+      "ar": "مطابقة",
+      "en": "Match"
+    },
+    "find_intro": {
+      "ar": "ابحث عن كل أمثلة هذا الحرف",
+      "en": "Find every instance of this letter"
+    },
+    "find_found": {
+      "ar": "وجدت واحداً",
+      "en": "Found one"
+    },
+    "color_intro": {
+      "ar": "اضغط على كل أشياء بنفس اللون",
+      "en": "Tap every item of the same color"
+    },
+    "wb_intro": {
+      "ar": "هيا نكون الكلمات. رتب الحروف",
+      "en": "Let us build words. Arrange the letters"
+    },
+    "session_start": {
+      "ar": "هيا نبدأ خمسة تمارين",
+      "en": "Let us start five exercises"
+    },
+    "session_end": {
+      "ar": "مبروك! انتهت الجلسة",
+      "en": "Congratulations! Session complete"
+    },
+    "next_exercise": {
+      "ar": "ممتاز! هيا للتمرين التالي",
+      "en": "Excellent! On to the next exercise"
+    },
+    "n_1": {
+      "ar": "واحد",
+      "en": "one"
+    },
+    "n_2": {
+      "ar": "اثنان",
+      "en": "two"
+    },
+    "n_3": {
+      "ar": "ثلاثة",
+      "en": "three"
+    },
+    "n_4": {
+      "ar": "أربعة",
+      "en": "four"
+    },
+    "n_5": {
+      "ar": "خمسة",
+      "en": "five"
+    },
+    "n_6": {
+      "ar": "ستة",
+      "en": "six"
+    },
+    "n_7": {
+      "ar": "سبعة",
+      "en": "seven"
+    },
+    "n_8": {
+      "ar": "ثمانية",
+      "en": "eight"
+    },
+    "n_9": {
+      "ar": "تسعة",
+      "en": "nine"
+    },
+    "n_10": {
+      "ar": "عشرة",
+      "en": "ten"
+    },
+    "n_11": {
+      "ar": "أحد عشر",
+      "en": "eleven"
+    },
+    "n_12": {
+      "ar": "اثنا عشر",
+      "en": "twelve"
+    },
+    "n_13": {
+      "ar": "ثلاثة عشر",
+      "en": "thirteen"
+    },
+    "n_14": {
+      "ar": "أربعة عشر",
+      "en": "fourteen"
+    },
+    "n_15": {
+      "ar": "خمسة عشر",
+      "en": "fifteen"
+    },
+    "n_16": {
+      "ar": "ستة عشر",
+      "en": "sixteen"
+    },
+    "n_17": {
+      "ar": "سبعة عشر",
+      "en": "seventeen"
+    },
+    "n_18": {
+      "ar": "ثمانية عشر",
+      "en": "eighteen"
+    },
+    "n_19": {
+      "ar": "تسعة عشر",
+      "en": "nineteen"
+    },
+    "n_20": {
+      "ar": "عشرون",
+      "en": "twenty"
+    },
+    "n_25": {
+      "ar": "خمسة وعشرون",
+      "en": "twenty five"
+    },
+    "n_30": {
+      "ar": "ثلاثون",
+      "en": "thirty"
+    },
+    "n_36": {
+      "ar": "ستة وثلاثون",
+      "en": "thirty six"
+    },
+    "n_42": {
+      "ar": "اثنان وأربعون",
+      "en": "forty two"
+    },
+    "n_49": {
+      "ar": "تسعة وأربعون",
+      "en": "forty nine"
+    },
+    "n_56": {
+      "ar": "ستة وخمسون",
+      "en": "fifty six"
+    },
+    "n_63": {
+      "ar": "ثلاثة وستون",
+      "en": "sixty three"
+    },
+    "n_72": {
+      "ar": "اثنان وسبعون",
+      "en": "seventy two"
+    },
+    "n_81": {
+      "ar": "واحد وثمانون",
+      "en": "eighty one"
+    },
+    "maze_intro": {
+      "ar": "ساعد الحيوان يصل للهدف عبر المتاهة",
+      "en": "Help the animal reach the goal through the maze"
+    },
+    "maze_win": {
+      "ar": "رائع! وصلت",
+      "en": "Awesome! You made it"
+    },
+    "puzzle_intro": {
+      "ar": "ركّب الصورة بترتيب القطع في مكانها",
+      "en": "Build the picture by placing the pieces"
+    },
+    "puzzle_win": {
+      "ar": "رائع! اكتملت الصورة",
+      "en": "Awesome! Picture complete"
+    },
+    "shop_intro": {
+      "ar": "حكيم في متجره. اشتر المنتج بالنقود الصحيحة",
+      "en": "Hakim is in his shop. Buy the item with the right money"
+    },
+    "shop_win": {
+      "ar": "أحسنت! اشتريت المنتج",
+      "en": "Awesome! You bought it"
+    },
+    "science_intro": {
+      "ar": "هيا نتعلم أين يعيش الحيوان",
+      "en": "Let's learn where animals live"
+    },
+    "story_intro": {
+      "ar": "هيا نتدرّب على الضرب — جاهز؟",
+      "en": "Let's practice multiplication — ready?"
+    },
+    "story_read_intro": {
+      "ar": "هيا نقرأ قصة جميلة",
+      "en": "Let's read a beautiful story"
+    },
+    "next_digit": {
+      "ar": "أحسنت! الآن اكتب الرقم التالي",
+      "en": "Well done! Now write the next digit"
+    },
+    "weak_focus": {
+      "ar": "هذه المسألة تحتاج تركيزاً أكثر",
+      "en": "This problem needs more focus"
+    },
+    "s_rabbit-tortoise_p0": {
+      "ar": "كان هناك أرنب سريع يفتخر بسرعته كل يوم.",
+      "en": "A fast rabbit boasted about his speed every day."
+    },
+    "s_rabbit-tortoise_p1": {
+      "ar": "وكانت هناك سلحفاة بطيئة لكنها لا تستسلم أبداً.",
+      "en": "A slow tortoise never gave up, no matter what."
+    },
+    "s_rabbit-tortoise_p2": {
+      "ar": "قال الأرنب هيا نتسابق! أنا الأسرع!",
+      "en": "The rabbit said: Let us race! I am the fastest!"
+    },
+    "s_rabbit-tortoise_p3": {
+      "ar": "انطلق الأرنب بسرعة كبيرة وترك السلحفاة خلفه.",
+      "en": "The rabbit zoomed ahead, leaving the tortoise far behind."
+    },
+    "s_rabbit-tortoise_p4": {
+      "ar": "وقف الأرنب تحت شجرة ونام، فهو متأكد من الفوز.",
+      "en": "He stopped under a tree to nap, sure he would win."
+    },
+    "s_rabbit-tortoise_p5": {
+      "ar": "مشت السلحفاة ببطء، خطوة، خطوة، خطوة.",
+      "en": "The tortoise walked slowly, step, step, step."
+    },
+    "s_rabbit-tortoise_p6": {
+      "ar": "وصلت السلحفاة إلى النهاية أولاً وفازت بالسباق!",
+      "en": "The tortoise reached the finish line first and won!"
+    },
+    "s_rabbit-tortoise_m": {
+      "ar": "الصبر والمثابرة أهم من السرعة.",
+      "en": "Patience and steady effort beat speed and pride."
+    },
+    "s_lion-mouse_p0": {
+      "ar": "كان الأسد ينام في الغابة بهدوء.",
+      "en": "A big lion was sleeping peacefully in the jungle."
+    },
+    "s_lion-mouse_p1": {
+      "ar": "مرّ فأر صغير ومشى فوق وجه الأسد بدون قصد.",
+      "en": "A tiny mouse ran across his face by accident."
+    },
+    "s_lion-mouse_p2": {
+      "ar": "استيقظ الأسد غاضباً وأمسك بالفأر بيده القوية.",
+      "en": "The lion woke up angry and grabbed the mouse."
+    },
+    "s_lion-mouse_p3": {
+      "ar": "قال الفأر أرجوك سامحني، يوماً ما سأساعدك.",
+      "en": "Please let me go, the mouse said, one day I will help you."
+    },
+    "s_lion-mouse_p4": {
+      "ar": "ضحك الأسد وتركه يذهب.",
+      "en": "The lion laughed and let him go."
+    },
+    "s_lion-mouse_p5": {
+      "ar": "بعد أيام، وقع الأسد في شبكة الصياد ولم يستطع الخروج.",
+      "en": "Days later, the lion was trapped in a hunter's net."
+    },
+    "s_lion-mouse_p6": {
+      "ar": "سمع الفأر صوته، وجاء وقطع الشبكة بأسنانه الصغيرة.",
+      "en": "The mouse heard him and chewed the net with his tiny teeth."
+    },
+    "s_lion-mouse_p7": {
+      "ar": "شكر الأسد الفأر، وأصبحا صديقين إلى الأبد.",
+      "en": "The lion thanked him, and they were friends forever."
+    },
+    "s_lion-mouse_m": {
+      "ar": "لا تحقر أحداً، فحتى الصغير قد يساعدك يوماً ما.",
+      "en": "No one is too small to help. Be kind to everyone."
+    },
+    "s_wash-hands_p0": {
+      "ar": "سامي ولد ذكي، لكنه نسي أن يغسل يديه قبل الأكل.",
+      "en": "Sam was a clever boy, but he forgot to wash his hands."
+    },
+    "s_wash-hands_p1": {
+      "ar": "أكل تفاحة بيدين متّسختين من اللعب في الحديقة.",
+      "en": "He ate an apple with dirty hands from playing in the yard."
+    },
+    "s_wash-hands_p2": {
+      "ar": "في الليل آلمته بطنه كثيراً ولم يستطع النوم.",
+      "en": "At night his tummy hurt so much he could not sleep."
+    },
+    "s_wash-hands_p3": {
+      "ar": "قالت أمه هذا لأن الجراثيم دخلت بطنك مع التفاحة.",
+      "en": "Mom said: Germs got into your tummy with the apple."
+    },
+    "s_wash-hands_p4": {
+      "ar": "في الصباح، علّمته أمه ماء وصابون وعشرون ثانية.",
+      "en": "In the morning she taught him: water, soap, and twenty seconds."
+    },
+    "s_wash-hands_p5": {
+      "ar": "من ذلك اليوم، سامي يغسل يديه قبل كل وجبة.",
+      "en": "From that day, Sam washed his hands before every meal."
+    },
+    "s_wash-hands_p6": {
+      "ar": "وأصبح صحياً وقوياً، ولم تؤلمه بطنه أبداً.",
+      "en": "He stayed healthy and strong, and his tummy never hurt again."
+    },
+    "s_wash-hands_m": {
+      "ar": "غسل اليدين يحميك من المرض. اغسلها دائماً قبل الأكل!",
+      "en": "Washing hands keeps you healthy. Always wash before eating!"
+    },
+    "s_honest-shepherd_p0": {
+      "ar": "كان هناك راعٍ صغير يحرس أغنامه في الجبل.",
+      "en": "A young shepherd watched his sheep on the hill."
+    },
+    "s_honest-shepherd_p1": {
+      "ar": "شعر بالملل، فصرخ ذئب! ذئب! مازحاً.",
+      "en": "He got bored, so he shouted Wolf! Wolf! as a joke."
+    },
+    "s_honest-shepherd_p2": {
+      "ar": "ركض القرويون لمساعدته، لكن لم يكن هناك ذئب.",
+      "en": "The villagers ran to help, but there was no wolf."
+    },
+    "s_honest-shepherd_p3": {
+      "ar": "ضحك الراعي على القرويين، وكرّر مزحته مرّة أخرى.",
+      "en": "The shepherd laughed at them and did it again."
+    },
+    "s_honest-shepherd_p4": {
+      "ar": "في يوم آخر، جاء ذئب حقيقي وهجم على الأغنام.",
+      "en": "One day a real wolf came and attacked the sheep."
+    },
+    "s_honest-shepherd_p5": {
+      "ar": "صرخ الراعي بصوت عالٍ، لكن لم يصدّقه أحد هذه المرة.",
+      "en": "The shepherd shouted, but nobody believed him this time."
+    },
+    "s_honest-shepherd_p6": {
+      "ar": "أكل الذئب الأغنام، وندم الراعي على كذبه.",
+      "en": "The wolf ate the sheep, and the boy was very sorry."
+    },
+    "s_honest-shepherd_m": {
+      "ar": "الكذب يُفقدك ثقة الناس. كن دائماً صادقاً.",
+      "en": "Lying makes people stop trusting you. Always be honest."
+    },
+    "s_sharing-cookies_p0": {
+      "ar": "لمى بنت صغيرة تحبّ الكوكيز كثيراً.",
+      "en": "Lily was a little girl who loved cookies very much."
+    },
+    "s_sharing-cookies_p1": {
+      "ar": "أعطتها أمها صحناً مليئاً بالكوكيز اللذيذ.",
+      "en": "Mom gave her a plate full of yummy cookies."
+    },
+    "s_sharing-cookies_p2": {
+      "ar": "جاء أخوها يوسف يطلب كوكيز، فقالت لا، كلها لي!",
+      "en": "Her brother Joe asked for one, but she said: No, all mine!"
+    },
+    "s_sharing-cookies_p3": {
+      "ar": "بكى يوسف وذهب حزيناً إلى غرفته.",
+      "en": "Joe cried and went to his room, feeling sad."
+    },
+    "s_sharing-cookies_p4": {
+      "ar": "شعرت لمى بالحزن وهي تأكل وحدها بدون أخيها.",
+      "en": "Lily felt sad too, eating alone without her brother."
+    },
+    "s_sharing-cookies_p5": {
+      "ar": "ذهبت إلى يوسف وأعطته نصف الكوكيز.",
+      "en": "She went to Joe and gave him half of the cookies."
+    },
+    "s_sharing-cookies_p6": {
+      "ar": "ضحكا معاً، وكانت السعادة مضاعفة عندما شاركت.",
+      "en": "They laughed together — sharing made happiness double."
+    },
+    "s_sharing-cookies_m": {
+      "ar": "المشاركة تجعل السعادة أكبر. شارك من تحبّ!",
+      "en": "Sharing makes happiness bigger. Share with people you love!"
+    },
+    "lp_ar_0": {
+      "ar": "حرف أ"
+    },
+    "lp_ar_1": {
+      "ar": "حرف ب"
+    },
+    "lp_ar_2": {
+      "ar": "حرف ت"
+    },
+    "lp_ar_3": {
+      "ar": "حرف ث"
+    },
+    "lp_ar_4": {
+      "ar": "حرف ج"
+    },
+    "lp_ar_5": {
+      "ar": "حرف ح"
+    },
+    "lp_ar_6": {
+      "ar": "حرف خ"
+    },
+    "lp_ar_7": {
+      "ar": "حرف د"
+    },
+    "lp_ar_8": {
+      "ar": "حرف ذ"
+    },
+    "lp_ar_9": {
+      "ar": "حرف ر"
+    },
+    "lp_ar_10": {
+      "ar": "حرف ز"
+    },
+    "lp_ar_11": {
+      "ar": "حرف س"
+    },
+    "lp_ar_12": {
+      "ar": "حرف ش"
+    },
+    "lp_ar_13": {
+      "ar": "حرف ص"
+    },
+    "lp_ar_14": {
+      "ar": "حرف ض"
+    },
+    "lp_ar_15": {
+      "ar": "حرف ط"
+    },
+    "lp_ar_16": {
+      "ar": "حرف ع"
+    },
+    "lp_ar_17": {
+      "ar": "حرف غ"
+    },
+    "lp_ar_18": {
+      "ar": "حرف ف"
+    },
+    "lp_ar_19": {
+      "ar": "حرف ق"
+    },
+    "lp_ar_20": {
+      "ar": "حرف ك"
+    },
+    "lp_ar_21": {
+      "ar": "حرف ل"
+    },
+    "lp_ar_22": {
+      "ar": "حرف م"
+    },
+    "lp_ar_23": {
+      "ar": "حرف ن"
+    },
+    "lp_ar_24": {
+      "ar": "حرف ه"
+    },
+    "lp_ar_25": {
+      "ar": "حرف و"
+    },
+    "lp_ar_26": {
+      "ar": "حرف ي"
+    },
+    "lp_en_0": {
+      "en": "Letter A"
+    },
+    "lp_en_1": {
+      "en": "Letter B"
+    },
+    "lp_en_2": {
+      "en": "Letter C"
+    },
+    "lp_en_3": {
+      "en": "Letter D"
+    },
+    "lp_en_4": {
+      "en": "Letter E"
+    },
+    "lp_en_5": {
+      "en": "Letter F"
+    },
+    "lp_en_6": {
+      "en": "Letter G"
+    },
+    "lp_en_7": {
+      "en": "Letter H"
+    },
+    "lp_en_8": {
+      "en": "Letter I"
+    },
+    "lp_en_9": {
+      "en": "Letter J"
+    },
+    "lp_en_10": {
+      "en": "Letter K"
+    },
+    "lp_en_11": {
+      "en": "Letter L"
+    },
+    "lp_en_12": {
+      "en": "Letter M"
+    },
+    "lp_en_13": {
+      "en": "Letter N"
+    },
+    "lp_en_14": {
+      "en": "Letter O"
+    },
+    "lp_en_15": {
+      "en": "Letter P"
+    },
+    "lp_en_16": {
+      "en": "Letter Q"
+    },
+    "lp_en_17": {
+      "en": "Letter R"
+    },
+    "lp_en_18": {
+      "en": "Letter S"
+    },
+    "lp_en_19": {
+      "en": "Letter T"
+    },
+    "lp_en_20": {
+      "en": "Letter U"
+    },
+    "lp_en_21": {
+      "en": "Letter V"
+    },
+    "lp_en_22": {
+      "en": "Letter W"
+    },
+    "lp_en_23": {
+      "en": "Letter X"
+    },
+    "lp_en_24": {
+      "en": "Letter Y"
+    },
+    "lp_en_25": {
+      "en": "Letter Z"
+    },
+    "lc_ar_0": {
+      "ar": "أحسنت! أسد يبدأ بحرف أ"
+    },
+    "lc_ar_1": {
+      "ar": "أحسنت! بطة يبدأ بحرف ب"
+    },
+    "lc_ar_2": {
+      "ar": "أحسنت! تفاحة يبدأ بحرف ت"
+    },
+    "lc_ar_3": {
+      "ar": "أحسنت! ثعلب يبدأ بحرف ث"
+    },
+    "lc_ar_4": {
+      "ar": "أحسنت! جمل يبدأ بحرف ج"
+    },
+    "lc_ar_5": {
+      "ar": "أحسنت! حصان يبدأ بحرف ح"
+    },
+    "lc_ar_6": {
+      "ar": "أحسنت! خروف يبدأ بحرف خ"
+    },
+    "lc_ar_7": {
+      "ar": "أحسنت! دب يبدأ بحرف د"
+    },
+    "lc_ar_8": {
+      "ar": "أحسنت! ذرة يبدأ بحرف ذ"
+    },
+    "lc_ar_9": {
+      "ar": "أحسنت! رمان يبدأ بحرف ر"
+    },
+    "lc_ar_10": {
+      "ar": "أحسنت! زرافة يبدأ بحرف ز"
+    },
+    "lc_ar_11": {
+      "ar": "أحسنت! سمكة يبدأ بحرف س"
+    },
+    "lc_ar_12": {
+      "ar": "أحسنت! شمس يبدأ بحرف ش"
+    },
+    "lc_ar_13": {
+      "ar": "أحسنت! صاروخ يبدأ بحرف ص"
+    },
+    "lc_ar_14": {
+      "ar": "أحسنت! ضفدع يبدأ بحرف ض"
+    },
+    "lc_ar_15": {
+      "ar": "أحسنت! طائر يبدأ بحرف ط"
+    },
+    "lc_ar_16": {
+      "ar": "أحسنت! عنب يبدأ بحرف ع"
+    },
+    "lc_ar_17": {
+      "ar": "أحسنت! غراب يبدأ بحرف غ"
+    },
+    "lc_ar_18": {
+      "ar": "أحسنت! فيل يبدأ بحرف ف"
+    },
+    "lc_ar_19": {
+      "ar": "أحسنت! قطة يبدأ بحرف ق"
+    },
+    "lc_ar_20": {
+      "ar": "أحسنت! كلب يبدأ بحرف ك"
+    },
+    "lc_ar_21": {
+      "ar": "أحسنت! ليمون يبدأ بحرف ل"
+    },
+    "lc_ar_22": {
+      "ar": "أحسنت! موز يبدأ بحرف م"
+    },
+    "lc_ar_23": {
+      "ar": "أحسنت! نخلة يبدأ بحرف ن"
+    },
+    "lc_ar_24": {
+      "ar": "أحسنت! هلال يبدأ بحرف ه"
+    },
+    "lc_ar_25": {
+      "ar": "أحسنت! وردة يبدأ بحرف و"
+    },
+    "lc_ar_26": {
+      "ar": "أحسنت! يد يبدأ بحرف ي"
+    },
+    "lc_en_0": {
+      "en": "Great! Apple starts with A"
+    },
+    "lc_en_1": {
+      "en": "Great! Banana starts with B"
+    },
+    "lc_en_2": {
+      "en": "Great! Cat starts with C"
+    },
+    "lc_en_3": {
+      "en": "Great! Dog starts with D"
+    },
+    "lc_en_4": {
+      "en": "Great! Elephant starts with E"
+    },
+    "lc_en_5": {
+      "en": "Great! Fish starts with F"
+    },
+    "lc_en_6": {
+      "en": "Great! Giraffe starts with G"
+    },
+    "lc_en_7": {
+      "en": "Great! Horse starts with H"
+    },
+    "lc_en_8": {
+      "en": "Great! Ice cream starts with I"
+    },
+    "lc_en_9": {
+      "en": "Great! Juggler starts with J"
+    },
+    "lc_en_10": {
+      "en": "Great! Kite starts with K"
+    },
+    "lc_en_11": {
+      "en": "Great! Lion starts with L"
+    },
+    "lc_en_12": {
+      "en": "Great! Monkey starts with M"
+    },
+    "lc_en_13": {
+      "en": "Great! Nest starts with N"
+    },
+    "lc_en_14": {
+      "en": "Great! Octopus starts with O"
+    },
+    "lc_en_15": {
+      "en": "Great! Penguin starts with P"
+    },
+    "lc_en_16": {
+      "en": "Great! Queen starts with Q"
+    },
+    "lc_en_17": {
+      "en": "Great! Rabbit starts with R"
+    },
+    "lc_en_18": {
+      "en": "Great! Sun starts with S"
+    },
+    "lc_en_19": {
+      "en": "Great! Tiger starts with T"
+    },
+    "lc_en_20": {
+      "en": "Great! Umbrella starts with U"
+    },
+    "lc_en_21": {
+      "en": "Great! Violin starts with V"
+    },
+    "lc_en_22": {
+      "en": "Great! Whale starts with W"
+    },
+    "lc_en_23": {
+      "en": "Great! Xylophone starts with X"
+    },
+    "lc_en_24": {
+      "en": "Great! Yellow starts with Y"
+    },
+    "lc_en_25": {
+      "en": "Great! Zebra starts with Z"
+    },
+    "cp_red": {
+      "ar": "اللون الأحمر",
+      "en": "The Red color"
+    },
+    "cp_blue": {
+      "ar": "اللون الأزرق",
+      "en": "The Blue color"
+    },
+    "cp_green": {
+      "ar": "اللون الأخضر",
+      "en": "The Green color"
+    },
+    "cp_yellow": {
+      "ar": "اللون الأصفر",
+      "en": "The Yellow color"
+    },
+    "cp_purple": {
+      "ar": "اللون البنفسجي",
+      "en": "The Purple color"
+    },
+    "cp_orange": {
+      "ar": "اللون البرتقالي",
+      "en": "The Orange color"
+    },
+    "cp_pink": {
+      "ar": "اللون الوردي",
+      "en": "The Pink color"
+    },
+    "cp_brown": {
+      "ar": "اللون البني",
+      "en": "The Brown color"
+    },
+    "ap_1_1": {
+      "ar": "كم تفاحة معاً؟ واحد زائد واحد",
+      "en": "How many apples together? one plus one"
+    },
+    "ap_1_2": {
+      "ar": "كم تفاحة معاً؟ واحد زائد اثنان",
+      "en": "How many apples together? one plus two"
+    },
+    "ap_1_3": {
+      "ar": "كم تفاحة معاً؟ واحد زائد ثلاثة",
+      "en": "How many apples together? one plus three"
+    },
+    "ap_1_4": {
+      "ar": "كم تفاحة معاً؟ واحد زائد أربعة",
+      "en": "How many apples together? one plus four"
+    },
+    "ap_1_5": {
+      "ar": "كم تفاحة معاً؟ واحد زائد خمسة",
+      "en": "How many apples together? one plus five"
+    },
+    "ap_1_6": {
+      "ar": "كم تفاحة معاً؟ واحد زائد ستة",
+      "en": "How many apples together? one plus six"
+    },
+    "ap_1_7": {
+      "ar": "كم تفاحة معاً؟ واحد زائد سبعة",
+      "en": "How many apples together? one plus seven"
+    },
+    "ap_1_8": {
+      "ar": "كم تفاحة معاً؟ واحد زائد ثمانية",
+      "en": "How many apples together? one plus eight"
+    },
+    "ap_1_9": {
+      "ar": "كم تفاحة معاً؟ واحد زائد تسعة",
+      "en": "How many apples together? one plus nine"
+    },
+    "ap_1_10": {
+      "ar": "كم تفاحة معاً؟ واحد زائد عشرة",
+      "en": "How many apples together? one plus ten"
+    },
+    "ap_1_11": {
+      "ar": "كم تفاحة معاً؟ واحد زائد أحد عشر",
+      "en": "How many apples together? one plus eleven"
+    },
+    "ap_1_12": {
+      "ar": "كم تفاحة معاً؟ واحد زائد اثنا عشر",
+      "en": "How many apples together? one plus twelve"
+    },
+    "ap_2_1": {
+      "ar": "كم تفاحة معاً؟ اثنان زائد واحد",
+      "en": "How many apples together? two plus one"
+    },
+    "ap_2_2": {
+      "ar": "كم تفاحة معاً؟ اثنان زائد اثنان",
+      "en": "How many apples together? two plus two"
+    },
+    "ap_2_3": {
+      "ar": "كم تفاحة معاً؟ اثنان زائد ثلاثة",
+      "en": "How many apples together? two plus three"
+    },
+    "ap_2_4": {
+      "ar": "كم تفاحة معاً؟ اثنان زائد أربعة",
+      "en": "How many apples together? two plus four"
+    },
+    "ap_2_5": {
+      "ar": "كم تفاحة معاً؟ اثنان زائد خمسة",
+      "en": "How many apples together? two plus five"
+    },
+    "ap_2_6": {
+      "ar": "كم تفاحة معاً؟ اثنان زائد ستة",
+      "en": "How many apples together? two plus six"
+    },
+    "ap_2_7": {
+      "ar": "كم تفاحة معاً؟ اثنان زائد سبعة",
+      "en": "How many apples together? two plus seven"
+    },
+    "ap_2_8": {
+      "ar": "كم تفاحة معاً؟ اثنان زائد ثمانية",
+      "en": "How many apples together? two plus eight"
+    },
+    "ap_2_9": {
+      "ar": "كم تفاحة معاً؟ اثنان زائد تسعة",
+      "en": "How many apples together? two plus nine"
+    },
+    "ap_2_10": {
+      "ar": "كم تفاحة معاً؟ اثنان زائد عشرة",
+      "en": "How many apples together? two plus ten"
+    },
+    "ap_2_11": {
+      "ar": "كم تفاحة معاً؟ اثنان زائد أحد عشر",
+      "en": "How many apples together? two plus eleven"
+    },
+    "ap_2_12": {
+      "ar": "كم تفاحة معاً؟ اثنان زائد اثنا عشر",
+      "en": "How many apples together? two plus twelve"
+    },
+    "ap_3_1": {
+      "ar": "كم تفاحة معاً؟ ثلاثة زائد واحد",
+      "en": "How many apples together? three plus one"
+    },
+    "ap_3_2": {
+      "ar": "كم تفاحة معاً؟ ثلاثة زائد اثنان",
+      "en": "How many apples together? three plus two"
+    },
+    "ap_3_3": {
+      "ar": "كم تفاحة معاً؟ ثلاثة زائد ثلاثة",
+      "en": "How many apples together? three plus three"
+    },
+    "ap_3_4": {
+      "ar": "كم تفاحة معاً؟ ثلاثة زائد أربعة",
+      "en": "How many apples together? three plus four"
+    },
+    "ap_3_5": {
+      "ar": "كم تفاحة معاً؟ ثلاثة زائد خمسة",
+      "en": "How many apples together? three plus five"
+    },
+    "ap_3_6": {
+      "ar": "كم تفاحة معاً؟ ثلاثة زائد ستة",
+      "en": "How many apples together? three plus six"
+    },
+    "ap_3_7": {
+      "ar": "كم تفاحة معاً؟ ثلاثة زائد سبعة",
+      "en": "How many apples together? three plus seven"
+    },
+    "ap_3_8": {
+      "ar": "كم تفاحة معاً؟ ثلاثة زائد ثمانية",
+      "en": "How many apples together? three plus eight"
+    },
+    "ap_3_9": {
+      "ar": "كم تفاحة معاً؟ ثلاثة زائد تسعة",
+      "en": "How many apples together? three plus nine"
+    },
+    "ap_3_10": {
+      "ar": "كم تفاحة معاً؟ ثلاثة زائد عشرة",
+      "en": "How many apples together? three plus ten"
+    },
+    "ap_3_11": {
+      "ar": "كم تفاحة معاً؟ ثلاثة زائد أحد عشر",
+      "en": "How many apples together? three plus eleven"
+    },
+    "ap_3_12": {
+      "ar": "كم تفاحة معاً؟ ثلاثة زائد اثنا عشر",
+      "en": "How many apples together? three plus twelve"
+    },
+    "ap_4_1": {
+      "ar": "كم تفاحة معاً؟ أربعة زائد واحد",
+      "en": "How many apples together? four plus one"
+    },
+    "ap_4_2": {
+      "ar": "كم تفاحة معاً؟ أربعة زائد اثنان",
+      "en": "How many apples together? four plus two"
+    },
+    "ap_4_3": {
+      "ar": "كم تفاحة معاً؟ أربعة زائد ثلاثة",
+      "en": "How many apples together? four plus three"
+    },
+    "ap_4_4": {
+      "ar": "كم تفاحة معاً؟ أربعة زائد أربعة",
+      "en": "How many apples together? four plus four"
+    },
+    "ap_4_5": {
+      "ar": "كم تفاحة معاً؟ أربعة زائد خمسة",
+      "en": "How many apples together? four plus five"
+    },
+    "ap_4_6": {
+      "ar": "كم تفاحة معاً؟ أربعة زائد ستة",
+      "en": "How many apples together? four plus six"
+    },
+    "ap_4_7": {
+      "ar": "كم تفاحة معاً؟ أربعة زائد سبعة",
+      "en": "How many apples together? four plus seven"
+    },
+    "ap_4_8": {
+      "ar": "كم تفاحة معاً؟ أربعة زائد ثمانية",
+      "en": "How many apples together? four plus eight"
+    },
+    "ap_4_9": {
+      "ar": "كم تفاحة معاً؟ أربعة زائد تسعة",
+      "en": "How many apples together? four plus nine"
+    },
+    "ap_4_10": {
+      "ar": "كم تفاحة معاً؟ أربعة زائد عشرة",
+      "en": "How many apples together? four plus ten"
+    },
+    "ap_4_11": {
+      "ar": "كم تفاحة معاً؟ أربعة زائد أحد عشر",
+      "en": "How many apples together? four plus eleven"
+    },
+    "ap_4_12": {
+      "ar": "كم تفاحة معاً؟ أربعة زائد اثنا عشر",
+      "en": "How many apples together? four plus twelve"
+    },
+    "ap_5_1": {
+      "ar": "كم تفاحة معاً؟ خمسة زائد واحد",
+      "en": "How many apples together? five plus one"
+    },
+    "ap_5_2": {
+      "ar": "كم تفاحة معاً؟ خمسة زائد اثنان",
+      "en": "How many apples together? five plus two"
+    },
+    "ap_5_3": {
+      "ar": "كم تفاحة معاً؟ خمسة زائد ثلاثة",
+      "en": "How many apples together? five plus three"
+    },
+    "ap_5_4": {
+      "ar": "كم تفاحة معاً؟ خمسة زائد أربعة",
+      "en": "How many apples together? five plus four"
+    },
+    "ap_5_5": {
+      "ar": "كم تفاحة معاً؟ خمسة زائد خمسة",
+      "en": "How many apples together? five plus five"
+    },
+    "ap_5_6": {
+      "ar": "كم تفاحة معاً؟ خمسة زائد ستة",
+      "en": "How many apples together? five plus six"
+    },
+    "ap_5_7": {
+      "ar": "كم تفاحة معاً؟ خمسة زائد سبعة",
+      "en": "How many apples together? five plus seven"
+    },
+    "ap_5_8": {
+      "ar": "كم تفاحة معاً؟ خمسة زائد ثمانية",
+      "en": "How many apples together? five plus eight"
+    },
+    "ap_5_9": {
+      "ar": "كم تفاحة معاً؟ خمسة زائد تسعة",
+      "en": "How many apples together? five plus nine"
+    },
+    "ap_5_10": {
+      "ar": "كم تفاحة معاً؟ خمسة زائد عشرة",
+      "en": "How many apples together? five plus ten"
+    },
+    "ap_5_11": {
+      "ar": "كم تفاحة معاً؟ خمسة زائد أحد عشر",
+      "en": "How many apples together? five plus eleven"
+    },
+    "ap_5_12": {
+      "ar": "كم تفاحة معاً؟ خمسة زائد اثنا عشر",
+      "en": "How many apples together? five plus twelve"
+    },
+    "ap_6_1": {
+      "ar": "كم تفاحة معاً؟ ستة زائد واحد",
+      "en": "How many apples together? six plus one"
+    },
+    "ap_6_2": {
+      "ar": "كم تفاحة معاً؟ ستة زائد اثنان",
+      "en": "How many apples together? six plus two"
+    },
+    "ap_6_3": {
+      "ar": "كم تفاحة معاً؟ ستة زائد ثلاثة",
+      "en": "How many apples together? six plus three"
+    },
+    "ap_6_4": {
+      "ar": "كم تفاحة معاً؟ ستة زائد أربعة",
+      "en": "How many apples together? six plus four"
+    },
+    "ap_6_5": {
+      "ar": "كم تفاحة معاً؟ ستة زائد خمسة",
+      "en": "How many apples together? six plus five"
+    },
+    "ap_6_6": {
+      "ar": "كم تفاحة معاً؟ ستة زائد ستة",
+      "en": "How many apples together? six plus six"
+    },
+    "ap_6_7": {
+      "ar": "كم تفاحة معاً؟ ستة زائد سبعة",
+      "en": "How many apples together? six plus seven"
+    },
+    "ap_6_8": {
+      "ar": "كم تفاحة معاً؟ ستة زائد ثمانية",
+      "en": "How many apples together? six plus eight"
+    },
+    "ap_6_9": {
+      "ar": "كم تفاحة معاً؟ ستة زائد تسعة",
+      "en": "How many apples together? six plus nine"
+    },
+    "ap_6_10": {
+      "ar": "كم تفاحة معاً؟ ستة زائد عشرة",
+      "en": "How many apples together? six plus ten"
+    },
+    "ap_6_11": {
+      "ar": "كم تفاحة معاً؟ ستة زائد أحد عشر",
+      "en": "How many apples together? six plus eleven"
+    },
+    "ap_6_12": {
+      "ar": "كم تفاحة معاً؟ ستة زائد اثنا عشر",
+      "en": "How many apples together? six plus twelve"
+    },
+    "ap_7_1": {
+      "ar": "كم تفاحة معاً؟ سبعة زائد واحد",
+      "en": "How many apples together? seven plus one"
+    },
+    "ap_7_2": {
+      "ar": "كم تفاحة معاً؟ سبعة زائد اثنان",
+      "en": "How many apples together? seven plus two"
+    },
+    "ap_7_3": {
+      "ar": "كم تفاحة معاً؟ سبعة زائد ثلاثة",
+      "en": "How many apples together? seven plus three"
+    },
+    "ap_7_4": {
+      "ar": "كم تفاحة معاً؟ سبعة زائد أربعة",
+      "en": "How many apples together? seven plus four"
+    },
+    "ap_7_5": {
+      "ar": "كم تفاحة معاً؟ سبعة زائد خمسة",
+      "en": "How many apples together? seven plus five"
+    },
+    "ap_7_6": {
+      "ar": "كم تفاحة معاً؟ سبعة زائد ستة",
+      "en": "How many apples together? seven plus six"
+    },
+    "ap_7_7": {
+      "ar": "كم تفاحة معاً؟ سبعة زائد سبعة",
+      "en": "How many apples together? seven plus seven"
+    },
+    "ap_7_8": {
+      "ar": "كم تفاحة معاً؟ سبعة زائد ثمانية",
+      "en": "How many apples together? seven plus eight"
+    },
+    "ap_7_9": {
+      "ar": "كم تفاحة معاً؟ سبعة زائد تسعة",
+      "en": "How many apples together? seven plus nine"
+    },
+    "ap_7_10": {
+      "ar": "كم تفاحة معاً؟ سبعة زائد عشرة",
+      "en": "How many apples together? seven plus ten"
+    },
+    "ap_7_11": {
+      "ar": "كم تفاحة معاً؟ سبعة زائد أحد عشر",
+      "en": "How many apples together? seven plus eleven"
+    },
+    "ap_7_12": {
+      "ar": "كم تفاحة معاً؟ سبعة زائد اثنا عشر",
+      "en": "How many apples together? seven plus twelve"
+    },
+    "ap_8_1": {
+      "ar": "كم تفاحة معاً؟ ثمانية زائد واحد",
+      "en": "How many apples together? eight plus one"
+    },
+    "ap_8_2": {
+      "ar": "كم تفاحة معاً؟ ثمانية زائد اثنان",
+      "en": "How many apples together? eight plus two"
+    },
+    "ap_8_3": {
+      "ar": "كم تفاحة معاً؟ ثمانية زائد ثلاثة",
+      "en": "How many apples together? eight plus three"
+    },
+    "ap_8_4": {
+      "ar": "كم تفاحة معاً؟ ثمانية زائد أربعة",
+      "en": "How many apples together? eight plus four"
+    },
+    "ap_8_5": {
+      "ar": "كم تفاحة معاً؟ ثمانية زائد خمسة",
+      "en": "How many apples together? eight plus five"
+    },
+    "ap_8_6": {
+      "ar": "كم تفاحة معاً؟ ثمانية زائد ستة",
+      "en": "How many apples together? eight plus six"
+    },
+    "ap_8_7": {
+      "ar": "كم تفاحة معاً؟ ثمانية زائد سبعة",
+      "en": "How many apples together? eight plus seven"
+    },
+    "ap_8_8": {
+      "ar": "كم تفاحة معاً؟ ثمانية زائد ثمانية",
+      "en": "How many apples together? eight plus eight"
+    },
+    "ap_8_9": {
+      "ar": "كم تفاحة معاً؟ ثمانية زائد تسعة",
+      "en": "How many apples together? eight plus nine"
+    },
+    "ap_8_10": {
+      "ar": "كم تفاحة معاً؟ ثمانية زائد عشرة",
+      "en": "How many apples together? eight plus ten"
+    },
+    "ap_8_11": {
+      "ar": "كم تفاحة معاً؟ ثمانية زائد أحد عشر",
+      "en": "How many apples together? eight plus eleven"
+    },
+    "ap_8_12": {
+      "ar": "كم تفاحة معاً؟ ثمانية زائد اثنا عشر",
+      "en": "How many apples together? eight plus twelve"
+    },
+    "ap_9_1": {
+      "ar": "كم تفاحة معاً؟ تسعة زائد واحد",
+      "en": "How many apples together? nine plus one"
+    },
+    "ap_9_2": {
+      "ar": "كم تفاحة معاً؟ تسعة زائد اثنان",
+      "en": "How many apples together? nine plus two"
+    },
+    "ap_9_3": {
+      "ar": "كم تفاحة معاً؟ تسعة زائد ثلاثة",
+      "en": "How many apples together? nine plus three"
+    },
+    "ap_9_4": {
+      "ar": "كم تفاحة معاً؟ تسعة زائد أربعة",
+      "en": "How many apples together? nine plus four"
+    },
+    "ap_9_5": {
+      "ar": "كم تفاحة معاً؟ تسعة زائد خمسة",
+      "en": "How many apples together? nine plus five"
+    },
+    "ap_9_6": {
+      "ar": "كم تفاحة معاً؟ تسعة زائد ستة",
+      "en": "How many apples together? nine plus six"
+    },
+    "ap_9_7": {
+      "ar": "كم تفاحة معاً؟ تسعة زائد سبعة",
+      "en": "How many apples together? nine plus seven"
+    },
+    "ap_9_8": {
+      "ar": "كم تفاحة معاً؟ تسعة زائد ثمانية",
+      "en": "How many apples together? nine plus eight"
+    },
+    "ap_9_9": {
+      "ar": "كم تفاحة معاً؟ تسعة زائد تسعة",
+      "en": "How many apples together? nine plus nine"
+    },
+    "ap_9_10": {
+      "ar": "كم تفاحة معاً؟ تسعة زائد عشرة",
+      "en": "How many apples together? nine plus ten"
+    },
+    "ap_9_11": {
+      "ar": "كم تفاحة معاً؟ تسعة زائد أحد عشر",
+      "en": "How many apples together? nine plus eleven"
+    },
+    "ap_9_12": {
+      "ar": "كم تفاحة معاً؟ تسعة زائد اثنا عشر",
+      "en": "How many apples together? nine plus twelve"
+    },
+    "ap_10_1": {
+      "ar": "كم تفاحة معاً؟ عشرة زائد واحد",
+      "en": "How many apples together? ten plus one"
+    },
+    "ap_10_2": {
+      "ar": "كم تفاحة معاً؟ عشرة زائد اثنان",
+      "en": "How many apples together? ten plus two"
+    },
+    "ap_10_3": {
+      "ar": "كم تفاحة معاً؟ عشرة زائد ثلاثة",
+      "en": "How many apples together? ten plus three"
+    },
+    "ap_10_4": {
+      "ar": "كم تفاحة معاً؟ عشرة زائد أربعة",
+      "en": "How many apples together? ten plus four"
+    },
+    "ap_10_5": {
+      "ar": "كم تفاحة معاً؟ عشرة زائد خمسة",
+      "en": "How many apples together? ten plus five"
+    },
+    "ap_10_6": {
+      "ar": "كم تفاحة معاً؟ عشرة زائد ستة",
+      "en": "How many apples together? ten plus six"
+    },
+    "ap_10_7": {
+      "ar": "كم تفاحة معاً؟ عشرة زائد سبعة",
+      "en": "How many apples together? ten plus seven"
+    },
+    "ap_10_8": {
+      "ar": "كم تفاحة معاً؟ عشرة زائد ثمانية",
+      "en": "How many apples together? ten plus eight"
+    },
+    "ap_10_9": {
+      "ar": "كم تفاحة معاً؟ عشرة زائد تسعة",
+      "en": "How many apples together? ten plus nine"
+    },
+    "ap_10_10": {
+      "ar": "كم تفاحة معاً؟ عشرة زائد عشرة",
+      "en": "How many apples together? ten plus ten"
+    },
+    "ap_10_11": {
+      "ar": "كم تفاحة معاً؟ عشرة زائد أحد عشر",
+      "en": "How many apples together? ten plus eleven"
+    },
+    "ap_10_12": {
+      "ar": "كم تفاحة معاً؟ عشرة زائد اثنا عشر",
+      "en": "How many apples together? ten plus twelve"
+    },
+    "ap_11_1": {
+      "ar": "كم تفاحة معاً؟ أحد عشر زائد واحد",
+      "en": "How many apples together? eleven plus one"
+    },
+    "ap_11_2": {
+      "ar": "كم تفاحة معاً؟ أحد عشر زائد اثنان",
+      "en": "How many apples together? eleven plus two"
+    },
+    "ap_11_3": {
+      "ar": "كم تفاحة معاً؟ أحد عشر زائد ثلاثة",
+      "en": "How many apples together? eleven plus three"
+    },
+    "ap_11_4": {
+      "ar": "كم تفاحة معاً؟ أحد عشر زائد أربعة",
+      "en": "How many apples together? eleven plus four"
+    },
+    "ap_11_5": {
+      "ar": "كم تفاحة معاً؟ أحد عشر زائد خمسة",
+      "en": "How many apples together? eleven plus five"
+    },
+    "ap_11_6": {
+      "ar": "كم تفاحة معاً؟ أحد عشر زائد ستة",
+      "en": "How many apples together? eleven plus six"
+    },
+    "ap_11_7": {
+      "ar": "كم تفاحة معاً؟ أحد عشر زائد سبعة",
+      "en": "How many apples together? eleven plus seven"
+    },
+    "ap_11_8": {
+      "ar": "كم تفاحة معاً؟ أحد عشر زائد ثمانية",
+      "en": "How many apples together? eleven plus eight"
+    },
+    "ap_11_9": {
+      "ar": "كم تفاحة معاً؟ أحد عشر زائد تسعة",
+      "en": "How many apples together? eleven plus nine"
+    },
+    "ap_11_10": {
+      "ar": "كم تفاحة معاً؟ أحد عشر زائد عشرة",
+      "en": "How many apples together? eleven plus ten"
+    },
+    "ap_11_11": {
+      "ar": "كم تفاحة معاً؟ أحد عشر زائد أحد عشر",
+      "en": "How many apples together? eleven plus eleven"
+    },
+    "ap_11_12": {
+      "ar": "كم تفاحة معاً؟ أحد عشر زائد اثنا عشر",
+      "en": "How many apples together? eleven plus twelve"
+    },
+    "ap_12_1": {
+      "ar": "كم تفاحة معاً؟ اثنا عشر زائد واحد",
+      "en": "How many apples together? twelve plus one"
+    },
+    "ap_12_2": {
+      "ar": "كم تفاحة معاً؟ اثنا عشر زائد اثنان",
+      "en": "How many apples together? twelve plus two"
+    },
+    "ap_12_3": {
+      "ar": "كم تفاحة معاً؟ اثنا عشر زائد ثلاثة",
+      "en": "How many apples together? twelve plus three"
+    },
+    "ap_12_4": {
+      "ar": "كم تفاحة معاً؟ اثنا عشر زائد أربعة",
+      "en": "How many apples together? twelve plus four"
+    },
+    "ap_12_5": {
+      "ar": "كم تفاحة معاً؟ اثنا عشر زائد خمسة",
+      "en": "How many apples together? twelve plus five"
+    },
+    "ap_12_6": {
+      "ar": "كم تفاحة معاً؟ اثنا عشر زائد ستة",
+      "en": "How many apples together? twelve plus six"
+    },
+    "ap_12_7": {
+      "ar": "كم تفاحة معاً؟ اثنا عشر زائد سبعة",
+      "en": "How many apples together? twelve plus seven"
+    },
+    "ap_12_8": {
+      "ar": "كم تفاحة معاً؟ اثنا عشر زائد ثمانية",
+      "en": "How many apples together? twelve plus eight"
+    },
+    "ap_12_9": {
+      "ar": "كم تفاحة معاً؟ اثنا عشر زائد تسعة",
+      "en": "How many apples together? twelve plus nine"
+    },
+    "ap_12_10": {
+      "ar": "كم تفاحة معاً؟ اثنا عشر زائد عشرة",
+      "en": "How many apples together? twelve plus ten"
+    },
+    "ap_12_11": {
+      "ar": "كم تفاحة معاً؟ اثنا عشر زائد أحد عشر",
+      "en": "How many apples together? twelve plus eleven"
+    },
+    "ap_12_12": {
+      "ar": "كم تفاحة معاً؟ اثنا عشر زائد اثنا عشر",
+      "en": "How many apples together? twelve plus twelve"
+    }
+  },
+  "defaultVoice": {
+    "ar": "salma",
+    "en": "aria"
+  },
+  "version": 3,
+  "lang": "ar",
+  "generatedAt": "2026-05-25T09:07:12.826Z",
+  "coverage": {
+    "ar": {
+      "salma": [
+        "add_intro",
+        "ap_10_1",
+        "ap_10_10",
+        "ap_10_11",
+        "ap_10_12",
+        "ap_10_2",
+        "ap_10_3",
+        "ap_10_4",
+        "ap_10_5",
+        "ap_10_6",
+        "ap_10_7",
+        "ap_10_8",
+        "ap_10_9",
+        "ap_11_1",
+        "ap_11_10",
+        "ap_11_11",
+        "ap_11_12",
+        "ap_11_2",
+        "ap_11_3",
+        "ap_11_4",
+        "ap_11_5",
+        "ap_11_6",
+        "ap_11_7",
+        "ap_11_8",
+        "ap_11_9",
+        "ap_12_1",
+        "ap_12_10",
+        "ap_12_11",
+        "ap_12_12",
+        "ap_12_2",
+        "ap_12_3",
+        "ap_12_4",
+        "ap_12_5",
+        "ap_12_6",
+        "ap_12_7",
+        "ap_12_8",
+        "ap_12_9",
+        "ap_1_1",
+        "ap_1_10",
+        "ap_1_11",
+        "ap_1_12",
+        "ap_1_2",
+        "ap_1_3",
+        "ap_1_4",
+        "ap_1_5",
+        "ap_1_6",
+        "ap_1_7",
+        "ap_1_8",
+        "ap_1_9",
+        "ap_2_1",
+        "ap_2_10",
+        "ap_2_11",
+        "ap_2_12",
+        "ap_2_2",
+        "ap_2_3",
+        "ap_2_4",
+        "ap_2_5",
+        "ap_2_6",
+        "ap_2_7",
+        "ap_2_8",
+        "ap_2_9",
+        "ap_3_1",
+        "ap_3_10",
+        "ap_3_11",
+        "ap_3_12",
+        "ap_3_2",
+        "ap_3_3",
+        "ap_3_4",
+        "ap_3_5",
+        "ap_3_6",
+        "ap_3_7",
+        "ap_3_8",
+        "ap_3_9",
+        "ap_4_1",
+        "ap_4_10",
+        "ap_4_11",
+        "ap_4_12",
+        "ap_4_2",
+        "ap_4_3",
+        "ap_4_4",
+        "ap_4_5",
+        "ap_4_6",
+        "ap_4_7",
+        "ap_4_8",
+        "ap_4_9",
+        "ap_5_1",
+        "ap_5_10",
+        "ap_5_11",
+        "ap_5_12",
+        "ap_5_2",
+        "ap_5_3",
+        "ap_5_4",
+        "ap_5_5",
+        "ap_5_6",
+        "ap_5_7",
+        "ap_5_8",
+        "ap_5_9",
+        "ap_6_1",
+        "ap_6_10",
+        "ap_6_11",
+        "ap_6_12",
+        "ap_6_2",
+        "ap_6_3",
+        "ap_6_4",
+        "ap_6_5",
+        "ap_6_6",
+        "ap_6_7",
+        "ap_6_8",
+        "ap_6_9",
+        "ap_7_1",
+        "ap_7_10",
+        "ap_7_11",
+        "ap_7_12",
+        "ap_7_2",
+        "ap_7_3",
+        "ap_7_4",
+        "ap_7_5",
+        "ap_7_6",
+        "ap_7_7",
+        "ap_7_8",
+        "ap_7_9",
+        "ap_8_1",
+        "ap_8_10",
+        "ap_8_11",
+        "ap_8_12",
+        "ap_8_2",
+        "ap_8_3",
+        "ap_8_4",
+        "ap_8_5",
+        "ap_8_6",
+        "ap_8_7",
+        "ap_8_8",
+        "ap_8_9",
+        "ap_9_1",
+        "ap_9_10",
+        "ap_9_11",
+        "ap_9_12",
+        "ap_9_2",
+        "ap_9_3",
+        "ap_9_4",
+        "ap_9_5",
+        "ap_9_6",
+        "ap_9_7",
+        "ap_9_8",
+        "ap_9_9",
+        "awesome",
+        "champion",
+        "color_intro",
+        "correct",
+        "count_apples",
+        "count_dots",
+        "cp_blue",
+        "cp_brown",
+        "cp_green",
+        "cp_orange",
+        "cp_pink",
+        "cp_purple",
+        "cp_red",
+        "cp_yellow",
+        "draw_horiz",
+        "draw_vert",
+        "excellent",
+        "find_found",
+        "find_intro",
+        "great",
+        "lc_ar_0",
+        "lc_ar_1",
+        "lc_ar_10",
+        "lc_ar_11",
+        "lc_ar_12",
+        "lc_ar_13",
+        "lc_ar_14",
+        "lc_ar_15",
+        "lc_ar_16",
+        "lc_ar_17",
+        "lc_ar_18",
+        "lc_ar_19",
+        "lc_ar_2",
+        "lc_ar_20",
+        "lc_ar_21",
+        "lc_ar_22",
+        "lc_ar_23",
+        "lc_ar_24",
+        "lc_ar_25",
+        "lc_ar_26",
+        "lc_ar_3",
+        "lc_ar_4",
+        "lc_ar_5",
+        "lc_ar_6",
+        "lc_ar_7",
+        "lc_ar_8",
+        "lc_ar_9",
+        "letters_intro",
+        "letters_wrong",
+        "lp_ar_0",
+        "lp_ar_1",
+        "lp_ar_10",
+        "lp_ar_11",
+        "lp_ar_12",
+        "lp_ar_13",
+        "lp_ar_14",
+        "lp_ar_15",
+        "lp_ar_16",
+        "lp_ar_17",
+        "lp_ar_18",
+        "lp_ar_19",
+        "lp_ar_2",
+        "lp_ar_20",
+        "lp_ar_21",
+        "lp_ar_22",
+        "lp_ar_23",
+        "lp_ar_24",
+        "lp_ar_25",
+        "lp_ar_26",
+        "lp_ar_3",
+        "lp_ar_4",
+        "lp_ar_5",
+        "lp_ar_6",
+        "lp_ar_7",
+        "lp_ar_8",
+        "lp_ar_9",
+        "maze_intro",
+        "maze_win",
+        "memory_intro",
+        "memory_match",
+        "next_digit",
+        "next_exercise",
+        "n_1",
+        "n_10",
+        "n_11",
+        "n_12",
+        "n_13",
+        "n_14",
+        "n_15",
+        "n_16",
+        "n_17",
+        "n_18",
+        "n_19",
+        "n_2",
+        "n_20",
+        "n_25",
+        "n_3",
+        "n_30",
+        "n_36",
+        "n_4",
+        "n_42",
+        "n_49",
+        "n_5",
+        "n_56",
+        "n_6",
+        "n_63",
+        "n_7",
+        "n_72",
+        "n_8",
+        "n_81",
+        "n_9",
+        "puzzle_intro",
+        "puzzle_win",
+        "science_intro",
+        "session_end",
+        "session_start",
+        "shop_intro",
+        "shop_win",
+        "story_intro",
+        "story_read_intro",
+        "s_honest-shepherd_m",
+        "s_honest-shepherd_p0",
+        "s_honest-shepherd_p1",
+        "s_honest-shepherd_p2",
+        "s_honest-shepherd_p3",
+        "s_honest-shepherd_p4",
+        "s_honest-shepherd_p5",
+        "s_honest-shepherd_p6",
+        "s_lion-mouse_m",
+        "s_lion-mouse_p0",
+        "s_lion-mouse_p1",
+        "s_lion-mouse_p2",
+        "s_lion-mouse_p3",
+        "s_lion-mouse_p4",
+        "s_lion-mouse_p5",
+        "s_lion-mouse_p6",
+        "s_lion-mouse_p7",
+        "s_rabbit-tortoise_m",
+        "s_rabbit-tortoise_p0",
+        "s_rabbit-tortoise_p1",
+        "s_rabbit-tortoise_p2",
+        "s_rabbit-tortoise_p3",
+        "s_rabbit-tortoise_p4",
+        "s_rabbit-tortoise_p5",
+        "s_rabbit-tortoise_p6",
+        "s_sharing-cookies_m",
+        "s_sharing-cookies_p0",
+        "s_sharing-cookies_p1",
+        "s_sharing-cookies_p2",
+        "s_sharing-cookies_p3",
+        "s_sharing-cookies_p4",
+        "s_sharing-cookies_p5",
+        "s_sharing-cookies_p6",
+        "s_wash-hands_m",
+        "s_wash-hands_p0",
+        "s_wash-hands_p1",
+        "s_wash-hands_p2",
+        "s_wash-hands_p3",
+        "s_wash-hands_p4",
+        "s_wash-hands_p5",
+        "s_wash-hands_p6",
+        "test_phrase",
+        "try_again",
+        "wb_intro",
+        "weak_focus",
+        "welcome",
+        "write_answer"
+      ],
+      "hamed": [
+        "add_intro",
+        "awesome",
+        "champion",
+        "color_intro",
+        "correct",
+        "count_apples",
+        "count_dots",
+        "draw_horiz",
+        "draw_vert",
+        "excellent",
+        "find_found",
+        "find_intro",
+        "great",
+        "letters_intro",
+        "letters_wrong",
+        "memory_intro",
+        "memory_match",
+        "next_exercise",
+        "n_1",
+        "n_10",
+        "n_11",
+        "n_12",
+        "n_13",
+        "n_14",
+        "n_15",
+        "n_16",
+        "n_17",
+        "n_18",
+        "n_19",
+        "n_2",
+        "n_20",
+        "n_25",
+        "n_3",
+        "n_30",
+        "n_36",
+        "n_4",
+        "n_42",
+        "n_49",
+        "n_5",
+        "n_56",
+        "n_6",
+        "n_63",
+        "n_7",
+        "n_72",
+        "n_8",
+        "n_81",
+        "n_9",
+        "session_end",
+        "session_start",
+        "test_phrase",
+        "try_again",
+        "wb_intro",
+        "welcome",
+        "write_answer"
+      ],
+      "zariyah": [
+        "add_intro",
+        "awesome",
+        "champion",
+        "color_intro",
+        "correct",
+        "count_apples",
+        "count_dots",
+        "draw_horiz",
+        "draw_vert",
+        "excellent",
+        "find_found",
+        "find_intro",
+        "great",
+        "letters_intro",
+        "letters_wrong",
+        "memory_intro",
+        "memory_match",
+        "next_exercise",
+        "n_1",
+        "n_10",
+        "n_11",
+        "n_12",
+        "n_13",
+        "n_14",
+        "n_15",
+        "n_16",
+        "n_17",
+        "n_18",
+        "n_19",
+        "n_2",
+        "n_20",
+        "n_25",
+        "n_3",
+        "n_30",
+        "n_36",
+        "n_4",
+        "n_42",
+        "n_49",
+        "n_5",
+        "n_56",
+        "n_6",
+        "n_63",
+        "n_7",
+        "n_72",
+        "n_8",
+        "n_81",
+        "n_9",
+        "session_end",
+        "session_start",
+        "test_phrase",
+        "try_again",
+        "wb_intro",
+        "welcome",
+        "write_answer"
+      ]
+    },
+    "en": {
+      "aria": [
+        "add_intro",
+        "ap_10_1",
+        "ap_10_10",
+        "ap_10_11",
+        "ap_10_12",
+        "ap_10_2",
+        "ap_10_3",
+        "ap_10_4",
+        "ap_10_5",
+        "ap_10_6",
+        "ap_10_7",
+        "ap_10_8",
+        "ap_10_9",
+        "ap_11_1",
+        "ap_11_10",
+        "ap_11_11",
+        "ap_11_12",
+        "ap_11_2",
+        "ap_11_3",
+        "ap_11_4",
+        "ap_11_5",
+        "ap_11_6",
+        "ap_11_7",
+        "ap_11_8",
+        "ap_11_9",
+        "ap_12_1",
+        "ap_12_10",
+        "ap_12_11",
+        "ap_12_12",
+        "ap_12_2",
+        "ap_12_3",
+        "ap_12_4",
+        "ap_12_5",
+        "ap_12_6",
+        "ap_12_7",
+        "ap_12_8",
+        "ap_12_9",
+        "ap_1_1",
+        "ap_1_10",
+        "ap_1_11",
+        "ap_1_12",
+        "ap_1_2",
+        "ap_1_3",
+        "ap_1_4",
+        "ap_1_5",
+        "ap_1_6",
+        "ap_1_7",
+        "ap_1_8",
+        "ap_1_9",
+        "ap_2_1",
+        "ap_2_10",
+        "ap_2_11",
+        "ap_2_12",
+        "ap_2_2",
+        "ap_2_3",
+        "ap_2_4",
+        "ap_2_5",
+        "ap_2_6",
+        "ap_2_7",
+        "ap_2_8",
+        "ap_2_9",
+        "ap_3_1",
+        "ap_3_10",
+        "ap_3_11",
+        "ap_3_12",
+        "ap_3_2",
+        "ap_3_3",
+        "ap_3_4",
+        "ap_3_5",
+        "ap_3_6",
+        "ap_3_7",
+        "ap_3_8",
+        "ap_3_9",
+        "ap_4_1",
+        "ap_4_10",
+        "ap_4_11",
+        "ap_4_12",
+        "ap_4_2",
+        "ap_4_3",
+        "ap_4_4",
+        "ap_4_5",
+        "ap_4_6",
+        "ap_4_7",
+        "ap_4_8",
+        "ap_4_9",
+        "ap_5_1",
+        "ap_5_10",
+        "ap_5_11",
+        "ap_5_12",
+        "ap_5_2",
+        "ap_5_3",
+        "ap_5_4",
+        "ap_5_5",
+        "ap_5_6",
+        "ap_5_7",
+        "ap_5_8",
+        "ap_5_9",
+        "ap_6_1",
+        "ap_6_10",
+        "ap_6_11",
+        "ap_6_12",
+        "ap_6_2",
+        "ap_6_3",
+        "ap_6_4",
+        "ap_6_5",
+        "ap_6_6",
+        "ap_6_7",
+        "ap_6_8",
+        "ap_6_9",
+        "ap_7_1",
+        "ap_7_10",
+        "ap_7_11",
+        "ap_7_12",
+        "ap_7_2",
+        "ap_7_3",
+        "ap_7_4",
+        "ap_7_5",
+        "ap_7_6",
+        "ap_7_7",
+        "ap_7_8",
+        "ap_7_9",
+        "ap_8_1",
+        "ap_8_10",
+        "ap_8_11",
+        "ap_8_12",
+        "ap_8_2",
+        "ap_8_3",
+        "ap_8_4",
+        "ap_8_5",
+        "ap_8_6",
+        "ap_8_7",
+        "ap_8_8",
+        "ap_8_9",
+        "ap_9_1",
+        "ap_9_10",
+        "ap_9_11",
+        "ap_9_12",
+        "ap_9_2",
+        "ap_9_3",
+        "ap_9_4",
+        "ap_9_5",
+        "ap_9_6",
+        "ap_9_7",
+        "ap_9_8",
+        "ap_9_9",
+        "awesome",
+        "champion",
+        "color_intro",
+        "correct",
+        "count_apples",
+        "count_dots",
+        "cp_blue",
+        "cp_brown",
+        "cp_green",
+        "cp_orange",
+        "cp_pink",
+        "cp_purple",
+        "cp_red",
+        "cp_yellow",
+        "draw_horiz",
+        "draw_vert",
+        "excellent",
+        "find_found",
+        "find_intro",
+        "great",
+        "lc_en_0",
+        "lc_en_1",
+        "lc_en_10",
+        "lc_en_11",
+        "lc_en_12",
+        "lc_en_13",
+        "lc_en_14",
+        "lc_en_15",
+        "lc_en_16",
+        "lc_en_17",
+        "lc_en_18",
+        "lc_en_19",
+        "lc_en_2",
+        "lc_en_20",
+        "lc_en_21",
+        "lc_en_22",
+        "lc_en_23",
+        "lc_en_24",
+        "lc_en_25",
+        "lc_en_3",
+        "lc_en_4",
+        "lc_en_5",
+        "lc_en_6",
+        "lc_en_7",
+        "lc_en_8",
+        "lc_en_9",
+        "letters_intro",
+        "letters_wrong",
+        "lp_en_0",
+        "lp_en_1",
+        "lp_en_10",
+        "lp_en_11",
+        "lp_en_12",
+        "lp_en_13",
+        "lp_en_14",
+        "lp_en_15",
+        "lp_en_16",
+        "lp_en_17",
+        "lp_en_18",
+        "lp_en_19",
+        "lp_en_2",
+        "lp_en_20",
+        "lp_en_21",
+        "lp_en_22",
+        "lp_en_23",
+        "lp_en_24",
+        "lp_en_25",
+        "lp_en_3",
+        "lp_en_4",
+        "lp_en_5",
+        "lp_en_6",
+        "lp_en_7",
+        "lp_en_8",
+        "lp_en_9",
+        "maze_intro",
+        "maze_win",
+        "memory_intro",
+        "memory_match",
+        "next_digit",
+        "next_exercise",
+        "n_1",
+        "n_10",
+        "n_11",
+        "n_12",
+        "n_13",
+        "n_14",
+        "n_15",
+        "n_16",
+        "n_17",
+        "n_18",
+        "n_19",
+        "n_2",
+        "n_20",
+        "n_25",
+        "n_3",
+        "n_30",
+        "n_36",
+        "n_4",
+        "n_42",
+        "n_49",
+        "n_5",
+        "n_56",
+        "n_6",
+        "n_63",
+        "n_7",
+        "n_72",
+        "n_8",
+        "n_81",
+        "n_9",
+        "puzzle_intro",
+        "puzzle_win",
+        "science_intro",
+        "session_end",
+        "session_start",
+        "shop_intro",
+        "shop_win",
+        "story_intro",
+        "story_read_intro",
+        "s_honest-shepherd_m",
+        "s_honest-shepherd_p0",
+        "s_honest-shepherd_p1",
+        "s_honest-shepherd_p2",
+        "s_honest-shepherd_p3",
+        "s_honest-shepherd_p4",
+        "s_honest-shepherd_p5",
+        "s_honest-shepherd_p6",
+        "s_lion-mouse_m",
+        "s_lion-mouse_p0",
+        "s_lion-mouse_p1",
+        "s_lion-mouse_p2",
+        "s_lion-mouse_p3",
+        "s_lion-mouse_p4",
+        "s_lion-mouse_p5",
+        "s_lion-mouse_p6",
+        "s_lion-mouse_p7",
+        "s_rabbit-tortoise_m",
+        "s_rabbit-tortoise_p0",
+        "s_rabbit-tortoise_p1",
+        "s_rabbit-tortoise_p2",
+        "s_rabbit-tortoise_p3",
+        "s_rabbit-tortoise_p4",
+        "s_rabbit-tortoise_p5",
+        "s_rabbit-tortoise_p6",
+        "s_sharing-cookies_m",
+        "s_sharing-cookies_p0",
+        "s_sharing-cookies_p1",
+        "s_sharing-cookies_p2",
+        "s_sharing-cookies_p3",
+        "s_sharing-cookies_p4",
+        "s_sharing-cookies_p5",
+        "s_sharing-cookies_p6",
+        "s_wash-hands_m",
+        "s_wash-hands_p0",
+        "s_wash-hands_p1",
+        "s_wash-hands_p2",
+        "s_wash-hands_p3",
+        "s_wash-hands_p4",
+        "s_wash-hands_p5",
+        "s_wash-hands_p6",
+        "test_phrase",
+        "try_again",
+        "wb_intro",
+        "weak_focus",
+        "welcome",
+        "write_answer"
+      ],
+      "jenny": [
+        "add_intro",
+        "awesome",
+        "champion",
+        "color_intro",
+        "correct",
+        "count_apples",
+        "count_dots",
+        "draw_horiz",
+        "draw_vert",
+        "excellent",
+        "find_found",
+        "find_intro",
+        "great",
+        "letters_intro",
+        "letters_wrong",
+        "memory_intro",
+        "memory_match",
+        "next_exercise",
+        "n_1",
+        "n_10",
+        "n_11",
+        "n_12",
+        "n_13",
+        "n_14",
+        "n_15",
+        "n_16",
+        "n_17",
+        "n_18",
+        "n_19",
+        "n_2",
+        "n_20",
+        "n_25",
+        "n_3",
+        "n_30",
+        "n_36",
+        "n_4",
+        "n_42",
+        "n_49",
+        "n_5",
+        "n_56",
+        "n_6",
+        "n_63",
+        "n_7",
+        "n_72",
+        "n_8",
+        "n_81",
+        "n_9",
+        "session_end",
+        "session_start",
+        "test_phrase",
+        "try_again",
+        "wb_intro",
+        "welcome",
+        "write_answer"
+      ],
+      "guy": [
+        "add_intro",
+        "awesome",
+        "champion",
+        "color_intro",
+        "correct",
+        "count_apples",
+        "count_dots",
+        "draw_horiz",
+        "draw_vert",
+        "excellent",
+        "find_found",
+        "find_intro",
+        "great",
+        "letters_intro",
+        "letters_wrong",
+        "memory_intro",
+        "memory_match",
+        "next_exercise",
+        "n_1",
+        "n_10",
+        "n_11",
+        "n_12",
+        "n_13",
+        "n_14",
+        "n_15",
+        "n_16",
+        "n_17",
+        "n_18",
+        "n_19",
+        "n_2",
+        "n_20",
+        "n_25",
+        "n_3",
+        "n_30",
+        "n_36",
+        "n_4",
+        "n_42",
+        "n_49",
+        "n_5",
+        "n_56",
+        "n_6",
+        "n_63",
+        "n_7",
+        "n_72",
+        "n_8",
+        "n_81",
+        "n_9",
+        "session_end",
+        "session_start",
+        "test_phrase",
+        "try_again",
+        "wb_intro",
+        "welcome",
+        "write_answer"
+      ]
+    }
+  }
+}

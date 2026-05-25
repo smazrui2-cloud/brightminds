@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="50%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#EC4899"/>
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Rounded gradient background -->
+  <rect width="512" height="512" rx="100" ry="100" fill="url(#bg)"/>
+
+  <!-- Lightbulb icon (centered, white) -->
+  <g transform="translate(256 256)" filter="url(#softGlow)">
+    <!-- Bulb body -->
+    <ellipse cx="0" cy="-40" rx="100" ry="105" fill="#FACC15" stroke="#FBBF24" stroke-width="4"/>
+    <!-- Inner highlight -->
+    <ellipse cx="-30" cy="-70" rx="35" ry="55" fill="#FEF3C7" opacity="0.55"/>
+    <!-- Filament glow -->
+    <circle cx="0" cy="-30" r="20" fill="#FFFFFF" opacity="0.35"/>
+    <!-- Base of bulb -->
+    <rect x="-50" y="55" width="100" height="18" rx="6" fill="#94A3B8"/>
+    <rect x="-50" y="78" width="100" height="14" rx="4" fill="#64748B"/>
+    <!-- Screw threads -->
+    <rect x="-46" y="65" width="92" height="2" fill="#475569"/>
+    <rect x="-46" y="73" width="92" height="2" fill="#475569"/>
+    <!-- Filament -->
+    <path d="M -25 -20 Q -10 -50 0 -30 Q 10 -10 25 -20" stroke="#F59E0B" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- Sparkle rays -->
+    <g stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" opacity="0.8">
+      <line x1="-130" y1="-50" x2="-150" y2="-50"/>
+      <line x1="130"  y1="-50" x2="150"  y2="-50"/>
+      <line x1="-110" y1="-120" x2="-125" y2="-135"/>
+      <line x1="110"  y1="-120" x2="125"  y2="-135"/>
+      <line x1="0"    y1="-160" x2="0"    y2="-180"/>
+    </g>
+  </g>
+</svg>

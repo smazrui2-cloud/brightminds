@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Canonical host redirect: force every *.vercel.app alias to the official
+       host so Umami / Stripe / PWA install all share ONE origin. -->
+  <script>(function(){
+    var CANONICAL = 'brightminds-app.vercel.app';
+    var h = location.hostname;
+    if (h !== CANONICAL && /\.vercel\.app$/.test(h)) {
+      location.replace('https://' + CANONICAL + location.pathname + location.search + location.hash);
+    }
+  })();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#8B5CF6" />
+  <title>BrightMinds — تطبيق تعليمي ذكي للأطفال 5-13 سنة</title>
+
+  <!-- SEO basics -->
+  <meta name="description" content="تطبيق تعليمي تفاعلي للأطفال من 5 إلى 13 سنة. 12 لعبة تعلّم الرياضيات والحروف والقراءة والذاكرة بالعربية والإنجليزية. مجاناً ويعمل أوفلاين." />
+  <meta name="keywords" content="تعليم اطفال, تطبيق تعليمي عربي, العاب تعليمية, تعلم الحروف, تعلم الضرب, BrightMinds, kids learning, arabic learning app" />
+  <meta name="author" content="BrightMinds" />
+  <link rel="canonical" href="https://brightminds-app.vercel.app/" />
+
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="BrightMinds — تطبيق تعليمي ذكي للأطفال" />
+  <meta property="og:description" content="12 لعبة تعليمية ممتعة للأطفال 5-13. عربي + إنجليزي. مجاناً. يعمل أوفلاين." />
+  <meta property="og:url" content="https://brightminds-app.vercel.app/" />
+  <meta property="og:site_name" content="BrightMinds" />
+  <meta property="og:locale" content="ar_AR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:image" content="https://brightminds-app.vercel.app/icons/icon-512.svg" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="BrightMinds — تعليم ذكي للأطفال" />
+  <meta name="twitter:description" content="12 لعبة تعليمية للأطفال 5-13 سنة. عربي + إنجليزي. مجاناً." />
+  <meta name="twitter:image" content="https://brightminds-app.vercel.app/icons/icon-512.svg" />
+
+  <!-- PWA: web app manifest + Apple-specific meta -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icons/icon-512.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icons/icon-512.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-512.svg" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="BrightMinds" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- Performance: preconnect to font CDN, preload critical CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Cairo:wght@400;600;700;800;900&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Schema.org structured data for search engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "BrightMinds",
+    "description": "تطبيق تعليمي تفاعلي للأطفال من 5 إلى 13 سنة. 12 لعبة تعليمية بالعربية والإنجليزية.",
+    "url": "https://brightminds-app.vercel.app/",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web Browser, iOS, Android",
+    "audience": { "@type": "PeopleAudience", "suggestedMinAge": 5, "suggestedMaxAge": 13 },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "inLanguage": ["ar", "en"]
+  }
+  </script>
+
+  <!-- ═══════════ ANALYTICS (Umami — cookieless, kid-safe) ═══════════
+       data-domains: only count events from the canonical host. -->
+  <script defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="37c4acbf-099a-4d71-99a7-bff949aecfe1"
+          data-domains="brightminds-app.vercel.app,brightminds.kids"></script>
+</head>
+<body>
+  <div id="app">
+
+    <!-- ═══════════ SCREEN 0: SPLASH ═══════════ -->
+    <section class="screen active" id="screen-splash">
+      <div class="splash-bg">
+        <span class="splash-star" style="top:12%;left:14%;animation-delay:0s">✨</span>
+        <span class="splash-star" style="top:18%;left:78%;animation-delay:.3s">⭐</span>
+        <span class="splash-star" style="top:35%;left:10%;animation-delay:.7s">✦</span>
+        <span class="splash-star" style="top:62%;left:82%;animation-delay:1.1s">✨</span>
+        <span class="splash-star" style="top:75%;left:18%;animation-delay:1.4s">⭐</span>
+        <span class="splash-star" style="top:30%;left:88%;animation-delay:1.7s">✦</span>
+      </div>
+      <div class="splash-center">
+        <div class="splash-logo">💡</div>
+        <h1 class="splash-brand" id="splash-brand"></h1>
+        <div class="splash-tagline" data-t="splash.tagline">تعليم ذكي للأطفال</div>
+        <div class="splash-mascot-wrap" id="splash-mascot"></div>
+        <div class="splash-progress"><div class="splash-progress-bar" id="splash-progress-bar"></div></div>
+      </div>
+      <button class="splash-skip" id="splash-skip" data-t="splash.skip">تخطي ›</button>
+    </section>
+
+    <!-- ═══════════ PARENT DASHBOARD ═══════════ -->
+    <section class="screen" id="screen-parent">
+      <div class="top-bar">
+        <button class="icon-btn" data-back="language" aria-label="Back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="back-icon">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <div class="title-block">
+          <div class="h1" data-t="parent.title">👨‍👩‍👧 لوحة الأهل</div>
+          <div class="sub" id="parent-sub">تقدم الطفل</div>
+        </div>
+      </div>
+      <div class="parent-body" id="parent-body"></div>
+    </section>
+
+    <!-- ═══════════ SCREEN 1: LANGUAGE ═══════════ -->
+    <section class="screen" id="screen-language">
+      <div class="lang-wrap">
+        <div class="logo small">💡</div>
+        <h1 class="brand">BrightMinds</h1>
+        <p class="lang-subtitle">اختر اللغة • Choose Language</p>
+        <div class="lang-grid">
+          <button class="lang-card" data-lang="ar">
+            <div class="flag">🇸🇦</div>
+            <div class="name" lang="ar" dir="rtl">العربية</div>
+            <div class="native">Arabic</div>
+          </button>
+          <button class="lang-card" data-lang="en">
+            <div class="flag">🇺🇸</div>
+            <div class="name" lang="en" dir="ltr">English</div>
+            <div class="native">الإنجليزية</div>
+          </button>
+        </div>
+
+        <div class="voice-status" id="voice-status">
+          <div class="voice-presets" id="voice-presets" role="radiogroup" aria-label="Voice character">
+            <button class="voice-preset" data-preset="teacher">🧑‍🏫</button>
+            <button class="voice-preset" data-preset="friendly">😊</button>
+            <button class="voice-preset selected" data-preset="child">👶</button>
+          </div>
+          <div class="voice-picker">
+            <label class="voice-picker-label" data-t="voice.picker_label">🎙️ اختر صوت المعلم</label>
+            <select id="voice-picker" class="voice-picker-select"></select>
+          </div>
+          <div class="voice-actions">
+            <button class="btn-test-voice" id="btn-test-voice">
+              <span data-t="voice.test">🔊 اختبار</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="sound-toggle-wrap">
+        <button class="sound-toggle" id="sound-toggle" aria-label="Toggle sound">
+          <span class="on">🔊</span>
+          <span class="off">🔇</span>
+        </button>
+        <button class="sound-toggle music-toggle" id="music-toggle" aria-label="Toggle background music">
+          <span class="on">🎵</span>
+          <span class="off">🎶</span>
+        </button>
+      </div>
+      <div class="dev-badge hidden" id="dev-badge" data-t="dev.badge">🔓 المالك</div>
+      <button class="parent-btn" id="parent-btn" aria-label="Parent Dashboard">👨‍👩‍👧</button>
+      <button class="install-btn hidden" id="install-btn" aria-label="Install App">
+        <span>📲</span> <span data-t="pwa.install">ثبّت التطبيق</span>
+      </button>
+    </section>
+
+    <!-- ═══════════ SCREEN 1.5: TEACHER VOICE PICKER ═══════════ -->
+    <section class="screen" id="screen-teacher">
+      <div class="top-bar">
+        <button class="icon-btn" data-back="language" aria-label="Back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="back-icon">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <div class="title-block">
+          <div class="h1" data-t="teacher.title">اختر صوت المعلم</div>
+          <div class="sub" data-t="teacher.sub">اضغط أي معلم لتسمع صوته</div>
+        </div>
+      </div>
+
+      <div class="teacher-grid" id="teacher-grid"></div>
+
+      <div class="bottom-bar">
+        <button class="btn-primary" id="btn-go-setup">
+          <span data-t="teacher.confirm">متابعة</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="forward-icon">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         ONBOARDING (first-launch only) — 5 calm, one-question screens
+         Welcome → Name → Age → Level → Parent intro → Subjects
+         ══════════════════════════════════════════════════════ -->
+    <section class="screen onb-screen" id="screen-onb-welcome">
+      <div class="onb-container">
+        <div class="onb-hero">
+          <div class="onb-logo">💡</div>
+          <div class="onb-brand">BrightMinds</div>
+          <div class="onb-tag">تطبيق تعليمي ممتع لطفلك</div>
+        </div>
+        <button class="onb-primary" id="onb-welcome-next">هيّا نبدأ</button>
+      </div>
+    </section>
+
+    <section class="screen onb-screen" id="screen-onb-name">
+      <div class="onb-container">
+        <button class="onb-back" data-onb-back="welcome" aria-label="رجوع">‹</button>
+        <div class="onb-step-num">١ من ٤</div>
+        <div class="onb-question">ما اسم طفلك؟</div>
+        <div class="onb-hint">سنخصّص له تجربة تعلّم باسمه</div>
+        <input
+          type="text"
+          id="onb-name-input"
+          class="onb-input"
+          placeholder="مثلاً: سامي"
+          maxlength="20"
+          autocomplete="off"
+          spellcheck="false" />
+        <div class="onb-actions">
+          <button class="onb-secondary" id="onb-name-skip">تخطّي</button>
+          <button class="onb-primary" id="onb-name-next">التالي</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen onb-screen" id="screen-onb-age">
+      <div class="onb-container">
+        <button class="onb-back" data-onb-back="name" aria-label="رجوع">‹</button>
+        <div class="onb-step-num">٢ من ٤</div>
+        <div class="onb-question">كم عمر طفلك؟</div>
+        <div class="onb-hint">سنختار له تمارين مناسبة لعمره</div>
+        <div class="onb-age-display">
+          <span id="onb-age-value">7</span>
+          <span class="onb-age-unit">سنوات</span>
+        </div>
+        <input type="range" id="onb-age-slider" class="onb-slider" min="5" max="13" value="7" step="1" />
+        <div class="onb-age-ticks">
+          <span>5</span><span>7</span><span>9</span><span>11</span><span>13</span>
+        </div>
+        <div class="onb-actions">
+          <button class="onb-primary" id="onb-age-next">التالي</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen onb-screen" id="screen-onb-level">
+      <div class="onb-container">
+        <button class="onb-back" data-onb-back="age" aria-label="رجوع">‹</button>
+        <div class="onb-step-num">٣ من ٤</div>
+        <div class="onb-question">أيّ مستوى يناسب طفلك؟</div>
+        <div class="onb-hint">يمكنك تغييره لاحقاً من الإعدادات</div>
+        <div class="onb-level-list">
+          <button class="onb-level-card" data-level="beginner">
+            <div class="onb-level-name">مبتدئ</div>
+            <div class="onb-level-desc">يبدأ التعلّم — تمارين سهلة</div>
+          </button>
+          <button class="onb-level-card" data-level="intermediate">
+            <div class="onb-level-name">متوسّط</div>
+            <div class="onb-level-desc">يقرأ ويعدّ — تمارين متوسّطة</div>
+          </button>
+          <button class="onb-level-card" data-level="advanced">
+            <div class="onb-level-name">متقدّم</div>
+            <div class="onb-level-desc">يحلّ بسرعة — تحدّيات أكبر</div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen onb-screen" id="screen-onb-parent">
+      <div class="onb-container">
+        <button class="onb-back" data-onb-back="level" aria-label="رجوع">‹</button>
+        <div class="onb-step-num">٤ من ٤</div>
+        <div class="onb-question">قبل أن يبدأ، نصيحتان للأهل</div>
+        <ul class="onb-tips">
+          <li>
+            <span class="onb-tip-num">١</span>
+            <div>
+              <div class="onb-tip-title">١٥ إلى ٢٠ دقيقة يومياً تكفي</div>
+              <div class="onb-tip-body">تعلّم منتظم أفضل من جلسات طويلة متفرّقة</div>
+            </div>
+          </li>
+          <li>
+            <span class="onb-tip-num">٢</span>
+            <div>
+              <div class="onb-tip-title">تابع التقدّم من لوحة الأهل 👨‍👩‍👧</div>
+              <div class="onb-tip-body">محمّية برمز سرّي — البيانات على جهازك فقط</div>
+            </div>
+          </li>
+        </ul>
+        <button class="onb-primary" id="onb-parent-next">ابدأ اللعب</button>
+      </div>
+    </section>
+
+    <!-- ═══════════ SCREEN 2: WELCOME / SETUP ═══════════ -->
+    <section class="screen" id="screen-setup">
+      <div class="top-bar">
+        <button class="icon-btn" data-back="teacher" aria-label="Back">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="back-icon">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <div class="title-block">
+          <div class="h1" data-t="setup.title">إعداد الجلسة</div>
+          <div class="sub" data-t="setup.subtitle">اختر عمر الطفل والمادة</div>
+        </div>
+      </div>
+
+      <div class="setup-content">
+        <!-- Profile chip (visible only after onboarding) — shows current child
+             info compactly and links to settings for editing. -->
+        <div class="setup-profile-chip" id="setup-profile-chip" hidden>
+          <div class="spc-info">
+            <span class="spc-name" id="spc-name">—</span>
+            <span class="spc-meta" id="spc-meta">—</span>
+          </div>
+          <button type="button" class="spc-edit" id="spc-edit">تعديل</button>
+        </div>
+
+        <!-- Legacy profile fields — shown ONLY for users who skipped onboarding -->
+        <div class="setup-legacy-profile" id="setup-legacy-profile">
+          <div>
+            <div class="label" data-t="setup.name">اسم الطفل (اختياري)</div>
+            <input type="text" id="child-name-input" class="name-input" maxlength="30" data-t-attr="placeholder|setup.name_placeholder" placeholder="مثلاً: أحمد" />
+          </div>
+          <div>
+            <div class="label" data-t="setup.gender">جنس الطفل</div>
+            <div class="gender-row">
+              <button class="gender-card boy" data-gender="boy">
+                <div class="gender-avatar">
+                  <span class="g-deco g-deco-tl">⭐</span>
+                  <span class="g-deco g-deco-tr">📘</span>
+                  <span class="g-main">👨‍🎓</span>
+                  <span class="g-deco g-deco-br">✨</span>
+                </div>
+                <div class="gender-name" data-t="setup.boy">ولد</div>
+              </button>
+              <button class="gender-card girl" data-gender="girl">
+                <div class="gender-avatar">
+                  <span class="g-deco g-deco-tl">🎀</span>
+                  <span class="g-deco g-deco-tr">🌸</span>
+                  <span class="g-main">👩‍🎓</span>
+                  <span class="g-deco g-deco-br">💖</span>
+                </div>
+                <div class="gender-name" data-t="setup.girl">بنت</div>
+              </button>
+            </div>
+          </div>
+          <div>
+            <div class="label" data-t="setup.age">عمر الطفل</div>
+            <div class="age-card compact">
+              <div class="age-header">
+                <div class="age-avatar" id="age-avatar">🧒</div>
+                <div class="age-display">
+                  <span id="age-value">7</span>
+                  <span class="unit" data-t="setup.years"> سنوات</span>
+                </div>
+              </div>
+              <div class="age-slider-wrap">
+                <input type="range" id="age-slider" class="age-slider" min="5" max="13" value="7" step="1" />
+                <div class="age-ticks">
+                  <span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="label" data-t="setup.subject">اختر المادة</div>
+          <div class="subjects subjects-scroll">
+            <div class="subject selected" data-subject="multiply">
+              <div class="emoji">✖️</div>
+              <div class="name" data-t="subj.multiply">الضرب الذكي</div>
+              <div class="desc" data-t="subj.multiply.desc">بطريقة الخطوط</div>
+            </div>
+            <div class="subject" data-subject="add">
+              <div class="emoji">➕</div>
+              <div class="name" data-t="subj.add">الجمع</div>
+              <div class="desc" data-t="subj.add.desc">عدّ بصري</div>
+            </div>
+            <div class="subject" data-subject="letters">
+              <div class="emoji">🔤</div>
+              <div class="name" data-t="subj.letters">الحروف</div>
+              <div class="desc" data-t="subj.letters.desc">طابق الحرف</div>
+            </div>
+            <div class="subject" data-subject="word-builder">
+              <div class="emoji">🧱</div>
+              <div class="name" data-t="subj.word_builder">تكوين الكلمات</div>
+              <div class="desc" data-t="subj.word_builder.desc">رتّب الحروف</div>
+            </div>
+            <div class="subject" data-subject="find-letter">
+              <div class="emoji">🔍</div>
+              <div class="name" data-t="subj.find_letter">ابحث عن الحرف</div>
+              <div class="desc" data-t="subj.find_letter.desc">داخل اللوحات</div>
+            </div>
+            <div class="subject" data-subject="memory">
+              <div class="emoji">🧠</div>
+              <div class="name" data-t="subj.memory">لعبة الذاكرة</div>
+              <div class="desc" data-t="subj.memory.desc">طابق البطاقات</div>
+            </div>
+            <div class="subject" data-subject="maze">
+              <div class="emoji">🌀</div>
+              <div class="name" data-t="subj.maze">المتاهات</div>
+              <div class="desc" data-t="subj.maze.desc">حل الألغاز</div>
+            </div>
+            <div class="subject" data-subject="money-shop">
+              <div class="emoji">🏪</div>
+              <div class="name" data-t="subj.shop">المتجر الصغير</div>
+              <div class="desc" data-t="subj.shop.desc">جمع وطرح بالنقود</div>
+            </div>
+            <div class="subject" data-subject="puzzle">
+              <div class="emoji">🧩</div>
+              <div class="name" data-t="subj.puzzle">البازل</div>
+              <div class="desc" data-t="subj.puzzle.desc">ركّب الصور</div>
+            </div>
+            <div class="subject" data-subject="color-hunt">
+              <div class="emoji">🎨</div>
+              <div class="name" data-t="subj.colors">صيد الألوان</div>
+              <div class="desc" data-t="subj.colors.desc">طابق اللون</div>
+            </div>
+            <div class="subject" data-subject="science">
+              <div class="emoji">🦁</div>
+              <div class="name" data-t="subj.science">العلوم</div>
+              <div class="desc" data-t="subj.science.desc">أين يعيش الحيوان؟</div>
+            </div>
+            <div class="subject" data-subject="story">
+              <div class="emoji">📖</div>
+              <div class="name" data-t="subj.story">قصة تعليمية</div>
+              <div class="desc" data-t="subj.story.desc">قصص فيها درس</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-bar">
+        <button class="btn-primary" id="btn-go-lesson">
+          <span data-t="setup.start">ابدأ الدرس</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="forward-icon">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ═══════════ SCREEN 3: LESSON ═══════════ -->
+    <section class="screen" id="screen-lesson">
+      <div class="top-bar">
+        <button class="icon-btn" data-back="setup" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <div class="title-block">
+          <div class="h1" data-t="lesson.title">الضرب الذكي</div>
+          <div class="sub" id="lesson-sub">التمرين 1 من 5</div>
+        </div>
+        <div class="badge score"><span>⭐</span><span id="total-score">0</span></div>
+      </div>
+
+      <div class="mascot-area">
+        <div id="mascot-container"></div>
+        <div class="hero-badge">
+          <div class="hero-title" id="hero-title">مرحباً بك</div>
+          <div class="hero-quest" id="hero-quest">التمرين <strong>1</strong> من <strong>5</strong></div>
+        </div>
+      </div>
+
+      <div class="session-progress" id="session-progress">
+        <div class="session-dots" id="session-dots"></div>
+      </div>
+
+      <div class="lesson-header">
+        <div class="problem-card">
+          <span class="problem-tag" data-t="lesson.problem">الضرب</span>
+          <div class="problem-text">
+            <span class="num1" id="num1">3</span>
+            <span class="op" id="op-symbol">×</span>
+            <span class="num2" id="num2">4</span>
+            <span class="op">=</span>
+            <span style="color: var(--hint)" id="answer-slot">؟</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="instruction-banner">
+        <span class="step-pill" id="step-pill">1</span>
+        <span id="instruction-text">ارسم خطوط رأسية ↓</span>
+      </div>
+
+      <div class="canvas-wrap">
+        <canvas id="draw-canvas"></canvas>
+        <div class="canvas-overlay" id="canvas-hint">
+          <div class="arrow" id="hint-arrow">↓</div>
+          <div id="hint-text">ارسم من أعلى لأسفل</div>
+        </div>
+        <div class="line-counter">
+          <span class="counter-pill cyan" id="vert-counter">رأسي: 0 / 3</span>
+          <span class="counter-pill gold hidden" id="horz-counter">أفقي: 0 / 4</span>
+        </div>
+        <div class="tap-count hidden" id="tap-count">نقاط: 0 / 0</div>
+
+        <!-- WRITE PHASE OVERLAY -->
+        <div class="write-overlay hidden" id="write-overlay">
+          <div class="write-header">
+            <span id="write-title">اكتب الرقم</span>
+            <span class="answer-big" id="write-answer">12</span>
+          </div>
+          <div class="digit-grid" id="digit-grid"></div>
+          <div class="write-hint" id="write-hint">اضغط على النقاط بالترتيب</div>
+        </div>
+
+        <!-- LETTER MATCH OVERLAY -->
+        <div class="letter-overlay hidden" id="letter-overlay">
+          <div class="letter-prompt" id="letter-prompt">
+            <div class="letter-prompt-label" data-t="letter.match_prompt">اختر الصورة التي تبدأ بحرف</div>
+            <div class="letter-big" id="letter-big">أ</div>
+          </div>
+          <div class="letter-choices" id="letter-choices"></div>
+        </div>
+
+        <!-- MEMORY OVERLAY -->
+        <div class="memory-overlay hidden" id="memory-overlay">
+          <div class="memory-header">
+            <span data-t="memory.prompt">طابق البطاقات</span>
+            <span class="memory-counter" id="memory-counter">0 / 0</span>
+          </div>
+          <div class="memory-grid" id="memory-grid"></div>
+        </div>
+
+        <!-- FIND-LETTER OVERLAY -->
+        <div class="findletter-overlay hidden" id="findletter-overlay">
+          <div class="findletter-prompt">
+            <div class="findletter-label" data-t="findletter.prompt">ابحث عن الحرف</div>
+            <div class="findletter-hero">
+              <div class="findletter-target" id="findletter-target">أ</div>
+              <div class="findletter-hint">
+                <div class="findletter-hint-emoji" id="findletter-hint-emoji">🦁</div>
+                <div class="findletter-hint-word" id="findletter-hint-word">أسد</div>
+              </div>
+            </div>
+            <div class="findletter-counter" id="findletter-counter">0 / 0</div>
+          </div>
+          <div class="findletter-grid" id="findletter-grid"></div>
+        </div>
+
+        <!-- COLOR-HUNT OVERLAY -->
+        <div class="colorhunt-overlay hidden" id="colorhunt-overlay">
+          <div class="colorhunt-prompt">
+            <div class="colorhunt-label" data-t="colorhunt.prompt">ابحث عن اللون</div>
+            <div class="colorhunt-target" id="colorhunt-target">
+              <span class="colorhunt-swatch" id="colorhunt-swatch"></span>
+              <span class="colorhunt-name" id="colorhunt-name">أحمر</span>
+            </div>
+            <div class="colorhunt-counter" id="colorhunt-counter">0 / 0</div>
+          </div>
+          <div class="colorhunt-grid" id="colorhunt-grid"></div>
+        </div>
+
+        <!-- WORD-BUILDER OVERLAY -->
+        <div class="wordbuilder-overlay hidden" id="wordbuilder-overlay">
+          <div class="wb-scene" id="wb-scene">
+            <span class="wb-deco wb-deco-tl" id="wb-deco-tl">☀️</span>
+            <span class="wb-deco wb-deco-tr" id="wb-deco-tr">☁️</span>
+            <span class="wb-deco wb-deco-bl" id="wb-deco-bl">🌳</span>
+            <span class="wb-deco wb-deco-br" id="wb-deco-br">🌱</span>
+            <div class="wb-emoji" id="wb-emoji">🐈</div>
+          </div>
+          <div class="wb-prompt" data-t="wb.prompt">رتّب الحروف لتكوين الكلمة</div>
+          <div class="wb-slots" id="wb-slots"></div>
+          <div class="wb-pool" id="wb-pool"></div>
+        </div>
+
+        <!-- MAZE OVERLAY -->
+        <div class="maze-overlay hidden" id="maze-overlay">
+          <div class="maze-prompt" id="maze-prompt">ساعد الفأر يصل للجبنة!</div>
+          <div class="maze-wrap" id="maze-wrap">
+            <svg class="maze-svg" id="maze-svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet"></svg>
+          </div>
+          <div class="maze-hint" data-t="maze.hint">اسحب بإصبعك من 🐭 إلى الهدف بدون لمس الجدران</div>
+        </div>
+
+        <!-- PUZZLE OVERLAY -->
+        <div class="puzzle-overlay hidden" id="puzzle-overlay">
+          <div class="puzzle-prompt" data-t="puzzle.prompt">ركّب الصورة</div>
+          <div class="puzzle-ref" id="puzzle-ref">🦁</div>
+          <div class="puzzle-board" id="puzzle-board"></div>
+          <div class="puzzle-pool" id="puzzle-pool"></div>
+        </div>
+
+        <!-- SCIENCE OVERLAY -->
+        <div class="science-overlay hidden" id="science-overlay">
+          <div class="science-prompt" data-t="science.prompt">أين يعيش هذا الحيوان؟</div>
+          <div class="science-animal" id="science-animal">🦁</div>
+          <div class="science-animal-name" id="science-animal-name">أسد</div>
+          <div class="science-choices" id="science-choices"></div>
+        </div>
+
+        <!-- STORY OVERLAY — قصة تعليمية -->
+        <div class="story-overlay hidden" id="story-overlay">
+          <div class="story-title-bar">
+            <div class="story-title" id="story-title">عنوان القصة</div>
+            <div class="story-progress" id="story-progress">1 / 7</div>
+          </div>
+          <div class="story-book">
+            <div class="story-illustration" id="story-illustration">🐢</div>
+            <div class="story-text" id="story-text">…</div>
+          </div>
+          <div class="story-moral hidden" id="story-moral">
+            <div class="story-moral-label" data-t="story.moral">الدرس المستفاد</div>
+            <div class="story-moral-text" id="story-moral-text">…</div>
+          </div>
+          <div class="story-controls">
+            <button class="story-btn story-prev" id="story-prev" data-t="story.prev">السابقة</button>
+            <button class="story-btn story-replay" id="story-replay" title="Replay">🔊</button>
+            <button class="story-btn story-next primary" id="story-next" data-t="story.next">التالية ‹</button>
+          </div>
+        </div>
+
+        <!-- MONEY SHOP OVERLAY -->
+        <div class="shop-overlay hidden" id="shop-overlay">
+          <div class="shop-prompt" data-t="shop.prompt">ادفع السعر بالضبط!</div>
+          <div class="shop-item">
+            <div class="shop-item-emoji" id="shop-item-emoji">🍎</div>
+            <div class="shop-item-info">
+              <div class="shop-item-name" id="shop-item-name">تفاحة</div>
+              <div class="shop-price-tag">
+                <span class="shop-price-label" data-t="shop.price">السعر</span>
+                <span class="shop-price-value" id="shop-price-value">3</span>
+              </div>
+            </div>
+          </div>
+          <div class="shop-wallet">
+            <div class="shop-wallet-label" data-t="shop.your_money">نقودك</div>
+            <div class="shop-wallet-bar">
+              <div class="shop-wallet-fill" id="shop-wallet-fill"></div>
+              <div class="shop-wallet-total" id="shop-wallet-total">0 / 3</div>
+            </div>
+            <div class="shop-tray" id="shop-tray"></div>
+          </div>
+          <div class="shop-coins" id="shop-coins"></div>
+          <button class="shop-undo" id="shop-undo" data-t="shop.undo">↩ رجوع</button>
+        </div>
+      </div>
+
+
+      <div class="actions-row">
+        <button class="btn-ghost danger" id="btn-clear">
+          <span data-t="btn.clear">🗑️ مسح</span>
+        </button>
+        <button class="btn-ghost" id="btn-next-phase" disabled>
+          <span data-t="btn.next">التالي ←</span>
+        </button>
+      </div>
+      <div class="bottom-bar"></div>
+
+      <!-- Result overlay -->
+      <div class="result-overlay" id="result-overlay">
+        <div class="result-card">
+          <div class="celebration" id="celebration-emoji">🎉</div>
+          <h2 id="result-title" data-t="result.title">أحسنت!</h2>
+          <div class="equation">
+            <span id="eq-num1">3</span>
+            <span style="color: var(--neon)" id="eq-op"> × </span>
+            <span id="eq-num2">4</span>
+            <span style="color: var(--neon)"> = </span>
+            <span class="answer" id="eq-answer">12</span>
+          </div>
+          <div class="stars-row">
+            <span class="star" id="star-1">⭐</span>
+            <span class="star" id="star-2">⭐</span>
+            <span class="star" id="star-3">⭐</span>
+          </div>
+          <div class="feedback" id="result-feedback">عمل رائع! استمر</div>
+          <button class="btn-primary" id="btn-next-question">
+            <span data-t="btn.next_question">تمرين جديد</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="forward-icon">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+          <button class="btn-secondary" id="btn-back-home" data-t="btn.home">العودة للقائمة</button>
+        </div>
+      </div>
+      <div class="confetti-container" id="confetti-container"></div>
+
+      <!-- Badge unlock toast -->
+      <div class="badge-toast" id="badge-toast" aria-hidden="true">
+        <div class="badge-toast-header" data-t="badge.unlocked">🎉 إنجاز جديد!</div>
+        <div class="badge-toast-medal" id="badge-toast-medal">🏆</div>
+        <div class="badge-toast-title" id="badge-toast-title">بطل الجلسة</div>
+        <div class="badge-toast-desc" id="badge-toast-desc">جلسة كاملة بدون خطأ</div>
+      </div>
+
+      <!-- Session-end overlay -->
+      <div class="result-overlay" id="session-end-overlay">
+        <div class="result-card session-end-card">
+          <div class="celebration">🏆</div>
+          <h2 id="session-end-title" data-t="session_end.title">🎉 انتهت الجلسة!</h2>
+          <div class="feedback session-subtitle" id="session-end-subtitle">أحسنت!</div>
+
+          <div class="session-stats-grid">
+            <div class="stat-card">
+              <div class="stat-emoji">⭐</div>
+              <div class="stat-value" id="stat-stars">15</div>
+              <div class="stat-label" data-t="session_end.stat_stars">نجوم الجلسة</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-emoji">💯</div>
+              <div class="stat-value" id="stat-score">120</div>
+              <div class="stat-label" data-t="session_end.stat_score">النقاط</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-emoji">✅</div>
+              <div class="stat-value" id="stat-correct">5/5</div>
+              <div class="stat-label" data-t="session_end.stat_correct">الصحيح</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-emoji">🌟</div>
+              <div class="stat-value" id="stat-total-stars">42</div>
+              <div class="stat-label" data-t="session_end.stat_total_stars">كل النجوم</div>
+            </div>
+            <div class="stat-card streak">
+              <div class="stat-emoji">🔥</div>
+              <div class="stat-value" id="stat-streak">3</div>
+              <div class="stat-label" data-t="session_end.stat_streak">سلسلة الأيام</div>
+            </div>
+          </div>
+
+          <!-- Badge gallery -->
+          <div class="badge-gallery-section">
+            <div class="badge-gallery-title" data-t="badge.section_title">🏅 إنجازاتك</div>
+            <div class="badge-gallery-progress" id="badge-gallery-progress">0 من 12</div>
+            <div class="badge-gallery" id="badge-gallery"></div>
+          </div>
+
+          <button class="btn-primary" id="btn-new-session">
+            <span data-t="btn.new_session">جلسة جديدة</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="forward-icon">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+          <button class="btn-secondary" id="btn-session-home" data-t="btn.home">العودة للقائمة</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Floating Settings button (visible on every screen) -->
+    <button class="settings-fab" id="settings-fab" aria-label="Settings">⚙️</button>
+
+    <!-- Settings panel (slides in from the side) -->
+    <div class="settings-backdrop" id="settings-backdrop"></div>
+    <aside class="settings-panel" id="settings-panel" aria-hidden="true">
+      <div class="settings-header">
+        <h2 data-t="settings.title">⚙️ الإعدادات</h2>
+        <button class="settings-close" id="settings-close" aria-label="Close">✕</button>
+      </div>
+      <div class="settings-body">
+
+        <div class="settings-section">
+          <div class="settings-section-title" data-t="settings.audio">الصوت والموسيقى</div>
+          <div class="settings-row">
+            <span class="settings-label" data-t="settings.volume">مستوى الصوت</span>
+            <input type="range" id="settings-volume" min="0" max="100" value="100" class="settings-range" />
+          </div>
+          <div class="settings-row">
+            <span class="settings-label" data-t="settings.music">موسيقى خلفية</span>
+            <label class="settings-switch">
+              <input type="checkbox" id="settings-music-toggle" />
+              <span class="settings-switch-slider"></span>
+            </label>
+          </div>
+          <div class="settings-row">
+            <span class="settings-label" data-t="settings.sound_fx">المؤثّرات الصوتية</span>
+            <label class="settings-switch">
+              <input type="checkbox" id="settings-sfx-toggle" checked />
+              <span class="settings-switch-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-section-title" data-t="settings.language_section">اللغة</div>
+          <div class="settings-row" style="padding:0;background:transparent;border:none;box-shadow:none;gap:8px">
+            <button class="settings-pill" data-set-lang="ar">العربية</button>
+            <button class="settings-pill" data-set-lang="en">English</button>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-section-title" data-t="settings.teacher_section">صوت المعلّم</div>
+          <div class="settings-pills" id="settings-voices"></div>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-section-title" data-t="settings.profile_section">الملف الشخصي</div>
+          <div class="settings-row">
+            <span class="settings-label" data-t="settings.child_name">اسم الطفل</span>
+            <input type="text" id="settings-child-name" class="settings-text" maxlength="30" />
+          </div>
+          <button class="settings-danger" id="settings-reset" data-t="settings.reset">مسح كل التقدّم</button>
+        </div>
+
+        <div class="settings-section">
+          <button class="settings-upgrade" id="settings-upgrade">الترقية للنسخة المميّزة</button>
+          <button type="button" class="settings-pill" id="settings-live-analytics" style="margin-top:8px">الإحصائيات الحية</button>
+          <button type="button" class="settings-pill" id="settings-debug" style="margin-top:8px">Developer Debug Mode</button>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-section-title" data-t="settings.about">ℹ️ حول</div>
+          <div class="settings-about">
+            <div>BrightMinds v1.0</div>
+            <div class="settings-about-sub">تطبيق تعليمي ذكي للأطفال 5-13 سنة</div>
+            <div class="settings-about-sub">© 2026 BrightMinds</div>
+            <div class="settings-legal-links">
+              <a href="privacy" target="_blank" rel="noopener">🔒 الخصوصية</a>
+              <span class="legal-sep">·</span>
+              <a href="terms" target="_blank" rel="noopener">📜 الشروط</a>
+              <span class="legal-sep">·</span>
+              <a href="mailto:support@brightminds.kids">✉️ الدعم</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- Generic toast for owner-mode + coming-soon messages -->
+    <div class="toast" id="generic-toast"></div>
+  </div>
+
+  <!-- ═══════════ PREMIUM PAYWALL (kid + parent screens) ═══════════ -->
+  <!-- 1. Kid screen: no pricing, redirects them to ask parents -->
+  <div class="pwall" id="paywall-kid">
+    <div class="pwall-card">
+      <div class="pwall-emoji-big">🔒</div>
+      <div class="pwall-title">هذه اللعبة محميّة بكنز سحري!</div>
+      <div class="pwall-sub">🦉 اطلب من ماما أو بابا فتح كل الكنوز</div>
+      <button class="pwall-btn pwall-btn-primary" id="paywall-to-parent">
+        👨‍👩‍👧 اضغط هنا للأهل
+      </button>
+      <button class="pwall-btn pwall-btn-ghost" data-paywall-close>إغلاق</button>
+    </div>
+  </div>
+
+  <!-- 2. Parent screen: real pricing + Stripe Checkout -->
+  <div class="pwall" id="paywall-parent">
+    <div class="pwall-card pwall-card-parent">
+      <button class="pwall-close-x" data-paywall-close aria-label="Close">✕</button>
+      <div class="pwall-emoji-big">🌟</div>
+      <div class="pwall-title text-ar">النسخة المميّزة</div>
+      <div class="pwall-brand text-en">BrightMinds Premium</div>
+      <div class="pwall-sub">فعّل التعلّم الكامل لطفلك</div>
+
+      <ul class="pwall-features">
+        <li>✅ كل 12 لعبة تعليمية</li>
+        <li>✅ تقارير تقدّم تفصيلية</li>
+        <li>✅ بدون إعلانات إطلاقاً</li>
+        <li>✅ يعمل أوفلاين</li>
+      </ul>
+
+      <button class="pwall-plan pwall-plan-yearly" id="paywall-yearly">
+        <div class="pwall-plan-badge">⭐ الأكثر شعبية — وفّر 51%</div>
+        <div class="pwall-plan-name">سنوي</div>
+        <div class="pwall-plan-price">$29<small>/سنة</small></div>
+        <div class="pwall-plan-permonth">فقط $2.42/شهرياً</div>
+      </button>
+
+      <button class="pwall-plan pwall-plan-monthly" id="paywall-monthly">
+        <div class="pwall-plan-name">شهري</div>
+        <div class="pwall-plan-price">$4.99<small>/شهر</small></div>
+      </button>
+
+      <div class="pwall-trial">🎁 تجربة 7 أيام مجاناً • إلغاء أيّ وقت</div>
+
+      <button class="pwall-btn pwall-btn-ghost" data-paywall-close>ربّما لاحقاً</button>
+
+      <button class="pwall-manage" id="paywall-manage" style="display:none">
+        إدارة اشتراكي
+      </button>
+    </div>
+  </div>
+
+  <!-- Welcome toast after successful subscription -->
+  <div class="premium-welcome" id="premium-welcome">
+    <span>🎉</span> تم تفعيل النسخة المميّزة! استمتع بكل الألعاب
+  </div>
+
+  <!-- ═══════════ DEVELOPER DEBUG PANEL ═══════════ -->
+  <div class="live-analytics-overlay" id="debug-overlay" hidden>
+    <div class="live-analytics-panel">
+      <div class="live-analytics-header">
+        <div>
+          <div class="live-analytics-title">Developer Debug Mode</div>
+          <div class="live-analytics-sub">يتحدّث كل 3 ثوان</div>
+        </div>
+        <button type="button" class="live-analytics-close" id="debug-close" aria-label="إغلاق">✕</button>
+      </div>
+      <div id="debug-status-grid"></div>
+      <div class="live-analytics-section-title" style="margin-top:16px">تشخيص الصوت</div>
+      <div id="debug-voice"></div>
+      <div class="live-analytics-section-title" style="margin-top:16px">آخر ٢٠ حدثاً</div>
+      <div class="live-analytics-list" id="debug-events"></div>
+      <div class="live-analytics-section-title" style="margin-top:16px">أخطاء Console الأخيرة</div>
+      <div class="live-analytics-list" id="debug-errors"></div>
+      <div class="live-analytics-section-title" style="margin-top:16px">حالة الجلسة</div>
+      <div id="debug-state"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ LIVE ANALYTICS OVERLAY ═══════════ -->
+  <div class="live-analytics-overlay" id="live-analytics-overlay" hidden>
+    <div class="live-analytics-panel">
+      <div class="live-analytics-header">
+        <div>
+          <div class="live-analytics-title">الإحصائيات الحية</div>
+          <div class="live-analytics-sub">يتحدّث كل ٥ ثواني</div>
+        </div>
+        <button type="button" class="live-analytics-close" id="live-analytics-close" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="live-analytics-counts" id="live-analytics-counts"></div>
+      <div class="live-analytics-section-title">آخر الأحداث</div>
+      <div class="live-analytics-list" id="live-analytics-list"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════ PARENT PIN MODAL ═══════════ -->
+  <div class="parentpin-overlay" id="parentpin-modal">
+    <div class="parentpin-card">
+      <div class="parentpin-emoji">🔒</div>
+      <div class="parentpin-title">أدخل الرمز السرّي للأهل</div>
+      <div class="parentpin-subtitle">…</div>
+      <input type="tel" inputmode="numeric" maxlength="4"
+             pattern="[0-9]*" autocomplete="off"
+             class="parentpin-input" placeholder="• • • •" />
+      <div class="parentpin-error"></div>
+      <div class="parentpin-actions">
+        <button type="button" class="parentpin-cancel">إلغاء</button>
+        <button type="button" class="parentpin-submit">تأكيد</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="digits.js"></script>
+  <script src="sounds.js"></script>
+  <script src="cloudvoice.js"></script>
+  <script src="mascot.js"></script>
+  <script src="achievements.js"></script>
+  <script src="addition.js"></script>
+  <script src="letters.js"></script>
+  <script src="memory.js"></script>
+  <script src="findletter.js"></script>
+  <script src="colorhunt.js"></script>
+  <script src="wordbuilder.js"></script>
+  <script src="maze.js"></script>
+  <script src="puzzle.js"></script>
+  <script src="shop.js"></script>
+  <script src="science.js"></script>
+  <script src="story.js"></script>
+  <script src="parentpin.js"></script>
+  <script src="analytics.js"></script>
+  <script src="premium.js"></script>
+  <script src="paywall.js"></script>
+  <script src="teacher.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
