@@ -352,7 +352,7 @@ if (btnInstallVoice) {
 document.querySelectorAll('.lang-card').forEach(btn => {
   btn.addEventListener('click', () => {
     Sound.init(); Sound.resume(); Sound.tap();
-    if (window.track) window.track('language_selected', { lang: btn.dataset.lang });
+    if (window.Analytics) Analytics.track(Analytics.EVENTS.LANGUAGE_CHANGED, { lang: btn.dataset.lang });
     state.language = btn.dataset.lang;
     document.querySelectorAll('.lang-card').forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
@@ -438,9 +438,12 @@ document.getElementById('btn-go-lesson').addEventListener('click', () => {
   state.session.stars = 0;
   state.session.score = 0;
   state.session.correctCount = 0;
+  state.session._startMs = Date.now();
   state.profile.sessionsPlayed++;
   updateStreak();
   saveProfile();
+  // Track full-session start (different from per-exercise start)
+  if (window.Analytics) Analytics.track(Analytics.EVENTS.LESSON_STARTED, { subject: state.subject });
   showScreen('lesson');
 });
 
@@ -568,7 +571,7 @@ document.querySelectorAll('.subject').forEach(el => {
     // NEW Premium gate (Stripe-based, replaces old .premium class flow).
     // Free subjects pass through; locked ones show the kid-friendly paywall.
     if (typeof Premium !== 'undefined' && Premium.isLocked(subject) && !state.profile.devMode) {
-      if (window.track) window.track('locked_subject_clicked', { subject });
+      if (window.Analytics) Analytics.track(Analytics.EVENTS.LOCKED_SUBJECT_CLICKED, { subject });
       Paywall.showKid();
       return;
     }
@@ -638,9 +641,11 @@ function applyOwnerModeUI() {
 // Parent button → gate with 4-digit PIN, then open dashboard
 document.getElementById('parent-btn')?.addEventListener('click', async () => {
   Sound.init(); Sound.tap();
-  if (window.track) window.track('parent_btn_clicked');
+  if (window.Analytics) Analytics.track(Analytics.EVENTS.PARENT_BTN_CLICKED);
   const ok = await ParentPIN.prompt();
-  if (window.track) window.track(ok ? 'parent_unlocked' : 'parent_pin_cancelled');
+  if (window.Analytics) {
+    Analytics.track(ok ? Analytics.EVENTS.PARENT_UNLOCKED : Analytics.EVENTS.PARENT_PIN_CANCELLED);
+  }
   if (ok) showScreen('parent');
 });
 
@@ -649,7 +654,7 @@ document.getElementById('parent-btn')?.addEventListener('click', async () => {
 // ════════════════════════════════════════════════════════════
 function openSettings() {
   Sound.init(); Sound.tap();
-  if (window.track) window.track('settings_opened');
+  if (window.Analytics) Analytics.track(Analytics.EVENTS.SETTINGS_OPENED);
   renderSettings();
   document.getElementById('settings-panel').classList.add('show');
   document.getElementById('settings-backdrop').classList.add('show');
@@ -999,7 +1004,7 @@ document.getElementById('paywall-cta')?.addEventListener('click', () => {
 // ════════════════════════════════════════════════════════════
 function initLesson() {
   // Track exercise start (subject only — no personal data)
-  if (window.track) window.track('exercise_started', {
+  if (window.Analytics) Analytics.track(Analytics.EVENTS.EXERCISE_STARTED, {
     subject: state.subject,
     index: state.session.current,
     total: state.session.total
@@ -2964,7 +2969,7 @@ function finishLesson() {
 
   // Track exercise completion
   const durationSec = Math.round((Date.now() - (state._exerciseStartMs || Date.now())) / 1000);
-  if (window.track) window.track('exercise_completed', {
+  if (window.Analytics) Analytics.track(Analytics.EVENTS.EXERCISE_COMPLETED, {
     subject: state.subject,
     duration_sec: durationSec,
     index: state.session.current,
@@ -3083,6 +3088,21 @@ function showSessionEnd() {
   setTimeout(() => Sound.applause(), 900);
   // One more achievement check at end of full session
   checkAndUnlockBadges();
+
+  // Track full-lesson completion (key conversion metric)
+  if (window.Analytics) {
+    const durationMin = state.session._startMs
+      ? Math.round((Date.now() - state.session._startMs) / 60000)
+      : 0;
+    Analytics.track(Analytics.EVENTS.LESSON_COMPLETED, {
+      subject: state.subject,
+      score: state.session.score,
+      stars: state.session.stars,
+      correct: state.session.correctCount,
+      total: state.session.total,
+      duration_min: durationMin,
+    });
+  }
 
   const overlay = document.getElementById('session-end-overlay');
   document.getElementById('stat-stars').textContent = state.session.stars;
@@ -3323,6 +3343,10 @@ function finishSplash() {
 const ONB_STEPS = ['welcome', 'name', 'age', 'level', 'parent'];
 
 function gotoOnbStep(step) {
+  if (window.Analytics) {
+    if (step === 'welcome') Analytics.track(Analytics.EVENTS.ONBOARDING_STARTED);
+    Analytics.track(Analytics.EVENTS.ONBOARDING_STEP, { step });
+  }
   showScreen('onb-' + step);
   // Sync UI values into the current step
   if (step === 'name') {
@@ -3352,7 +3376,7 @@ function finishOnboarding() {
   // Default the gender (used by parent avatar) — not asked during onb on purpose
   if (!state.childGender) state.childGender = 'boy';
   saveProfile();
-  if (window.track) window.track('onboarding_completed');
+  if (window.Analytics) Analytics.track(Analytics.EVENTS.ONBOARDING_COMPLETED);
   showScreen('setup');
 }
 

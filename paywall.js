@@ -6,22 +6,30 @@
 const Paywall = {
   /** Show the kid-friendly version (when a child taps a locked game) */
   showKid() {
-    if (window.track) window.track('paywall_kid_shown');
+    if (window.Analytics) Analytics.track(Analytics.EVENTS.PAYWALL_OPENED, { view: 'kid' });
     document.getElementById('paywall-kid')?.classList.add('show');
     document.getElementById('paywall-parent')?.classList.remove('show');
+    this._lastView = 'kid';
   },
 
   /** Show the parent version (real pricing + Stripe button) */
   showParent(trigger = 'manual') {
-    if (window.track) window.track('paywall_parent_shown', { trigger });
+    if (window.Analytics) Analytics.track(Analytics.EVENTS.PAYWALL_OPENED, { view: 'parent', trigger });
     document.getElementById('paywall-kid')?.classList.remove('show');
     document.getElementById('paywall-parent')?.classList.add('show');
+    this._lastView = 'parent';
   },
 
   hide() {
+    if (window.Analytics && this._lastView) {
+      Analytics.track(Analytics.EVENTS.PAYWALL_CLOSED, { view: this._lastView });
+      this._lastView = null;
+    }
     document.getElementById('paywall-kid')?.classList.remove('show');
     document.getElementById('paywall-parent')?.classList.remove('show');
   },
+
+  _lastView: null,
 };
 
 // Wire up buttons once DOM is ready

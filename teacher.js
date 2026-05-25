@@ -96,7 +96,7 @@ const TeacherFeedback = {
     try { Sound?.phaseComplete?.(); } catch (_) {}
     // 2) teacher voice (350ms later so sound doesn't mask speech)
     setTimeout(() => this._speak(phrase, lang), 350);
-    if (window.track) window.track('teacher_feedback', { kind: 'correct' });
+    if (window.Analytics) Analytics.track(Analytics.EVENTS.CORRECT_ANSWER, { subject: window.state?.subject });
   },
 
   /**
@@ -110,7 +110,7 @@ const TeacherFeedback = {
     const phrase = this._pick(this.WRONG_PHRASES[lang] || this.WRONG_PHRASES.ar, 'wrong');
     try { Sound?.wrongTap?.(); } catch (_) {}
     setTimeout(() => this._speak(phrase, lang), 350);
-    if (window.track) window.track('teacher_feedback', { kind: 'wrong' });
+    if (window.Analytics) Analytics.track(Analytics.EVENTS.WRONG_ANSWER, { subject: window.state?.subject });
   },
 
   /**

@@ -85,12 +85,14 @@ const Premium = {
       });
       const data = await r.json();
       if (data.url) {
-        if (window.track) window.track('checkout_started', { plan });
+        if (window.Analytics) Analytics.track(Analytics.EVENTS.CHECKOUT_STARTED, { plan });
         window.location.href = data.url;
       } else {
+        if (window.Analytics) Analytics.track(Analytics.EVENTS.SUBSCRIPTION_FAILED, { reason: 'no_url', plan });
         alert('فشل بدء الدفع — حاول مرّة أخرى. ' + (data.error || ''));
       }
     } catch (e) {
+      if (window.Analytics) Analytics.track(Analytics.EVENTS.SUBSCRIPTION_FAILED, { reason: 'network', plan });
       alert('فشل الاتصال بخادم الدفع. تأكّد من الإنترنت.');
     }
   },
@@ -125,7 +127,10 @@ const Premium = {
       // Clean URL
       window.history.replaceState({}, '', window.location.pathname);
       if (ok) {
-        if (window.track) window.track('subscription_activated');
+        if (window.Analytics) {
+          const planType = this._load().planType || 'unknown';
+          Analytics.track(Analytics.EVENTS.SUBSCRIPTION_STARTED, { plan: planType });
+        }
         this._showWelcome();
         if (typeof applyPremiumLocks === 'function') applyPremiumLocks();
         return true;
