@@ -17,6 +17,14 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
+  // SECURITY: reject calls from non-canonical hosts (defence in depth even
+  // if duplicate Vercel projects are still alive)
+  const host = req.headers.host || '';
+  const allowedHosts = ['brightminds-app.vercel.app', 'brightminds.kids', 'www.brightminds.kids', 'localhost', '127.0.0.1'];
+  if (!allowedHosts.some(h => host === h || host.startsWith(h + ':'))) {
+    return res.status(403).json({ error: 'Forbidden: non-canonical host' });
+  }
+
   try {
     const { plan } = req.body || {};
     const priceId = plan === 'yearly'
@@ -27,7 +35,11 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Price ID not configured' });
     }
 
-    const origin = req.headers.origin || `https://${req.headers.host}`;
+    // SECURITY: never trust req.headers.host — always redirect to canonical.
+    // Prevents a duplicate Vercel alias from completing a checkout flow that
+    // returns the user to the wrong origin.
+    const CANONICAL_ORIGIN = process.env.CANONICAL_ORIGIN || 'https://brightminds-app.vercel.app';
+    const origin = CANONICAL_ORIGIN;
 
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
