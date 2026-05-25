@@ -3,7 +3,7 @@
 // Cache-first for static assets, network-first for the HTML shell.
 // Bumping CACHE_VERSION clears all old caches on next load.
 // ════════════════════════════════════════════════════════════
-const CACHE_VERSION = 'brightminds-v40';
+const CACHE_VERSION = 'brightminds-v41';
 
 // Core files that must be available offline (the app shell)
 const CORE_ASSETS = [
