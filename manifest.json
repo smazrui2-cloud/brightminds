@@ -4,12 +4,13 @@
   "description": "تطبيق تعليمي تفاعلي للأطفال 5-13 سنة — رياضيات، حروف، ذاكرة، ألوان، ألغاز وأكثر",
   "lang": "ar",
   "dir": "rtl",
-  "start_url": "./",
-  "scope": "./",
+  "start_url": "/",
+  "scope": "/",
+  "id": "/?source=pwa",
   "display": "standalone",
   "orientation": "portrait",
-  "theme_color": "#DBEAFE",
-  "background_color": "#DBEAFE",
+  "theme_color": "#F8FAFC",
+  "background_color": "#F8FAFC",
   "categories": ["education", "kids", "games"],
   "icons": [
     {

@@ -11,6 +11,11 @@
 //   • Lazy            → defer-loaded script + queue events until umami ready
 // ════════════════════════════════════════════════════════════
 const Analytics = {
+  // ─── Identity (helps deduplicate cross-deployment tracking) ───
+  APP_ID:        'brightminds',
+  APP_VERSION:   'v34',
+  CANONICAL_HOST: 'brightminds-app.vercel.app',
+
   // ─── Event name constants (use these — never hand-typed strings) ───
   EVENTS: {
     // App lifecycle
@@ -103,7 +108,13 @@ const Analytics = {
   track(event, props) {
     if (!this._enabled) return;
     try {
-      const safe = this._sanitize(props);
+      // Stamp every event with app identity so cross-deployment events are
+      // distinguishable in the same Umami account.
+      const safe = {
+        app_id: this.APP_ID,
+        v: this.APP_VERSION,
+        ...this._sanitize(props)
+      };
       this._queue.push({ event, props: safe });
       if (this._queue.length >= this._MAX_QUEUE) this._flush();
       else this._scheduleFlush();

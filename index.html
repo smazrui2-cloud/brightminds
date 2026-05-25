@@ -2,6 +2,15 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
+  <!-- Canonical host redirect: force every *.vercel.app alias to the official
+       host so Umami / Stripe / PWA install all share ONE origin. -->
+  <script>(function(){
+    var CANONICAL = 'brightminds-app.vercel.app';
+    var h = location.hostname;
+    if (h !== CANONICAL && /\.vercel\.app$/.test(h)) {
+      location.replace('https://' + CANONICAL + location.pathname + location.search + location.hash);
+    }
+  })();</script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#FFB3DE" />
   <title>BrightMinds — تطبيق تعليمي ذكي للأطفال 5-13 سنة</title>
@@ -62,8 +71,12 @@
   }
   </script>
 
-  <!-- ═══════════ ANALYTICS (Umami — cookieless, kid-safe) ═══════════ -->
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="37c4acbf-099a-4d71-99a7-bff949aecfe1"></script>
+  <!-- ═══════════ ANALYTICS (Umami — cookieless, kid-safe) ═══════════
+       data-domains: only count events from the canonical host. -->
+  <script defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="37c4acbf-099a-4d71-99a7-bff949aecfe1"
+          data-domains="brightminds-app.vercel.app,brightminds.kids"></script>
 </head>
 <body>
   <div id="app">
