@@ -824,6 +824,7 @@
 
         <div class="settings-section">
           <button class="settings-upgrade" id="settings-upgrade">الترقية للنسخة المميّزة</button>
+          <button type="button" class="settings-pill" id="settings-live-analytics" style="margin-top:8px">الإحصائيات الحية</button>
         </div>
 
         <div class="settings-section">
@@ -833,9 +834,9 @@
             <div class="settings-about-sub">تطبيق تعليمي ذكي للأطفال 5-13 سنة</div>
             <div class="settings-about-sub">© 2026 BrightMinds</div>
             <div class="settings-legal-links">
-              <a href="privacy.html" target="_blank" rel="noopener">🔒 الخصوصية</a>
+              <a href="privacy" target="_blank" rel="noopener">🔒 الخصوصية</a>
               <span class="legal-sep">·</span>
-              <a href="terms.html" target="_blank" rel="noopener">📜 الشروط</a>
+              <a href="terms" target="_blank" rel="noopener">📜 الشروط</a>
               <span class="legal-sep">·</span>
               <a href="mailto:support@brightminds.kids">✉️ الدعم</a>
             </div>
@@ -904,6 +905,22 @@
   <!-- Welcome toast after successful subscription -->
   <div class="premium-welcome" id="premium-welcome">
     <span>🎉</span> تم تفعيل النسخة المميّزة! استمتع بكل الألعاب
+  </div>
+
+  <!-- ═══════════ LIVE ANALYTICS OVERLAY ═══════════ -->
+  <div class="live-analytics-overlay" id="live-analytics-overlay" hidden>
+    <div class="live-analytics-panel">
+      <div class="live-analytics-header">
+        <div>
+          <div class="live-analytics-title">الإحصائيات الحية</div>
+          <div class="live-analytics-sub">يتحدّث كل ٥ ثواني</div>
+        </div>
+        <button type="button" class="live-analytics-close" id="live-analytics-close" aria-label="إغلاق">✕</button>
+      </div>
+      <div class="live-analytics-counts" id="live-analytics-counts"></div>
+      <div class="live-analytics-section-title">آخر الأحداث</div>
+      <div class="live-analytics-list" id="live-analytics-list"></div>
+    </div>
   </div>
 
   <!-- ═══════════ PARENT PIN MODAL ═══════════ -->

@@ -791,6 +791,105 @@ document.getElementById('spc-edit')?.addEventListener('click', () => {
   openSettings();
 });
 
+// ════════════════════════════════════════════════════════════
+// LIVE ANALYTICS MODE — real-time event viewer (Settings button)
+// Reads from Analytics local history, polls every 5s. No backend.
+// ════════════════════════════════════════════════════════════
+const LiveAnalytics = {
+  _timer: null,
+  _POLL_MS: 5000,
+  _LABELS: {
+    app_opened: 'فتح التطبيق',
+    onboarding_started: 'بدء الإعداد',
+    onboarding_completed: 'إكمال الإعداد',
+    lesson_started: 'بدء جلسة',
+    lesson_completed: 'إكمال جلسة',
+    exercise_started: 'بدء تمرين',
+    exercise_completed: 'إكمال تمرين',
+    correct_answer: 'إجابة صحيحة',
+    wrong_answer: 'إجابة خاطئة',
+    paywall_opened: 'فتح Paywall',
+    checkout_started: 'بدء الدفع',
+    subscription_started: 'اشتراك جديد',
+    parent_unlocked: 'فتح لوحة الأهل',
+    settings_opened: 'فتح الإعدادات',
+  },
+
+  open() {
+    const ov = document.getElementById('live-analytics-overlay');
+    if (!ov) return;
+    ov.hidden = false;
+    this._render();
+    this._timer = setInterval(() => this._render(), this._POLL_MS);
+  },
+
+  close() {
+    const ov = document.getElementById('live-analytics-overlay');
+    if (ov) ov.hidden = true;
+    clearInterval(this._timer);
+    this._timer = null;
+  },
+
+  _render() {
+    if (!window.Analytics) return;
+    const summary = Analytics.getSummary();
+    const recent = Analytics.getRecent(20);
+
+    // Counts grid (4 key events)
+    const counts = document.getElementById('live-analytics-counts');
+    if (counts) {
+      const items = [
+        { k: 'app_opened',       v: summary.app_opened },
+        { k: 'lesson_started',   v: summary.lesson_started },
+        { k: 'lesson_completed', v: summary.lesson_completed },
+        { k: 'paywall_opened',   v: summary.paywall_opened },
+      ];
+      counts.innerHTML = items.map(i => `
+        <div class="live-count">
+          <div class="lc-num">${i.v}</div>
+          <div class="lc-lbl">${this._LABELS[i.k] || i.k}</div>
+        </div>
+      `).join('');
+    }
+
+    // Recent events list
+    const list = document.getElementById('live-analytics-list');
+    if (list) {
+      if (recent.length === 0) {
+        list.innerHTML = '<div class="live-empty">لا توجد بيانات بعد</div>';
+      } else {
+        list.innerHTML = recent.map(e => {
+          const ago = this._timeAgo(e.ts);
+          const lbl = this._LABELS[e.event] || e.event;
+          const sub = e.props?.subject ? ` · ${e.props.subject}` : '';
+          return `<div class="live-event">
+            <span class="le-name">${lbl}${sub}</span>
+            <span class="le-time">${ago}</span>
+          </div>`;
+        }).join('');
+      }
+    }
+  },
+
+  _timeAgo(ts) {
+    const s = Math.round((Date.now() - ts) / 1000);
+    if (s < 60) return s + ' ث';
+    if (s < 3600) return Math.round(s / 60) + ' د';
+    return Math.round(s / 3600) + ' س';
+  },
+};
+
+document.getElementById('settings-live-analytics')?.addEventListener('click', () => {
+  Sound.tap?.();
+  LiveAnalytics.open();
+});
+document.getElementById('live-analytics-close')?.addEventListener('click', () => LiveAnalytics.close());
+// Close on backdrop click
+document.getElementById('live-analytics-overlay')?.addEventListener('click', (e) => {
+  if (e.target.id === 'live-analytics-overlay') LiveAnalytics.close();
+});
+window.LiveAnalytics = LiveAnalytics;
+
 // "Upgrade to Premium" button in settings → opens the parent paywall
 document.getElementById('settings-upgrade')?.addEventListener('click', () => {
   Sound.tap();
@@ -872,6 +971,47 @@ function renderParentDashboard() {
       </div>
     </div>
 
+    ${(() => {
+      // Parent Home — app usage analytics (from Analytics local history)
+      const s = window.Analytics?.getSummary?.() || { app_opened:0, lesson_completed:0, avg_lesson_min:0, top_subject:null };
+      const hasData = s.app_opened > 0 || s.lesson_completed > 0;
+      // Mock values shown only when no data yet — clearly labelled as "تجريبي"
+      const m = hasData ? s : { app_opened: 12, lesson_completed: 8, avg_lesson_min: 7.5, top_subject: 'multiply', mock: true };
+      const topName = m.top_subject ? t('subj.' + (
+        m.top_subject === 'find-letter'  ? 'find_letter' :
+        m.top_subject === 'color-hunt'   ? 'colors'      :
+        m.top_subject === 'word-builder' ? 'word_builder':
+        m.top_subject === 'money-shop'   ? 'shop'        : m.top_subject
+      )) : '—';
+      return `
+        <div class="parent-section-title">نشاط التطبيق${m.mock ? ' · بيانات تجريبية' : ''}</div>
+        <div class="parent-row">
+          <div class="parent-stat">
+            <div class="ps-value">${m.app_opened}</div>
+            <div class="ps-label">فتح التطبيق</div>
+          </div>
+          <div class="parent-stat">
+            <div class="ps-value">${m.lesson_completed}</div>
+            <div class="ps-label">درس مكتمل</div>
+          </div>
+          <div class="parent-stat">
+            <div class="ps-value">${m.avg_lesson_min}</div>
+            <div class="ps-label">دقيقة/جلسة</div>
+          </div>
+        </div>
+        <div class="parent-card">
+          <div class="pc-row">
+            <span class="pc-name">أكثر لعبة استخداماً</span>
+            <span class="pc-value">${topName}</span>
+          </div>
+        </div>
+        <button class="parent-action" id="parent-real-analytics" type="button"
+                style="background:transparent;border:none;color:var(--p-primary);padding:6px 0;font-size:var(--p-fs-sm);justify-content:center">
+          عرض الإحصائيات الحقيقية ←
+        </button>
+      `;
+    })()}
+
     <div class="parent-row">
       <div class="parent-stat">
         <div class="ps-value">${p.streak || 0}</div>
@@ -948,6 +1088,11 @@ function renderParentDashboard() {
       </div>
     `}
 
+    <button class="parent-action" id="parent-start-learning" type="button"
+            style="background:var(--p-primary);color:#fff;border:none;min-height:56px;justify-content:center;font-weight:700">
+      <span>ابدأ التعلم</span>
+    </button>
+
     <button class="parent-action" id="parent-open-settings" type="button">
       <span class="pa-icon">⚙️</span>
       <span>${t('parent.open_settings')}</span>
@@ -964,6 +1109,14 @@ function renderParentDashboard() {
   });
   document.getElementById('parent-open-settings')?.addEventListener('click', () => {
     openSettings();
+  });
+  document.getElementById('parent-start-learning')?.addEventListener('click', () => {
+    Sound.tap?.();
+    showScreen('setup');
+  });
+  document.getElementById('parent-real-analytics')?.addEventListener('click', () => {
+    Sound.tap?.();
+    window.open('https://cloud.umami.is/dashboard', '_blank', 'noopener');
   });
 }
 

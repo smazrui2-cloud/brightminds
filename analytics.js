@@ -65,6 +65,12 @@ const Analytics = {
   _FLUSH_MS: 1500,
   _MAX_QUEUE: 20,
 
+  // ─── Local event history (for in-app dashboards; never leaves device) ───
+  _HISTORY_KEY: 'brightminds.analytics.v1',
+  _MAX_HISTORY: 200,
+  _history: [],
+  _persistTimer: null,
+
   // Properties we never send — protects kid data even from bugs
   _BLOCKED_KEYS: new Set([
     'name', 'childName', 'fullName', 'email', 'phone',
@@ -74,6 +80,9 @@ const Analytics = {
 
   // ─── Initialization ───
   init() {
+    // Load prior event history so dashboards survive page refresh
+    this._loadHistory();
+
     // 0) Refuse tracking on non-canonical Vercel aliases
     //    (defense in depth — even if data-domains fails on Umami side)
     const host = location.hostname;
@@ -121,21 +130,67 @@ const Analytics = {
 
   // ─── Public API: track an event ───
   track(event, props) {
-    if (!this._enabled) return;
     try {
-      // Stamp every event with app identity so cross-deployment events are
-      // distinguishable in the same Umami account.
-      const safe = {
-        app_id: this.APP_ID,
-        v: this.APP_VERSION,
-        ...this._sanitize(props)
-      };
-      this._queue.push({ event, props: safe });
+      const safe = this._sanitize(props);
+      // Always record locally (for in-app dashboards, even if Umami disabled)
+      this._record(event, safe);
+      // Forward to Umami only if remote tracking is enabled
+      if (!this._enabled) return;
+      const stamped = { app_id: this.APP_ID, v: this.APP_VERSION, ...safe };
+      this._queue.push({ event, props: stamped });
       if (this._queue.length >= this._MAX_QUEUE) this._flush();
       else this._scheduleFlush();
     } catch (_) {
       // Never break the app because of analytics
     }
+  },
+
+  // ── Local event recording (always on, never leaves device) ──
+  _record(event, props) {
+    this._history.push({ event, props, ts: Date.now() });
+    if (this._history.length > this._MAX_HISTORY) this._history.shift();
+    clearTimeout(this._persistTimer);
+    this._persistTimer = setTimeout(() => {
+      try { localStorage.setItem(this._HISTORY_KEY, JSON.stringify(this._history)); } catch (_) {}
+    }, 1000);
+  },
+
+  _loadHistory() {
+    try {
+      const raw = localStorage.getItem(this._HISTORY_KEY);
+      if (raw) this._history = JSON.parse(raw) || [];
+    } catch (_) {}
+  },
+
+  // ── Public: aggregated summary for the parent home dashboard ──
+  getSummary() {
+    const counts = {};
+    const subjectCounts = {};
+    const durations = [];
+    for (const e of this._history) {
+      counts[e.event] = (counts[e.event] || 0) + 1;
+      if (e.event === 'lesson_started' && e.props?.subject) {
+        subjectCounts[e.props.subject] = (subjectCounts[e.props.subject] || 0) + 1;
+      }
+      if (e.event === 'lesson_completed' && typeof e.props?.duration_min === 'number') {
+        durations.push(e.props.duration_min);
+      }
+    }
+    return {
+      app_opened:        counts.app_opened        || 0,
+      lesson_started:    counts.lesson_started    || 0,
+      lesson_completed:  counts.lesson_completed  || 0,
+      paywall_opened:    counts.paywall_opened    || 0,
+      avg_lesson_min:    durations.length
+        ? Math.round(durations.reduce((a, b) => a + b, 0) / durations.length * 10) / 10
+        : 0,
+      top_subject:       Object.entries(subjectCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || null,
+    };
+  },
+
+  // Last N events for the live mode viewer
+  getRecent(limit = 30) {
+    return this._history.slice(-limit).reverse();
   },
 
   _scheduleFlush() {
