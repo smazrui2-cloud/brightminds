@@ -2,6 +2,20 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "brightminds-nine.vercel.app" }],
+      "destination": "https://brightminds-app.vercel.app/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "brightminds.vercel.app" }],
+      "destination": "https://brightminds-app.vercel.app/$1",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/audio/(.*).mp3",

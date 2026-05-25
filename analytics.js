@@ -74,6 +74,21 @@ const Analytics = {
 
   // ─── Initialization ───
   init() {
+    // 0) Refuse tracking on non-canonical Vercel aliases
+    //    (defense in depth — even if data-domains fails on Umami side)
+    const host = location.hostname;
+    const isVercelAlias = /\.vercel\.app$/.test(host);
+    const isCanonical = host === this.CANONICAL_HOST
+                     || host === 'brightminds.kids'
+                     || host === 'www.brightminds.kids'
+                     || host === 'localhost'
+                     || host.startsWith('127.0.0.1');
+    if (isVercelAlias && !isCanonical) {
+      this._enabled = false;
+      try { console.info('[Analytics] non-canonical host — tracking off'); } catch (_) {}
+      return;
+    }
+
     // 1) Respect Do Not Track (DNT) header
     const dnt = navigator.doNotTrack === '1'
              || window.doNotTrack === '1'

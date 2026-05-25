@@ -3,7 +3,7 @@
 // Cache-first for static assets, network-first for the HTML shell.
 // Bumping CACHE_VERSION clears all old caches on next load.
 // ════════════════════════════════════════════════════════════
-const CACHE_VERSION = 'brightminds-v35';
+const CACHE_VERSION = 'brightminds-v36';
 
 // Core files that must be available offline (the app shell)
 const CORE_ASSETS = [
@@ -39,7 +39,31 @@ const CORE_ASSETS = [
   './audio/manifest.json',
 ];
 
+// ── Canonical-host guard ──
+// If this SW happens to be installed on a duplicate Vercel alias (e.g.
+// brightminds-nine.vercel.app), it should self-unregister + wipe caches so
+// stale PWAs on those hosts can never serve old content.
+const CANONICAL_HOSTS = new Set([
+  'brightminds-app.vercel.app',
+  'brightminds.kids',
+  'www.brightminds.kids',
+  'localhost',
+  '127.0.0.1',
+]);
+const IS_CANONICAL = CANONICAL_HOSTS.has(self.location.hostname);
+
+async function selfDestruct() {
+  try {
+    const keys = await caches.keys();
+    await Promise.all(keys.map(k => caches.delete(k)));
+    await self.registration.unregister();
+    const clients = await self.clients.matchAll({ type: 'window' });
+    clients.forEach(c => c.navigate(c.url)); // force reload → triggers redirect
+  } catch (_) {}
+}
+
 self.addEventListener('install', (event) => {
+  if (!IS_CANONICAL) { event.waitUntil(selfDestruct()); return; }
   event.waitUntil(
     caches.open(CACHE_VERSION).then(cache => cache.addAll(CORE_ASSETS))
       .then(() => self.skipWaiting())
@@ -47,6 +71,7 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('activate', (event) => {
+  if (!IS_CANONICAL) { event.waitUntil(selfDestruct()); return; }
   // Remove any old caches from previous versions
   event.waitUntil(
     caches.keys().then(keys =>
