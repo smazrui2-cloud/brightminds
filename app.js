@@ -890,6 +890,138 @@ document.getElementById('live-analytics-overlay')?.addEventListener('click', (e)
 });
 window.LiveAnalytics = LiveAnalytics;
 
+// ════════════════════════════════════════════════════════════
+// DEVELOPER DEBUG PANEL — settings → Developer Debug Mode
+// ════════════════════════════════════════════════════════════
+const DebugPanel = {
+  _timer: null,
+  _POLL_MS: 3000,
+
+  open() {
+    const ov = document.getElementById('debug-overlay');
+    if (!ov) return;
+    ov.hidden = false;
+    this._render();
+    this._timer = setInterval(() => this._render(), this._POLL_MS);
+  },
+
+  close() {
+    document.getElementById('debug-overlay')?.setAttribute('hidden', '');
+    clearInterval(this._timer);
+    this._timer = null;
+  },
+
+  _render() {
+    if (!window.Analytics) return;
+    const s = Analytics.getSummary();
+    const recent = Analytics.getRecent(20);
+    const errors = Analytics.getErrors(20);
+
+    // ── Status grid (4 cards) ──
+    const grid = document.getElementById('debug-status-grid');
+    if (grid) {
+      grid.innerHTML = `
+        <div class="live-analytics-counts">
+          <div class="live-count"><div class="lc-num">${navigator.onLine ? 'متصل' : 'غير متصل'}</div><div class="lc-lbl">الشبكة</div></div>
+          <div class="live-count"><div class="lc-num">${s.app_opened}</div><div class="lc-lbl">فتح التطبيق</div></div>
+          <div class="live-count"><div class="lc-num">${s.lesson_completed}</div><div class="lc-lbl">دروس مكتملة</div></div>
+          <div class="live-count"><div class="lc-num">${errors.length}</div><div class="lc-lbl">أخطاء</div></div>
+        </div>
+      `;
+    }
+
+    // ── Recent events (uses same row style as LiveAnalytics) ──
+    const eventsEl = document.getElementById('debug-events');
+    if (eventsEl) {
+      eventsEl.innerHTML = recent.length === 0
+        ? '<div class="live-empty">لا توجد أحداث</div>'
+        : recent.map(e => {
+            const ago = Math.round((Date.now() - e.ts) / 1000);
+            const sub = e.props?.subject ? ` · ${e.props.subject}` : '';
+            return `<div class="live-event">
+              <span class="le-name">${e.event}${sub}</span>
+              <span class="le-time">${ago < 60 ? ago + ' ث' : Math.round(ago / 60) + ' د'}</span>
+            </div>`;
+          }).join('');
+    }
+
+    // ── Captured errors ──
+    const errEl = document.getElementById('debug-errors');
+    if (errEl) {
+      errEl.innerHTML = errors.length === 0
+        ? '<div class="live-empty">لا توجد أخطاء</div>'
+        : errors.map(e => {
+            const file = (e.src || '').split('/').pop() || '';
+            return `<div class="live-event" style="border-bottom-color:#FEE2E2">
+              <span class="le-name" style="color:#DC2626">${e.msg}</span>
+              <span class="le-time">${file ? file + ':' + e.line : ''}</span>
+            </div>`;
+          }).join('');
+    }
+
+    // ── Session state dump ──
+    const stateEl = document.getElementById('debug-state');
+    if (stateEl) {
+      const safeState = {
+        language: window.state?.language,
+        childAge: window.state?.childAge,
+        subject: window.state?.subject,
+        session_current: window.state?.session?.current,
+        session_total: window.state?.session?.total,
+        onboarded: window.state?.profile?.onboarded,
+        level: window.state?.profile?.level,
+        totalStars: window.state?.profile?.totalStars,
+        streak: window.state?.profile?.streak,
+        sessionsPlayed: window.state?.profile?.sessionsPlayed,
+        premium_active: typeof Premium !== 'undefined' && Premium.isActive(),
+      };
+      stateEl.innerHTML = `<pre style="background:var(--p-surface-2);padding:12px;border-radius:8px;font-size:12px;direction:ltr;overflow-x:auto;color:var(--p-text)">${JSON.stringify(safeState, null, 2)}</pre>`;
+    }
+  },
+};
+
+document.getElementById('settings-debug')?.addEventListener('click', () => {
+  Sound.tap?.();
+  DebugPanel.open();
+});
+document.getElementById('debug-close')?.addEventListener('click', () => DebugPanel.close());
+document.getElementById('debug-overlay')?.addEventListener('click', (e) => {
+  if (e.target.id === 'debug-overlay') DebugPanel.close();
+});
+
+// ════════════════════════════════════════════════════════════
+// Console helper — window.debugBrightMinds()
+// Prints app state + analytics summary + recent events to console
+// ════════════════════════════════════════════════════════════
+window.debugBrightMinds = function () {
+  const s = window.Analytics?.getSummary?.() || {};
+  const recent = window.Analytics?.getRecent?.(10) || [];
+  const errors = window.Analytics?.getErrors?.(5) || [];
+  const sessionState = {
+    language: window.state?.language,
+    subject: window.state?.subject,
+    childAge: window.state?.childAge,
+    onboarded: window.state?.profile?.onboarded,
+    level: window.state?.profile?.level,
+    totalStars: window.state?.profile?.totalStars,
+    streak: window.state?.profile?.streak,
+    sessionsPlayed: window.state?.profile?.sessionsPlayed,
+    premium: typeof Premium !== 'undefined' && Premium.isActive(),
+    online: navigator.onLine,
+  };
+  // Group for nicer DevTools display
+  /* eslint-disable no-console */
+  console.group('%c🔍 BrightMinds Debug', 'color:#8B5CF6;font-weight:bold;font-size:14px');
+  console.log('📊 Analytics summary:', s);
+  console.log('📜 Last 10 events:', recent);
+  console.log('❌ Last 5 errors:', errors);
+  console.log('🎮 Session state:', sessionState);
+  console.groupEnd();
+  /* eslint-enable no-console */
+  return { summary: s, recent, errors, state: sessionState };
+};
+window.DebugPanel = DebugPanel;
+
 // "Upgrade to Premium" button in settings → opens the parent paywall
 document.getElementById('settings-upgrade')?.addEventListener('click', () => {
   Sound.tap();

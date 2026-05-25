@@ -825,6 +825,7 @@
         <div class="settings-section">
           <button class="settings-upgrade" id="settings-upgrade">الترقية للنسخة المميّزة</button>
           <button type="button" class="settings-pill" id="settings-live-analytics" style="margin-top:8px">الإحصائيات الحية</button>
+          <button type="button" class="settings-pill" id="settings-debug" style="margin-top:8px">Developer Debug Mode</button>
         </div>
 
         <div class="settings-section">
@@ -905,6 +906,26 @@
   <!-- Welcome toast after successful subscription -->
   <div class="premium-welcome" id="premium-welcome">
     <span>🎉</span> تم تفعيل النسخة المميّزة! استمتع بكل الألعاب
+  </div>
+
+  <!-- ═══════════ DEVELOPER DEBUG PANEL ═══════════ -->
+  <div class="live-analytics-overlay" id="debug-overlay" hidden>
+    <div class="live-analytics-panel">
+      <div class="live-analytics-header">
+        <div>
+          <div class="live-analytics-title">Developer Debug Mode</div>
+          <div class="live-analytics-sub">يتحدّث كل 3 ثوان</div>
+        </div>
+        <button type="button" class="live-analytics-close" id="debug-close" aria-label="إغلاق">✕</button>
+      </div>
+      <div id="debug-status-grid"></div>
+      <div class="live-analytics-section-title" style="margin-top:16px">آخر ٢٠ حدثاً</div>
+      <div class="live-analytics-list" id="debug-events"></div>
+      <div class="live-analytics-section-title" style="margin-top:16px">أخطاء Console الأخيرة</div>
+      <div class="live-analytics-list" id="debug-errors"></div>
+      <div class="live-analytics-section-title" style="margin-top:16px">حالة الجلسة</div>
+      <div id="debug-state"></div>
+    </div>
   </div>
 
   <!-- ═══════════ LIVE ANALYTICS OVERLAY ═══════════ -->

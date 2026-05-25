@@ -71,6 +71,10 @@ const Analytics = {
   _history: [],
   _persistTimer: null,
 
+  // ─── Console error buffer (for Debug Panel) ───
+  _ERROR_BUFFER_MAX: 30,
+  _errors: [],
+
   // Properties we never send — protects kid data even from bugs
   _BLOCKED_KEYS: new Set([
     'name', 'childName', 'fullName', 'email', 'phone',
@@ -82,6 +86,8 @@ const Analytics = {
   init() {
     // Load prior event history so dashboards survive page refresh
     this._loadHistory();
+    // Capture runtime errors for the Debug Panel
+    this._installErrorCapture();
 
     // 0) Refuse tracking on non-canonical Vercel aliases
     //    (defense in depth — even if data-domains fails on Umami side)
@@ -191,6 +197,21 @@ const Analytics = {
   // Last N events for the live mode viewer
   getRecent(limit = 30) {
     return this._history.slice(-limit).reverse();
+  },
+
+  // Last N captured errors (for Debug Panel)
+  getErrors(limit = 20) {
+    return this._errors.slice(-limit).reverse();
+  },
+
+  // Capture runtime errors so the debug panel can surface them
+  _installErrorCapture() {
+    const push = (msg, src, line) => {
+      this._errors.push({ msg: String(msg).slice(0, 200), src, line, ts: Date.now() });
+      if (this._errors.length > this._ERROR_BUFFER_MAX) this._errors.shift();
+    };
+    window.addEventListener('error', (e) => push(e.message, e.filename, e.lineno));
+    window.addEventListener('unhandledrejection', (e) => push('PROMISE: ' + (e.reason?.message || e.reason), '', 0));
   },
 
   _scheduleFlush() {
