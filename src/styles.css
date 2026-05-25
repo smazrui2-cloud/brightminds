@@ -1,0 +1,17 @@
+/* Styles are shared with the POC. During migration we just import the
+   existing poc/styles.css so the React app inherits the same look.
+   When the React port is feature-complete, copy the rules in and delete
+   this @import. */
+@import url('/poc/styles.css');
+
+/* Game stub placeholder */
+.game-stub {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--hint);
+  padding: 40px;
+  text-align: center;
+}

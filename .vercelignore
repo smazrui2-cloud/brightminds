@@ -1,0 +1,29 @@
+# Exclude everything outside poc/ from Vercel deployment.
+# The vercel.json sets outputDirectory: "poc" so only that ships.
+
+node_modules
+poc/node_modules
+poc/server.js
+
+# Unused React scaffold (kept for future migration, not deployed)
+src/
+vite.config.js
+index.html
+package.json
+package-lock.json
+
+# Old Flutter code from previous attempt (NOT used)
+lib/
+
+# Audio generation script (build-time only)
+tools/
+
+# Dev artifacts
+.claude/
+.git/
+.DS_Store
+*.bak
+*.tmp
+*.log
+README.md
+ONBOARDING.md
