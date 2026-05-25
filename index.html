@@ -316,47 +316,60 @@
       </div>
 
       <div class="setup-content">
-        <div>
-          <div class="label" data-t="setup.name">اسم الطفل (اختياري)</div>
-          <input type="text" id="child-name-input" class="name-input" maxlength="30" data-t-attr="placeholder|setup.name_placeholder" placeholder="مثلاً: أحمد" />
-        </div>
-        <div>
-          <div class="label" data-t="setup.gender">جنس الطفل</div>
-          <div class="gender-row">
-            <button class="gender-card boy" data-gender="boy">
-              <div class="gender-avatar">
-                <span class="g-deco g-deco-tl">⭐</span>
-                <span class="g-deco g-deco-tr">📘</span>
-                <span class="g-main">👨‍🎓</span>
-                <span class="g-deco g-deco-br">✨</span>
-              </div>
-              <div class="gender-name" data-t="setup.boy">ولد</div>
-            </button>
-            <button class="gender-card girl" data-gender="girl">
-              <div class="gender-avatar">
-                <span class="g-deco g-deco-tl">🎀</span>
-                <span class="g-deco g-deco-tr">🌸</span>
-                <span class="g-main">👩‍🎓</span>
-                <span class="g-deco g-deco-br">💖</span>
-              </div>
-              <div class="gender-name" data-t="setup.girl">بنت</div>
-            </button>
+        <!-- Profile chip (visible only after onboarding) — shows current child
+             info compactly and links to settings for editing. -->
+        <div class="setup-profile-chip" id="setup-profile-chip" hidden>
+          <div class="spc-info">
+            <span class="spc-name" id="spc-name">—</span>
+            <span class="spc-meta" id="spc-meta">—</span>
           </div>
+          <button type="button" class="spc-edit" id="spc-edit">تعديل</button>
         </div>
-        <div>
-          <div class="label" data-t="setup.age">عمر الطفل</div>
-          <div class="age-card compact">
-            <div class="age-header">
-              <div class="age-avatar" id="age-avatar">🧒</div>
-              <div class="age-display">
-                <span id="age-value">7</span>
-                <span class="unit" data-t="setup.years"> سنوات</span>
-              </div>
+
+        <!-- Legacy profile fields — shown ONLY for users who skipped onboarding -->
+        <div class="setup-legacy-profile" id="setup-legacy-profile">
+          <div>
+            <div class="label" data-t="setup.name">اسم الطفل (اختياري)</div>
+            <input type="text" id="child-name-input" class="name-input" maxlength="30" data-t-attr="placeholder|setup.name_placeholder" placeholder="مثلاً: أحمد" />
+          </div>
+          <div>
+            <div class="label" data-t="setup.gender">جنس الطفل</div>
+            <div class="gender-row">
+              <button class="gender-card boy" data-gender="boy">
+                <div class="gender-avatar">
+                  <span class="g-deco g-deco-tl">⭐</span>
+                  <span class="g-deco g-deco-tr">📘</span>
+                  <span class="g-main">👨‍🎓</span>
+                  <span class="g-deco g-deco-br">✨</span>
+                </div>
+                <div class="gender-name" data-t="setup.boy">ولد</div>
+              </button>
+              <button class="gender-card girl" data-gender="girl">
+                <div class="gender-avatar">
+                  <span class="g-deco g-deco-tl">🎀</span>
+                  <span class="g-deco g-deco-tr">🌸</span>
+                  <span class="g-main">👩‍🎓</span>
+                  <span class="g-deco g-deco-br">💖</span>
+                </div>
+                <div class="gender-name" data-t="setup.girl">بنت</div>
+              </button>
             </div>
-            <div class="age-slider-wrap">
-              <input type="range" id="age-slider" class="age-slider" min="5" max="13" value="7" step="1" />
-              <div class="age-ticks">
-                <span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span>
+          </div>
+          <div>
+            <div class="label" data-t="setup.age">عمر الطفل</div>
+            <div class="age-card compact">
+              <div class="age-header">
+                <div class="age-avatar" id="age-avatar">🧒</div>
+                <div class="age-display">
+                  <span id="age-value">7</span>
+                  <span class="unit" data-t="setup.years"> سنوات</span>
+                </div>
+              </div>
+              <div class="age-slider-wrap">
+                <input type="range" id="age-slider" class="age-slider" min="5" max="13" value="7" step="1" />
+                <div class="age-ticks">
+                  <span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span>
+                </div>
               </div>
             </div>
           </div>

@@ -750,6 +750,47 @@ html[lang="en"] .parent-btn::after { content: 'Parents'; }
   font-weight: var(--p-fw-medium);
   margin-bottom: var(--p-space-2);
 }
+
+/* Profile chip — replaces the 3 redundant inputs for onboarded users */
+.setup-profile-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--p-space-3);
+  padding: var(--p-space-3) var(--p-space-4);
+  background: var(--p-surface);
+  border: 1px solid var(--p-border);
+  border-radius: var(--p-radius-md);
+  margin-bottom: var(--p-space-4);
+  box-shadow: var(--p-shadow-sm);
+}
+.setup-profile-chip[hidden] { display: none; }
+.spc-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.spc-name {
+  font-size: var(--p-fs-md);
+  font-weight: var(--p-fw-bold);
+  color: var(--p-text);
+}
+.spc-meta {
+  font-size: var(--p-fs-xs);
+  color: var(--p-text-muted);
+}
+.spc-edit {
+  flex-shrink: 0;
+  min-height: 56px;
+  padding: 0 18px;
+  background: var(--p-primary-soft);
+  color: var(--p-primary);
+  border: none;
+  border-radius: var(--p-radius-sm);
+  font-family: inherit;
+  font-size: var(--p-fs-sm);
+  font-weight: var(--p-fw-medium);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.spc-edit:hover { background: var(--p-border); }
+.spc-edit:active { transform: scale(0.97); }
 #screen-setup .subject {
   padding: var(--p-space-5) var(--p-space-3);
   background: var(--p-surface);
@@ -3600,14 +3641,18 @@ html[dir="ltr"] .tap-count { left: auto; right: 12px; }
 }
 .confetti {
   position: absolute;
-  width: 10px;
-  height: 14px;
-  top: -20px;
+  width: 8px;
+  height: 8px;
+  top: -16px;
+  border-radius: 50%;
+  background: var(--p-primary, #8B5CF6);
+  opacity: 0.6;
   animation: fall linear forwards;
+  will-change: transform, opacity;
 }
 @keyframes fall {
-  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(120vh) rotate(720deg); opacity: 0; }
+  0%   { transform: translateY(0);     opacity: 0.6; }
+  100% { transform: translateY(110vh); opacity: 0; }
 }
 
 /* ── Mascot (Hakim the Owl) ──────────────────────────────── */

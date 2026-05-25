@@ -227,8 +227,7 @@ function showScreen(name) {
   }
   if (name === 'parent') renderParentDashboard();
   if (name === 'setup') {
-    // Sync visible inputs with stored profile values (in case the user lands
-    // here from onboarding or from the parent dashboard after editing settings)
+    // Sync visible inputs with stored profile values
     const nameInput = document.getElementById('child-name-input');
     if (nameInput) nameInput.value = state.childName || '';
     const slider = document.getElementById('age-slider');
@@ -236,6 +235,26 @@ function showScreen(name) {
     const ageValue = document.getElementById('age-value');
     if (ageValue) ageValue.textContent = state.childAge || 7;
     if (typeof syncGenderUI === 'function') syncGenderUI();
+
+    // Onboarded users see a compact chip; pre-onboarding users see the full form
+    const chip = document.getElementById('setup-profile-chip');
+    const legacy = document.getElementById('setup-legacy-profile');
+    if (chip && legacy) {
+      if (state.profile.onboarded) {
+        chip.hidden = false;
+        legacy.style.display = 'none';
+        const levelTxt = state.profile.level === 'beginner'    ? 'مبتدئ'
+                       : state.profile.level === 'intermediate' ? 'متوسّط'
+                       : state.profile.level === 'advanced'     ? 'متقدّم' : '';
+        document.getElementById('spc-name').textContent = state.childName || 'طفلك';
+        const metaParts = [`${state.childAge || 7} سنوات`];
+        if (levelTxt) metaParts.push(levelTxt);
+        document.getElementById('spc-meta').textContent = metaParts.join(' · ');
+      } else {
+        chip.hidden = true;
+        legacy.style.display = '';
+      }
+    }
   }
 }
 
@@ -764,6 +783,12 @@ document.getElementById('settings-reset')?.addEventListener('click', () => {
     showToast(t('settings.reset_done'), '', 2200);
     setTimeout(() => window.location.reload(), 1500);
   }
+});
+
+// Profile chip "Edit" button → opens settings panel
+document.getElementById('spc-edit')?.addEventListener('click', () => {
+  Sound.tap();
+  openSettings();
 });
 
 // "Upgrade to Premium" button in settings → opens the parent paywall
@@ -1688,7 +1713,7 @@ function onMazePointerMove(e) {
       const overlay = document.getElementById('maze-overlay');
       overlay.classList.add('solved');
       Sound.celebrate();
-      if (Mascot.el) { Mascot.setMood('cheering'); Mascot.say('🎉', 1500); }
+      if (Mascot.el) { Mascot.setMood('happy'); }
       speakI18n('speak.maze_win');
       setTimeout(finishLesson, 1100);
     }
@@ -1855,7 +1880,7 @@ function onPuzzleSlotClick(slotIdx) {
     });
     if (allCorrect) {
       Sound.celebrate();
-      if (Mascot.el) { Mascot.setMood('cheering'); Mascot.say('🎉', 1500); }
+      if (Mascot.el) { Mascot.setMood('happy'); }
       speakI18n('speak.puzzle_win');
       setTimeout(finishLesson, 1100);
     } else {
@@ -1964,7 +1989,7 @@ function onShopCoinClick(value) {
 
   if (result === 'exact') {
     Sound.celebrate();
-    if (Mascot.el) { Mascot.setMood('cheering'); Mascot.say('🎉 ' + t('mascot.correct'), 1500); }
+    if (Mascot.el) { Mascot.setMood('happy'); }
     speakI18n('speak.shop_win');
     setTimeout(finishLesson, 1100);
   }
@@ -2029,7 +2054,7 @@ function onScienceChoice(btn, choice) {
   if (choice.id === p.target.id) {
     btn.classList.add('correct');
     Sound.tap();
-    if (Mascot.el) { Mascot.setMood('cheering'); Mascot.say('✓ ' + t('mascot.correct'), 1800); }
+    if (Mascot.el) { Mascot.setMood('happy'); }
     TeacherFeedback.correct();
     setTimeout(finishLesson, 1500);
   } else {
@@ -2178,7 +2203,7 @@ function checkWordAnswer() {
     // Correct!
     document.querySelectorAll('.wb-slot').forEach(el => el.classList.add('correct'));
     Sound.celebrate();
-    if (Mascot.el) { Mascot.setMood('cheering'); Mascot.say('🎉 ' + t('mascot.correct'), 2000); }
+    if (Mascot.el) { Mascot.setMood('happy'); }
     TeacherFeedback.correct();
     setTimeout(finishLesson, 1600);
   } else {
@@ -2339,7 +2364,7 @@ function handleLetterChoice(btnEl, choice) {
   if (choice.isCorrect) {
     btnEl.classList.add('correct');
     Sound.tap(); Sound.phaseComplete();
-    if (Mascot.el) { Mascot.setMood('cheering'); Mascot.say('✓ ' + t('mascot.correct'), 1800); }
+    if (Mascot.el) { Mascot.setMood('happy'); }
     speakI18n('speak.letters_correct', { word: choice.word, letter: state.letterProblem.letter });
     setTimeout(() => {
       document.getElementById('letter-overlay').classList.add('hidden');
@@ -3031,7 +3056,7 @@ function finishLesson() {
   launchConfetti();
   // Story-mode victory
   const dragonsLeft = state.session.total - (state.session.current + 1);
-  if (Mascot.el) { Mascot.setMood('cheering'); Mascot.say('🎉 ' + t('mascot.correct'), 2200); }
+  if (Mascot.el) { Mascot.setMood('happy'); }
   if (dragonsLeft > 0) {
     speakI18n(state.childName ? 'speak.story_dragon_defeated' : 'speak.story_dragon_defeated_noname',
               { name: state.childName, n: dragonsLeft });
@@ -3083,9 +3108,8 @@ document.getElementById('btn-back-home').addEventListener('click', () => {
 // ════════════════════════════════════════════════════════════
 function showSessionEnd() {
   hideResult();
-  // Big applause for completing a full session
+  // Single calm applause (was double — too loud, mobile audio lag)
   Sound.applause();
-  setTimeout(() => Sound.applause(), 900);
   // One more achievement check at end of full session
   checkAndUnlockBadges();
 
@@ -3215,18 +3239,21 @@ document.getElementById('btn-session-home').addEventListener('click', () => {
 // CONFETTI
 // ════════════════════════════════════════════════════════════
 function launchConfetti() {
+  // Skip on devices that prefer reduced motion (a11y) or low-memory hints
+  if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+
   const container = document.getElementById('confetti-container');
-  const colors = ['#A855F7', '#22D3EE', '#34D399', '#FBBF24', '#F43F5E'];
-  for (let i = 0; i < 70; i++) {
+  if (!container) return;
+  // 24 calm purple petals — performant on weak phones, matches "calm" identity
+  const PETAL_COUNT = 24;
+  for (let i = 0; i < PETAL_COUNT; i++) {
     const c = document.createElement('div');
     c.className = 'confetti';
-    c.style.left = Math.random() * 100 + '%';
-    c.style.background = colors[Math.floor(Math.random() * colors.length)];
-    c.style.animationDuration = (2 + Math.random() * 2) + 's';
-    c.style.animationDelay = (Math.random() * 0.5) + 's';
-    c.style.transform = `rotate(${Math.random() * 360}deg)`;
+    c.style.left = (Math.random() * 100) + '%';
+    c.style.animationDuration = (1.6 + Math.random() * 0.8) + 's';
+    c.style.animationDelay = (Math.random() * 0.3) + 's';
     container.appendChild(c);
-    setTimeout(() => c.remove(), 4500);
+    setTimeout(() => c.remove(), 2600);
   }
 }
 function clearConfetti() {
