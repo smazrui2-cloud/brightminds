@@ -853,7 +853,7 @@ html[lang="en"] .parent-btn::after { content: 'Parents'; }
 .result-overlay .star { font-size: 28px; }
 .result-overlay .result-card .btn-primary,
 .result-overlay .result-card .btn-secondary {
-  min-height: 52px;
+  min-height: 56px;
   border-radius: var(--p-radius-md);
   font-weight: var(--p-fw-medium);
   font-size: var(--p-fs-md);
@@ -920,8 +920,8 @@ html[lang="en"] .parent-btn::after { content: 'Parents'; }
   background: var(--p-surface-2);
   border: 1px solid var(--p-border);
   color: var(--p-text);
-  width: 44px; height: 44px;
-  min-width: 44px; min-height: 44px;
+  width: 56px; height: 56px;
+  min-width: 56px; min-height: 56px;
 }
 #screen-lesson .top-bar .h1 {
   font-size: var(--p-fs-lg);
