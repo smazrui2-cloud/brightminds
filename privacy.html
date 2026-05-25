@@ -2,108 +2,233 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#FFB3DE" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#F8FAFC" />
   <title>سياسة الخصوصية — BrightMinds</title>
-  <meta name="description" content="سياسة خصوصية BrightMinds — نحن لا نجمع أيّ بيانات شخصية عن طفلك." />
+  <meta name="description" content="سياسة خصوصية BrightMinds — تطبيق تعليمي للأطفال متوافق مع COPPA و GDPR-K. لا نجمع أيّ بيانات شخصية عن طفلك." />
   <link rel="icon" href="icons/icon-512.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{
       font-family:'Tajawal',system-ui,sans-serif;
-      background:linear-gradient(160deg,#FFB3DE 0%,#A5F3FC 55%,#FDE68A 100%);
-      min-height:100vh;color:#1E3A8A;line-height:1.7
+      background:#F8FAFC;color:#0F172A;line-height:1.75;
+      -webkit-text-size-adjust:100%;
     }
-    .wrap{max-width:760px;margin:0 auto;padding:32px 20px 80px}
-    .card{
-      background:#fff;border-radius:24px;padding:36px 28px;
-      box-shadow:0 12px 40px rgba(0,0,0,.08)
-    }
+    .wrap{max-width:760px;margin:0 auto;padding:24px 20px 80px}
+    .nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
     .home-link{
-      display:inline-block;margin-bottom:20px;color:#8B5CF6;font-weight:800;
-      text-decoration:none;padding:8px 16px;background:#F3E8FF;border-radius:12px
+      color:#8B5CF6;font-weight:500;text-decoration:none;
+      padding:8px 14px;background:#F5F3FF;border-radius:10px;font-size:14px;
     }
-    h1{font-size:32px;font-weight:900;margin-bottom:8px;color:#BE185D}
-    .updated{font-size:13px;color:#64748B;margin-bottom:24px}
-    h2{font-size:20px;font-weight:900;margin:24px 0 10px;color:#1E3A8A}
+    .lang-toggle{color:#8B5CF6;text-decoration:none;font-weight:500;font-size:14px}
+    .card{
+      background:#FFFFFF;border-radius:16px;padding:32px 28px;
+      border:1px solid #E2E8F0;box-shadow:0 1px 2px rgba(15,23,42,.05);
+    }
+    h1{font-size:28px;font-weight:700;margin-bottom:6px;color:#0F172A}
+    .updated{font-size:13px;color:#94A3B8;margin-bottom:20px}
+    h2{font-size:18px;font-weight:700;margin:28px 0 10px;color:#0F172A}
     p,li{font-size:16px;color:#334155;margin-bottom:10px}
-    ul{padding-inline-start:20px}
-    strong{color:#BE185D}
-    .highlight{
-      background:#FEF3C7;padding:14px 18px;border-radius:14px;
-      border-inline-start:4px solid #FBBF24;margin:16px 0
+    ul{padding-inline-start:22px}
+    strong{color:#0F172A;font-weight:700}
+    .tldr{
+      background:#F5F3FF;padding:16px 20px;border-radius:12px;
+      border-inline-start:3px solid #8B5CF6;margin:16px 0;
     }
+    .tldr strong{color:#8B5CF6}
+    .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 20px}
+    .badge{
+      background:#ECFDF5;color:#047857;padding:4px 12px;
+      border-radius:999px;font-size:13px;font-weight:500;
+    }
+    .table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+    .table th,.table td{
+      text-align:start;padding:10px 12px;border-bottom:1px solid #E2E8F0;vertical-align:top;
+    }
+    .table th{background:#F1F5F9;font-weight:700;color:#0F172A}
+    .table td{color:#334155}
     .contact{
-      background:#DBEAFE;padding:14px 18px;border-radius:14px;margin-top:20px;text-align:center
+      background:#F1F5F9;padding:18px 22px;border-radius:12px;
+      margin-top:24px;text-align:center;font-size:15px
     }
-    .lang-toggle{float:left;color:#8B5CF6;text-decoration:none;font-weight:700}
+    .contact a{color:#8B5CF6;font-weight:700;text-decoration:none}
+    .contact a:hover{text-decoration:underline}
   </style>
 </head>
 <body>
   <div class="wrap">
-    <a href="/" class="home-link">← العودة للتطبيق</a>
-    <a href="privacy-en.html" class="lang-toggle">English</a>
+    <div class="nav">
+      <a href="/" class="home-link">‹ العودة للتطبيق</a>
+      <a href="privacy-en.html" class="lang-toggle">English</a>
+    </div>
 
     <div class="card">
-      <h1>🔒 سياسة الخصوصية</h1>
-      <div class="updated">آخر تحديث: 24 مايو 2026</div>
+      <h1>سياسة الخصوصية</h1>
+      <div class="updated">آخر تحديث: ٢٤ مايو ٢٠٢٦ • تاريخ السريان: ٢٤ مايو ٢٠٢٦</div>
 
-      <div class="highlight">
-        <strong>الخلاصة في سطر واحد:</strong> BrightMinds لا يجمع أيّ بيانات شخصية عن طفلك.
-        كل شيء يُخزَّن على جهازه فقط، ولا يُرسَل لأيّ مكان.
+      <div class="badge-row">
+        <span class="badge">✓ متوافق مع COPPA</span>
+        <span class="badge">✓ متوافق مع GDPR-K</span>
+        <span class="badge">✓ بدون إعلانات</span>
+        <span class="badge">✓ بدون تتبّع</span>
       </div>
 
-      <h2>1. ما البيانات التي نجمعها؟</h2>
+      <div class="tldr">
+        <strong>الخلاصة:</strong> BrightMinds لا يجمع أيّ معلومات شخصية عن طفلك.
+        كل البيانات (الاسم، العمر، التقدّم) تُحفظ على جهازه فقط ولا تُرسل لنا أو لأيّ طرف ثالث.
+      </div>
+
+      <h2>١. عن هذه السياسة</h2>
       <p>
-        <strong>لا شيء يتركز جهاز الطفل.</strong> اسم الطفل، عمره، تقدّمه، نجومه، الكلمات
-        التي تعلّمها — كلها تُحفظ في <em>localStorage</em> داخل متصفّح الجهاز فقط.
-        نحن لا نراها ولا نستطيع الوصول إليها.
+        تطبيق BrightMinds (نسمّيه هنا "التطبيق" أو "نحن") مصمَّم خصّيصاً للأطفال من
+        <strong>٥ إلى ١٣ سنة</strong>. لأنّنا نخدم أطفالاً، نلتزم بمتطلّبات قانون
+        حماية خصوصية الأطفال على الإنترنت الأمريكي
+        <strong>(COPPA — Children's Online Privacy Protection Act)</strong>
+        ولائحة حماية البيانات العامّة الأوروبية للأطفال
+        <strong>(GDPR-K — Article 8)</strong>.
       </p>
 
-      <h2>2. هل تستخدمون cookies أو tracking؟</h2>
+      <h2>٢. مَن مسؤول عن هذه السياسة؟</h2>
       <p>
-        لا نستخدم cookies تتبّعية، ولا أدوات تحليل تكشف هوية المستخدم.
-        قد نستخدم Umami Analytics (إحصاءات مجهولة بدون cookies) لمعرفة عدد الزوّار فقط.
+        <strong>المسؤول:</strong> فريق BrightMinds<br>
+        <strong>البريد الإلكتروني للأهل:</strong>
+        <a href="mailto:privacy@brightminds.kids">privacy@brightminds.kids</a><br>
+        <strong>البريد العام:</strong>
+        <a href="mailto:support@brightminds.kids">support@brightminds.kids</a>
       </p>
 
-      <h2>3. هل تشاركون البيانات مع طرف ثالث؟</h2>
-      <p><strong>لا. أبداً.</strong> لا نبيع بيانات، لا نشاركها، لا نرسلها لأيّ شركة.</p>
-
-      <h2>4. مَن يستخدم التطبيق؟</h2>
+      <h2>٣. ما البيانات التي نجمعها من الطفل؟</h2>
       <p>
-        التطبيق مصمَّم للأطفال 5-13 سنة. ندعو الأهل لمراقبة استخدام أطفالهم
-        وتعديل إعدادات الجهاز عند الحاجة.
+        <strong>لا شيء يصل لخوادمنا.</strong> الجدول التالي يوضّح بدقّة ما يحدث:
+      </p>
+      <table class="table">
+        <thead>
+          <tr><th>البيان</th><th>أين يُحفظ؟</th><th>هل نراه؟</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>اسم الطفل (اختياري)</td><td>المتصفّح فقط (localStorage)</td><td><strong>لا</strong></td></tr>
+          <tr><td>عمر الطفل</td><td>المتصفّح فقط</td><td><strong>لا</strong></td></tr>
+          <tr><td>تقدّم الألعاب والنجوم</td><td>المتصفّح فقط</td><td><strong>لا</strong></td></tr>
+          <tr><td>إعدادات الصوت/اللغة</td><td>المتصفّح فقط</td><td><strong>لا</strong></td></tr>
+          <tr><td>رمز PIN الأهل</td><td>المتصفّح (مشفّر SHA-256)</td><td><strong>لا</strong></td></tr>
+        </tbody>
+      </table>
+      <p>
+        نحن <strong>لا نطلب ولا نخزّن</strong>: البريد الإلكتروني للطفل، رقم الهاتف،
+        العنوان، الصور، التسجيلات الصوتية، الموقع الجغرافي، أو أيّ بيانات تعريف شخصية أخرى.
       </p>
 
-      <h2>5. الإعلانات</h2>
+      <h2>٤. ماذا عن بيانات الأهل؟</h2>
       <p>
-        <strong>لا توجد إعلانات في التطبيق إطلاقاً.</strong> نريد بيئة آمنة للأطفال.
+        إذا اشترك ولي الأمر في النسخة المميّزة <strong>(Premium)</strong>،
+        فإنّ Stripe (مزوّد الدفع) يجمع البيانات التالية <strong>منه فقط</strong>،
+        وليس من الطفل:
       </p>
-
-      <h2>6. حقوقك</h2>
       <ul>
-        <li>الحقّ في حذف بيانات طفلك في أيّ وقت (من الإعدادات → "إعادة تعيين")</li>
-        <li>الحقّ في معرفة أيّ بيانات تخصّك (الجواب: لا شيء عندنا — كل شيء على جهازك)</li>
-        <li>الحقّ في تصدير بيانات الطفل (قريباً)</li>
+        <li>البريد الإلكتروني (لإرسال الفاتورة فقط)</li>
+        <li>معلومات الدفع (تُعالج عبر Stripe — نحن لا نراها أبداً)</li>
+      </ul>
+      <p>
+        نحن نحتفظ فقط بـ: البريد الإلكتروني + حالة الاشتراك (مفعّل/منتهٍ) في
+        قاعدة بيانات Vercel KV. لا نشارك هذه البيانات مع أيّ طرف ثالث للتسويق.
+      </p>
+
+      <h2>٥. الأدوات الخارجية التي نستخدمها</h2>
+      <table class="table">
+        <thead>
+          <tr><th>الخدمة</th><th>الغرض</th><th>ماذا تجمع؟</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Vercel</td>
+            <td>استضافة التطبيق</td>
+            <td>سجلّات أمان أساسية (لا بيانات شخصية)</td>
+          </tr>
+          <tr>
+            <td>Umami Analytics</td>
+            <td>إحصاءات الزيارات</td>
+            <td>عدّ مجهول الهويّة، بدون cookies، بدون IP</td>
+          </tr>
+          <tr>
+            <td>Stripe (Premium فقط)</td>
+            <td>معالجة الدفع</td>
+            <td>بيانات بطاقة + بريد ولي الأمر</td>
+          </tr>
+          <tr>
+            <td>Microsoft Edge TTS</td>
+            <td>صوت المعلّم (محلّياً)</td>
+            <td>لا شيء — يعمل على الجهاز</td>
+          </tr>
+          <tr>
+            <td>Google Fonts</td>
+            <td>تحميل الخطوط</td>
+            <td>يسجّل عنوان IP الجهاز (لجلب الخطّ فقط)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>٦. الإعلانات</h2>
+      <p>
+        <strong>لا توجد إعلانات في BrightMinds — لا الآن ولا في المستقبل.</strong>
+        لا نسمح لأيّ شبكة إعلانية بالوصول للأطفال.
+      </p>
+
+      <h2>٧. حقوق ولي الأمر (مهمّ)</h2>
+      <p>كولي أمر، يحقّ لك في أيّ وقت:</p>
+      <ul>
+        <li><strong>الاطّلاع</strong> على بيانات طفلك (موجودة على جهازك فقط — افتح الإعدادات)</li>
+        <li><strong>الحذف</strong> الكامل لبيانات الطفل (الإعدادات → "مسح كل التقدّم")</li>
+        <li><strong>الرفض</strong> لمواصلة استخدام التطبيق (احذف التطبيق وتُمسح كل البيانات)</li>
+        <li>إلغاء اشتراك Premium في أيّ وقت (يستمرّ حتى نهاية الفترة المدفوعة)</li>
+        <li>طلب نسخة من بيانات الاشتراك الخاصّة بك:
+          راسل <a href="mailto:privacy@brightminds.kids">privacy@brightminds.kids</a></li>
       </ul>
 
-      <h2>7. الأطفال تحت 13 سنة (COPPA)</h2>
+      <h2>٨. موافقة ولي الأمر (Verifiable Parental Consent)</h2>
       <p>
-        نلتزم بقانون حماية خصوصية الأطفال (COPPA الأمريكي + GDPR-K الأوروبي).
-        لا نطلب بريداً، رقم هاتف، عنواناً، أو أيّ معلومة تعريفية عن الطفل.
+        التطبيق <strong>مجاني تماماً</strong> للأطفال ولا يجمع أيّ بيانات منهم،
+        لذا لا تحتاج موافقة مسبقة للاستخدام الأساسي.
+      </p>
+      <p>
+        عند الاشتراك في Premium، نطلب تأكيداً صريحاً بأنّك ولي أمر عمره ١٨+ سنة
+        قبل الانتقال إلى Stripe.
       </p>
 
-      <h2>8. التغييرات على هذه السياسة</h2>
+      <h2>٩. الأمان</h2>
+      <ul>
+        <li>الموقع يعمل بـ <strong>HTTPS</strong> دائماً (تشفير كامل)</li>
+        <li>رمز PIN الأهل مشفّر بـ SHA-256 (لا يُحفظ كنصّ مكشوف)</li>
+        <li>Headers أمان: HSTS، X-Frame-Options، Content-Security-Policy</li>
+        <li>نراجع المكتبات الخارجية أمنياً قبل الاستخدام</li>
+      </ul>
+
+      <h2>١٠. مدّة الاحتفاظ بالبيانات</h2>
+      <ul>
+        <li><strong>بيانات الطفل</strong>: ما دامت على جهازه — نحن لا نحتفظ بنسخة</li>
+        <li><strong>بيانات اشتراك ولي الأمر</strong>: حتى ٧ سنوات بعد إلغاء الاشتراك
+          (للالتزامات المحاسبية + قانون CFRA)</li>
+      </ul>
+
+      <h2>١١. النقل الدولي للبيانات</h2>
       <p>
-        إذا حدّثنا سياسة الخصوصية، سننشر النسخة الجديدة على هذه الصفحة مع تاريخ التحديث.
+        خوادم Vercel + Stripe قد تكون في الولايات المتّحدة أو أوروبا. كل نقل يتمّ
+        وفق Standard Contractual Clauses (SCCs) المُعتمَدة أوروبياً.
       </p>
 
+      <h2>١٢. التغييرات على هذه السياسة</h2>
+      <p>
+        أيّ تغيير جوهري سيُعلَن داخل التطبيق ويظهر تاريخ "آخر تحديث" أعلاه.
+        التغييرات تسري بعد ٣٠ يوماً من النشر، ما لم تكن تصحيحات عاجلة.
+      </p>
+
+      <h2>١٣. كيف تتواصل معنا</h2>
+      <p>لأيّ سؤال أو طلب يتعلّق بخصوصية طفلك:</p>
       <div class="contact">
-        <strong>📧 أسئلة؟</strong><br>
-        راسلنا على: <a href="mailto:support@brightminds.kids" style="color:#8B5CF6;font-weight:800">support@brightminds.kids</a>
+        📧 <a href="mailto:privacy@brightminds.kids">privacy@brightminds.kids</a><br>
+        نردّ خلال ٤٨ ساعة عمل.
       </div>
     </div>
   </div>
