@@ -3494,75 +3494,7 @@ html[dir="ltr"] .tap-count { left: auto; right: 12px; }
 }
 .shop-undo:active { transform: scale(0.97); }
 
-/* ── Paywall toast ─────────────────────────────────────── */
-.paywall-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(7, 6, 15, 0.7);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 99;
-}
-.paywall-backdrop.show { opacity: 1; pointer-events: auto; }
-
-.paywall-toast {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.6);
-  width: calc(100% - 48px);
-  max-width: 380px;
-  padding: 28px 24px 22px;
-  background: linear-gradient(135deg, var(--surface), var(--surface-light));
-  border: 2px solid var(--gold);
-  border-radius: 26px;
-  text-align: center;
-  box-shadow: 0 0 50px rgba(251, 191, 36, 0.55), 0 20px 60px rgba(0,0,0,0.6);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.2, 1.4, 0.4, 1);
-  z-index: 100;
-}
-.paywall-toast.show {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translate(-50%, -50%) scale(1);
-}
-.paywall-icon {
-  font-size: 56px;
-  line-height: 1;
-  animation: paywall-spin 2.4s ease-in-out infinite;
-  filter: drop-shadow(0 0 16px var(--gold));
-}
-@keyframes paywall-spin {
-  0%, 100% { transform: rotate(-8deg); }
-  50% { transform: rotate(8deg); }
-}
-.paywall-title {
-  font-size: 22px;
-  font-weight: 900;
-  margin-top: 8px;
-  background: linear-gradient(90deg, var(--gold), var(--neon));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.paywall-body {
-  font-size: 14px;
-  color: var(--hint);
-  margin: 8px 0 4px;
-  line-height: 1.5;
-}
-.paywall-game-name {
-  font-size: 15px;
-  font-weight: 800;
-  color: var(--cyan);
-  margin-bottom: 18px;
-}
-.paywall-cta { margin-top: 8px; }
+/* (Legacy .paywall-* styles removed — replaced by .pwall-* in Paywall module) */
 
 /* ── Result modal ────────────────────────────────────────── */
 .result-overlay {

@@ -828,17 +828,6 @@ function computeChildLevel(totalStars) {
   return 'level.beginner';
 }
 
-function formatPlayTime(seconds) {
-  if (!seconds || seconds < 60) {
-    return Math.round(seconds || 0) + ' ' + t('parent.seconds');
-  }
-  if (seconds < 3600) {
-    return Math.round(seconds / 60) + ' ' + t('parent.minutes');
-  }
-  const hrs = Math.floor(seconds / 3600);
-  const mins = Math.round((seconds % 3600) / 60);
-  return hrs + ' ' + t('parent.hours') + ' ' + mins + ' ' + t('parent.minutes');
-}
 
 const SUBJECT_EMOJI = {
   'multiply': '✖️', 'add': '➕', 'letters': '🔤',
@@ -1001,28 +990,7 @@ function showToast(msg, sub = '', durationMs = 2200) {
 // ════════════════════════════════════════════════════════════
 // PAYWALL (stub UI for premium subjects)
 // ════════════════════════════════════════════════════════════
-function showPaywall(subjectEl) {
-  const toast = document.getElementById('paywall-toast');
-  const backdrop = document.getElementById('paywall-backdrop');
-  if (!toast) return;
-  const name = subjectEl.querySelector('.name')?.textContent || '';
-  document.getElementById('paywall-game-name').textContent = '🎮 ' + name;
-  toast.classList.add('show');
-  backdrop?.classList.add('show');
-  Sound.tap();
-}
-function hidePaywall() {
-  document.getElementById('paywall-toast')?.classList.remove('show');
-  document.getElementById('paywall-backdrop')?.classList.remove('show');
-}
-document.getElementById('paywall-close')?.addEventListener('click', () => {
-  Sound.tap(); hidePaywall();
-});
-document.getElementById('paywall-cta')?.addEventListener('click', () => {
-  Sound.tap();
-  alert('🚀 Stripe subscription integration coming soon!\n\n' +
-        'Plans:\n• Monthly: $4.99\n• Yearly: $39.99 (save 33%)\n• Family: $59.99/year (3 kids)');
-});
+// (Legacy paywall stub removed — replaced by Paywall + Premium modules)
 
 // ════════════════════════════════════════════════════════════
 // LESSON INITIALIZATION
