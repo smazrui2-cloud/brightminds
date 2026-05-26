@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#F8FAFC" />
+  <title>BrightMinds — تطبيق تعليمي ذكي للأطفال 5-13 سنة</title>
+  <meta name="description" content="تطبيق تعليمي تفاعلي للأطفال من 5 إلى 13 سنة. 12 لعبة لتعلّم الرياضيات والحروف والقراءة والذاكرة بالعربية والإنجليزية. مجاناً، يعمل أوفلاين، بدون إعلانات." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="BrightMinds — تطبيق تعليمي ذكي للأطفال" />
+  <meta property="og:description" content="12 لعبة تعليمية ممتعة للأطفال 5-13. عربي + إنجليزي. مجاناً. بدون إعلانات." />
+  <meta property="og:url" content="https://brightminds-app.vercel.app/landing.html" />
+  <meta property="og:image" content="https://brightminds-app.vercel.app/icons/icon-512.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="icons/icon-512.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Umami analytics (same as the app) -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="37c4acbf-099a-4d71-99a7-bff949aecfe1"></script>
+
+  <style>
+    /* ── Tokens (same calm palette as the app) ── */
+    :root{
+      --bg:#F8FAFC; --surface:#FFFFFF; --primary:#8B5CF6; --primary-dark:#7C3AED;
+      --primary-soft:#F5F3FF; --text:#0F172A; --muted:#64748B; --soft:#94A3B8;
+      --border:#E2E8F0; --success:#10B981;
+      --shadow-sm:0 1px 2px rgba(15,23,42,.05);
+      --shadow-md:0 4px 12px rgba(15,23,42,.06);
+      --shadow-lg:0 12px 32px rgba(15,23,42,.10);
+      --shadow-glow:0 16px 40px rgba(139,92,246,.18);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Tajawal',system-ui,-apple-system,sans-serif;
+      background:var(--bg); color:var(--text); line-height:1.7;
+      -webkit-text-size-adjust:100%;
+    }
+
+    /* ── Top nav ── */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      background:rgba(255,255,255,.85); backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--border);
+      padding:12px 20px; display:flex; align-items:center; justify-content:space-between;
+    }
+    .brand{display:flex; align-items:center; gap:8px; font-weight:900; font-size:18px; color:var(--primary)}
+    .brand .logo{font-size:24px}
+    .nav-cta{
+      background:var(--primary); color:#fff; padding:8px 16px; border-radius:10px;
+      text-decoration:none; font-weight:700; font-size:14px;
+    }
+    .nav-cta:active{transform:scale(.97)}
+
+    /* ── Container ── */
+    .container{max-width:1100px; margin:0 auto; padding:0 20px}
+
+    /* ── Section ── */
+    section{padding:60px 0}
+    .eyebrow{
+      color:var(--primary); font-weight:700; font-size:14px;
+      text-transform:uppercase; letter-spacing:.5px; margin-bottom:12px;
+    }
+    h1{font-size:42px; font-weight:900; line-height:1.2; color:var(--text); margin-bottom:16px}
+    h2{font-size:32px; font-weight:900; line-height:1.25; color:var(--text); margin-bottom:14px}
+    h3{font-size:20px; font-weight:700; color:var(--text); margin-bottom:8px}
+    .sub-text{color:var(--muted); font-size:18px; max-width:640px; margin:0 auto 36px; text-align:center}
+
+    /* ── Hero ── */
+    .hero{
+      padding:64px 0 80px; text-align:center;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, var(--primary-soft) 0%, transparent 60%),
+        var(--bg);
+    }
+    .hero h1{font-size:48px; max-width:760px; margin-inline:auto}
+    .hero .lead{font-size:20px; color:var(--muted); max-width:560px; margin:16px auto 32px}
+    .cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+    .btn-primary,.btn-secondary{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:18px 32px; border-radius:14px; text-decoration:none;
+      font-family:inherit; font-weight:700; font-size:17px;
+      border:none; cursor:pointer; min-height:56px;
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .btn-primary{background:var(--primary); color:#fff; box-shadow:var(--shadow-glow)}
+    .btn-primary:hover{background:var(--primary-dark); transform:translateY(-1px)}
+    .btn-primary:active{transform:scale(.98)}
+    .btn-secondary{background:var(--surface); color:var(--text); border:1px solid var(--border)}
+    .btn-secondary:hover{background:var(--primary-soft)}
+    .hero-meta{color:var(--soft); font-size:14px; margin-top:18px}
+    .hero-meta span{margin:0 8px}
+
+    /* ── Phone mockups ── */
+    .phones{
+      display:flex; gap:18px; justify-content:center; margin-top:48px;
+      flex-wrap:wrap;
+    }
+    .phone{
+      width:240px; aspect-ratio:9/19;
+      background:var(--surface); border:8px solid #1f2937;
+      border-radius:36px; padding:18px 14px; overflow:hidden;
+      box-shadow:var(--shadow-lg); position:relative;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .phone:nth-child(2){transform:translateY(-20px)}
+    .phone-bar{
+      height:6px; background:var(--border); border-radius:3px; align-self:center; width:50%;
+    }
+    .phone-card{
+      background:var(--primary-soft); border-radius:12px; padding:10px;
+      text-align:center; font-weight:900; color:var(--primary);
+    }
+    .phone-emoji{font-size:48px; text-align:center; margin:10px 0}
+    .phone-grid{display:grid; grid-template-columns:1fr 1fr; gap:6px}
+    .phone-tile{
+      background:var(--surface); border:1px solid var(--border); border-radius:10px;
+      padding:10px; text-align:center; font-size:11px; color:var(--text); font-weight:700;
+    }
+    .phone-tile .ico{font-size:22px; display:block; margin-bottom:4px}
+    .phone-q{
+      background:var(--surface); border:1px solid var(--border); border-radius:12px;
+      padding:14px; text-align:center; font-weight:900; color:var(--text); font-size:18px;
+    }
+    .phone-btn{
+      background:var(--primary); color:#fff; border-radius:10px; padding:10px;
+      text-align:center; font-weight:700; font-size:11px; margin-top:auto;
+    }
+
+    /* ── 3 columns ── */
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:24px}
+    .feature{
+      background:var(--surface); border:1px solid var(--border); border-radius:16px;
+      padding:24px; box-shadow:var(--shadow-sm);
+    }
+    .feature .ico{
+      width:48px; height:48px; border-radius:12px;
+      background:var(--primary-soft); color:var(--primary);
+      display:grid; place-items:center; font-size:24px; margin-bottom:14px;
+    }
+    .feature p{color:var(--muted); font-size:15px}
+
+    /* ── How it works ── */
+    .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+    .step{text-align:center; padding:24px}
+    .step-num{
+      width:48px; height:48px; border-radius:50%;
+      background:var(--primary); color:#fff;
+      display:grid; place-items:center; font-weight:900; font-size:18px;
+      margin:0 auto 16px;
+    }
+    .step h3{margin-bottom:6px}
+    .step p{color:var(--muted); font-size:15px}
+
+    /* ── Testimonials ── */
+    .testimonials{background:var(--primary-soft); padding:60px 0}
+    .testimonial{
+      background:var(--surface); border-radius:16px; padding:24px;
+      box-shadow:var(--shadow-sm); border:1px solid var(--border);
+    }
+    .testimonial p{color:var(--text); font-size:16px; margin-bottom:14px; font-style:italic}
+    .testimonial p::before{content:'"'; color:var(--primary); font-size:24px; font-weight:900}
+    .testimonial p::after{content:'"'; color:var(--primary); font-size:24px; font-weight:900}
+    .author{display:flex; align-items:center; gap:10px}
+    .author-avatar{
+      width:40px; height:40px; border-radius:50%;
+      background:var(--primary-soft); color:var(--primary);
+      display:grid; place-items:center; font-size:18px; font-weight:900;
+    }
+    .author-name{font-weight:700; color:var(--text); font-size:14px}
+    .author-role{color:var(--muted); font-size:13px}
+
+    /* ── Final CTA ── */
+    .cta-final{
+      text-align:center;
+      background:linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color:#fff; padding:60px 24px; border-radius:24px; margin:60px 20px;
+      box-shadow:var(--shadow-glow);
+    }
+    .cta-final h2{color:#fff}
+    .cta-final p{color:rgba(255,255,255,.9); font-size:18px; margin:16px auto 28px; max-width:520px}
+    .cta-final .btn-primary{background:#fff; color:var(--primary)}
+    .cta-final .btn-primary:hover{background:#fff}
+
+    /* ── Footer ── */
+    footer{
+      padding:30px 20px; text-align:center; border-top:1px solid var(--border);
+      background:var(--surface); color:var(--soft); font-size:14px;
+    }
+    footer a{color:var(--primary); text-decoration:none; margin:0 8px; font-weight:500}
+    footer a:hover{text-decoration:underline}
+
+    /* ── Mobile ── */
+    @media (max-width:640px){
+      h1{font-size:32px}
+      h2{font-size:26px}
+      .hero{padding:40px 0 60px}
+      .hero h1{font-size:34px}
+      .hero .lead{font-size:17px}
+      .grid-3,.grid-2,.steps{grid-template-columns:1fr; gap:16px}
+      .phones{gap:12px}
+      .phone{width:200px}
+      .phone:nth-child(2){transform:none}
+      section{padding:40px 0}
+      .cta-final{padding:40px 20px; margin:40px 16px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="brand">
+      <span class="logo">💡</span>
+      <span>BrightMinds</span>
+    </div>
+    <a href="/" class="nav-cta">افتح التطبيق</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">✨ تعليم ذكي لأطفال ٥ – ١٣ سنة</div>
+      <h1>تطبيق تعليمي يحبّه أطفالك<br>ويثق به الأهل</h1>
+      <p class="lead">
+        ١٢ لعبة تعليمية تفاعلية بالعربية والإنجليزية —
+        مجاناً، بدون إعلانات، ويعمل بدون إنترنت.
+      </p>
+      <div class="cta-row">
+        <a href="/" class="btn-primary">ابدأ مجاناً الآن</a>
+        <a href="#how" class="btn-secondary">كيف يعمل؟</a>
+      </div>
+      <div class="hero-meta">
+        <span>🔒 آمن للأطفال</span>
+        <span>•</span>
+        <span>📵 بدون إعلانات</span>
+        <span>•</span>
+        <span>📱 PWA قابل للتثبيت</span>
+      </div>
+
+      <!-- Phone mockups -->
+      <div class="phones">
+        <div class="phone">
+          <div class="phone-bar"></div>
+          <div class="phone-card">الضرب</div>
+          <div style="text-align:center;font-size:32px;font-weight:900;color:var(--primary);direction:ltr;margin:auto">
+            6 × 7 = ?
+          </div>
+          <div class="phone-btn">ارسم الخطوط</div>
+        </div>
+        <div class="phone">
+          <div class="phone-bar"></div>
+          <div class="phone-q">اختر صورة تبدأ بحرف</div>
+          <div class="phone-emoji" style="font-size:64px;color:var(--primary)">أ</div>
+          <div class="phone-grid">
+            <div class="phone-tile"><span class="ico">🦁</span>أسد</div>
+            <div class="phone-tile"><span class="ico">🐘</span>فيل</div>
+          </div>
+          <div class="phone-btn">إجابة صحيحة!</div>
+        </div>
+        <div class="phone">
+          <div class="phone-bar"></div>
+          <div class="phone-card">القصة</div>
+          <div class="phone-emoji">🐢</div>
+          <div style="font-size:13px;text-align:center;color:var(--muted);font-weight:700">
+            الأرنب والسلحفاة
+          </div>
+          <div class="phone-btn">التالية ›</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ما هو التطبيق -->
+  <section id="what">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="eyebrow">ما هو BrightMinds؟</div>
+        <h2>تطبيق واحد. ١٢ مهارة. متعة بلا حدود.</h2>
+        <p class="sub-text">
+          BrightMinds هو تطبيق ويب تعليمي مصمَّم خصّيصاً للأطفال العرب
+          ٥ إلى ١٣ سنة. يجمع بين الرياضيات، الحروف، الذاكرة، والقصص في
+          تجربة هادئة وممتعة بصوت معلّم عربي طبيعي.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits for kids -->
+  <section style="background:var(--surface)">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="eyebrow">👶 للأطفال</div>
+        <h2>ست فوائد يحبّها طفلك</h2>
+      </div>
+      <div style="height:36px"></div>
+      <div class="grid-3">
+        <div class="feature">
+          <div class="ico">🧮</div>
+          <h3>الرياضيات بطريقة بصرية</h3>
+          <p>تعلّم الضرب بطريقة الخطوط المرئية، والجمع بعدّ الصور الملموسة.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">🔤</div>
+          <h3>الحروف بصوت طبيعي</h3>
+          <p>تعرّف على الحروف العربية والإنجليزية بنطق واضح من معلّم/ة حقيقي/ة.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">📖</div>
+          <h3>قصص فيها درس</h3>
+          <p>قصص قصيرة كل واحدة تعلّم قيمة (الصبر، الصدق، المشاركة).</p>
+        </div>
+        <div class="feature">
+          <div class="ico">🧠</div>
+          <h3>ألعاب تنشّط الذاكرة</h3>
+          <p>تطابق البطاقات، صيد الألوان، تركيب الصور — تنمّي التركيز.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">🏆</div>
+          <h3>نجوم وشارات</h3>
+          <p>كل تمرين صحيح يُكسب الطفل نجوماً وشارات — يتشجّع للاستمرار.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">🎙️</div>
+          <h3>معلّم لطيف</h3>
+          <p>صوت دافئ يقول "أحسنت!" أو "حاول مرّة أخرى" بأسلوب لطيف غير محبط.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- For parents -->
+  <section>
+    <div class="container">
+      <div style="text-align:center">
+        <div class="eyebrow">👨‍👩‍👧 للأهالي</div>
+        <h2>راحة بال + متابعة فعّالة</h2>
+      </div>
+      <div style="height:36px"></div>
+      <div class="grid-3">
+        <div class="feature">
+          <div class="ico">🔒</div>
+          <h3>محمي برمز سرّي</h3>
+          <p>لوحة الأهل والإعدادات محمية بـ PIN — لا يستطيع الطفل تغيير أيّ شيء.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">📊</div>
+          <h3>تقارير تقدّم</h3>
+          <p>اعرف كم تعلّم طفلك من كلمات، نجوم، شارات — في صفحة واحدة هادئة.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">🚫</div>
+          <h3>بدون إعلانات إطلاقاً</h3>
+          <p>لن يرى طفلك أيّ إعلان — بيئة آمنة ١٠٠٪.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">🛡️</div>
+          <h3>متوافق مع COPPA</h3>
+          <p>لا نجمع بيانات شخصية. كل شيء على جهازك فقط، ولا يُرسل لأحد.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">📵</div>
+          <h3>يعمل أوفلاين</h3>
+          <p>بعد أوّل تشغيل، يعمل التطبيق كاملاً بدون إنترنت — مثالي للسفر.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">⚙️</div>
+          <h3>تحكّم كامل</h3>
+          <p>اختر اللغة، صوت المعلّم، الموسيقى، أو امسح كل التقدّم بضغطة زر.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" style="background:var(--surface)">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="eyebrow">⚡ بسيط جداً</div>
+        <h2>ابدأ في ٣ خطوات</h2>
+      </div>
+      <div style="height:36px"></div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">١</div>
+          <h3>افتح الرابط</h3>
+          <p>اضغط "ابدأ مجاناً" — لا تسجيل، لا تنزيل من متجر التطبيقات.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">٢</div>
+          <h3>أدخل اسم + عمر طفلك</h3>
+          <p>تتخصّص التمارين تلقائياً حسب عمره، ٣٠ ثانية وأنت جاهز.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">٣</div>
+          <h3>اتركه يلعب ويتعلّم</h3>
+          <p>المعلّم يرشده، النجوم تشجّعه، وأنت تراقب التقدّم وقتما تشاء.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <div style="text-align:center">
+        <div class="eyebrow">💬 آراء العائلات</div>
+        <h2>ماذا يقول الأهل؟</h2>
+      </div>
+      <div style="height:36px"></div>
+      <div class="grid-3">
+        <div class="testimonial">
+          <p>ابنتي صارت تطلب التطبيق بنفسها قبل اللعب. اخيراً شيء تعليمي مش مزعج بإعلانات.</p>
+          <div class="author">
+            <div class="author-avatar">س</div>
+            <div>
+              <div class="author-name">سارة</div>
+              <div class="author-role">أمّ طفلة عمرها ٧</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p>أحبّ أنّه يعمل بدون انترنت في السيارة. ولوحة الأهل تريني بالضبط شو تعلّم.</p>
+          <div class="author">
+            <div class="author-avatar">أ</div>
+            <div>
+              <div class="author-name">أحمد</div>
+              <div class="author-role">أب لـ ٣ أطفال</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <p>التصميم بسيط جداً، حتى ابني عمره ٥ سنوات يستخدمه لوحده. الصوت العربي ممتاز.</p>
+          <div class="author">
+            <div class="author-avatar">ن</div>
+            <div>
+              <div class="author-name">نوال</div>
+              <div class="author-role">معلّمة + أم</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="text-align:center; color:var(--soft); font-size:13px; margin-top:24px">
+        * آراء تجريبية — سنستبدلها بآراء حقيقية بعد أوّل ١٠٠ مستخدم.
+      </p>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <div class="cta-final">
+    <h2>جاهز لتجربة طفلك؟</h2>
+    <p>التطبيق مجاني تماماً. لا تسجيل، لا بطاقة، لا إعلانات.</p>
+    <div class="cta-row">
+      <a href="/" class="btn-primary">افتح التطبيق الآن →</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p style="margin-bottom:8px">
+      <a href="/">التطبيق</a> ·
+      <a href="privacy.html">الخصوصية</a> ·
+      <a href="terms.html">الشروط</a> ·
+      <a href="mailto:support@brightminds.kids">الدعم</a>
+    </p>
+    <p>© 2026 BrightMinds — صُنع بحبّ للأطفال العرب 🌟</p>
+  </footer>
+
+</body>
+</html>
